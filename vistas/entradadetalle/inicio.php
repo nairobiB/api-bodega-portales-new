@@ -21,6 +21,34 @@ require_once('vistas/plantilla/titulo.php');
             </div>
         </div>
         <div class="col-md-4 mb-3">
+            <label for="inputcompra">ID Compra</label>
+            <input type="text" class="form-control" id="inputcompra" placeholder="Ingrese el ID de la compra" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="inputproducto">ID Producto</label>
+            <input type="text" class="form-control" id="inputproducto" placeholder="Ingrese el ID del producto" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="inputcantidad">Cantidad</label>
+            <input type="number" class="form-control" id="inputcantidad" placeholder="Ingrese la cantidad" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="inputprecio">Precio</label>
+            <input type="text" class="form-control" id="inputprecio" placeholder="Ingrese la cantidad" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
             <label for="inputusuario">Usuario</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -58,103 +86,7 @@ require_once('vistas/plantilla/titulo.php');
         }, false);
     })();
 </script>
-<table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Fecha Entrada</th>
-            <th scope="col">Encargado</th>
-            <th scope="col">Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($this->datos as $f) {
-        ?>
-            <tr>
-                <th scope="row"><a href=""><?php echo $f['IdCompra']; ?></a>
-                </th>
-                <td><?php echo $f['Fechaentrada']; ?>
-                </td>
-                <td><?php echo $f['NomUsr']; ?>
-                </td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Mod</button>
-                        <button type="button" class="btn btn-warning">Del</button>
-                    </div>
-                </td>
-            </tr>
-        <?php } ?>
-    </tbody>
 
-</table>
-<h3>DETALLE ENTRADAS</h3>
-<table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Id Prod</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($this->datosdetalle as $f2) {
-        ?>
-            <tr>
-                <th scope="row"><a href=""><?php echo $f2['IdCompra']; ?></a>
-                </th>
-                <td><?php echo $f2['IdProd']; ?>
-                </td>
-                <td><?php echo $f2['Cantidad']; ?>
-                </td>
-                <td><?php echo $f2['Precio']; ?>
-                </td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Mod</button>
-                        <button type="button" class="btn btn-warning">Del</button>
-                    </div>
-                </td>
-            </tr>
-        <?php } ?>
-    </tbody>
-
-</table>
-<h3>CATEGORIAS</h3>
-<table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre Categoria</th>
-            <th scope="col">Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($this->datoscate as $f3) {
-        ?>
-            <tr>
-                <th scope="row"><a href=""><?php echo $f3['IdCat']; ?></a>
-                </th>
-
-                <td><?php echo $f3['NombreCat']; ?>
-                </td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Mod</button>
-                        <button type="button" class="btn btn-warning">Del</button>
-                    </div>
-                </td>
-            </tr>
-        <?php } ?>
-    </tbody>
-
-</table>
 </div>
 </div>
 </section>

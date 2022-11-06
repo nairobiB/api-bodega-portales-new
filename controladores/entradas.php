@@ -9,7 +9,7 @@ class entradas extends Controlador
     }
     function inicio()
     {
-        $this->vista->titulo = 'Agregar nuevo Registro';
+        $this->vista->titulo = 'Pagina de Entradas';
         $this->vista->url = 'entradas/inicio';
         $this->setModelo('entradas');
         $this->vista->datos = $this->modelo->listar();

@@ -72,4 +72,9 @@ class entradasModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into entradas (Fechaentrada, IdProv, NomUsr) value(:Fechaentrada, :IdProv, :NomUsr)');
         $query->execute($datos);
     }
+    function guardardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into detalleentrada (IdCompra, IdProd, Cantidad, Precio) value(:IdCompra, :IdProd, :Cantidad, :Precio)');
+        $query->execute($datos);
+    }
 }

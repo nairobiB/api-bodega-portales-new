@@ -8,7 +8,7 @@ class entradadetalle extends Controlador
     }
     function inicio()
     {
-        $this->vista->titulo = 'Agregar nuevo Registro';
+        $this->vista->titulo = 'Gestion de entradas';
         $this->vista->url = 'entradadetalle/inicio';
         $this->setModelo('entradas');
         $this->vista->datos = $this->modelo->listar();
@@ -25,6 +25,21 @@ class entradadetalle extends Controlador
             $NomUsr = $_POST['NomUsr'];
             $this->setModelo('entradas');
             $this->modelo->guardar(["Fechaentrada" => $Fechaentrada, "IdProv" => $IdProv, "NomUsr" => $NomUsr]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
+    function guardardetalle()
+    {
+        try {
+            print_r($_POST);
+            $IdCompra = $_POST['IdCompra'];
+            $IdProd = $_POST['IdProd'];
+            $Cantidad = $_POST['Cantidad'];
+            $Precio = $_POST['Precio'];
+            $this->setModelo('entradas');
+            $this->modelo->guardardetalle(["IdCompra" => $IdCompra,"IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precio" => $Precio]);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
