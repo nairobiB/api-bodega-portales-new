@@ -1,3 +1,4 @@
+//CAMPOS DE GUARDAR DETALLE DE ENTRADA
 $("#btnGuardar").click(function () {
     $.post(
       "/entradadetalle/guardardetalle",
@@ -12,4 +13,3 @@ $("#btnGuardar").click(function () {
       }
     );
   });
-  

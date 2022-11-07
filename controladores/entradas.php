@@ -31,4 +31,29 @@ class entradas extends Controlador
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
+    function modificar()
+    {   try{
+        print_r($_POST);
+            $IdCompra = $_POST['IdCompra'];
+            $Fechaentrada = $_POST['Fechaentrada'];
+            $IdProv = $_POST['IdProv'];
+            $NomUsr = $_POST['NomUsr'];
+            $this->setModelo('entradas');
+            $this->modelo->modificarentrada(["IdCompra" => $IdCompra,"Fechaentrada" => $Fechaentrada, "IdProv" => $IdProv, "NomUsr" => $NomUsr]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    function eliminar()
+    {   try{
+        print_r($_POST);
+            $IdCompra = $_POST['IdCompra'];
+            $this->setModelo('entradas');
+            $this->modelo->eliminarentrada(["IdCompra" => $IdCompra]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
 }
