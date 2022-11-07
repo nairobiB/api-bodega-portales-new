@@ -53,7 +53,7 @@ class salidasModelo extends Modelo
     }
     function guardardetalle($datos)
     {
-        $query = $this->db->conectar()->prepare('insert into detallesalida(Codsalida, IdProd, Cantidad, Precsalida) value(:Codsalida, :IdProd, :Cantidad, :Precsalida)');
+        $query = $this->db->conectar()->prepare('insert into detallesalida (Codsalida, IdProd, Cantidad, Precsalida) value(:Codsalida, :IdProd, :Cantidad, :Precsalida)');
         $query->execute($datos);
     }
 }

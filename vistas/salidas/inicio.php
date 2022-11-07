@@ -46,7 +46,7 @@ require_once('vistas/plantilla/titulo.php');
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">ID Proveedor</th>
+            <th scope="col">ID Producto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio de Salida</th>
             <th scope="col">Accion</th>

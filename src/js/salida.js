@@ -1,8 +1,8 @@
-$("#btnGuardar").click(function () {
+$("#btnGuardarSalida").click(function () {
   $.post(
     "/salidadetalle/guardar",
     {
-      Fechaentrada: $("#inputfecha").val(),
+      FechaVenta: $("#inputfecha").val(),
       NomUsr: $("#inputusuario").val(),
     },
     function (data, status) {

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('vistas/plantilla/head.php');
 require_once('vistas/plantilla/nav.php');
 require_once('vistas/plantilla/titulo.php');
@@ -21,7 +21,7 @@ require_once('vistas/plantilla/titulo.php');
         </div>
         <div class="col-md-4 mb-3">
             <label for="inputventa">ID Venta</label>
-            <input type="text" class="form-control" id="inputcompra" placeholder="Ingrese el ID de la compra" required>
+            <input type="text" class="form-control" id="inputventa" placeholder="Ingrese el ID de la venta" required>
             <div class="valid-feedback">
                 Correcto
             </div>
@@ -43,7 +43,7 @@ require_once('vistas/plantilla/titulo.php');
         </div>
         <div class="col-md-4 mb-3">
             <label for="inputprecio">Precio</label>
-            <input type="text" class="form-control" id="inputprecio" placeholder="Ingrese la cantidad" required>
+            <input type="text" class="form-control" id="inputprecio" placeholder="Ingrese el precio de la salida" required>
             <div class="valid-feedback">
                 Correcto
             </div>
@@ -63,7 +63,7 @@ require_once('vistas/plantilla/titulo.php');
     </div>
 
 
-    <button class="btn btn-primary" id="btnGuardar" type="button">Agregar registro</button>
+    <button class="btn btn-primary" id="btnGuardarSalida" type="button">Agregar registro</button>
 
 </form>
 <br>

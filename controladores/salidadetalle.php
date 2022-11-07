@@ -22,7 +22,7 @@ class salidadetalle extends Controlador
             print_r($_POST);
             $FechaVenta = $_POST['FechaVenta'];
             $NomUsr = $_POST['NomUsr'];
-            $this->setModelo('salida');
+            $this->setModelo('salidas');
             $this->modelo->guardar(["FechaVenta" => $FechaVenta,  "NomUsr" => $NomUsr]);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
@@ -37,11 +37,11 @@ class salidadetalle extends Controlador
             $IdProd = $_POST['IdProd'];
             $Cantidad = $_POST['Cantidad'];
             $Precsalida = $_POST['Precsalida'];
-            $this->setModelo('salida');
+            $this->setModelo('salidas');
             $this->modelo->guardardetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precsalida" => $Precsalida]);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+            echo json_encode(array('success' => 0, 'msj' => ('Error al guardar registro' + $th)));
         }
     }
 }
