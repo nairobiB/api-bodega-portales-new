@@ -4,65 +4,87 @@ require_once('vistas/plantilla/head.php');
 require_once('vistas/plantilla/nav.php');
 require_once('vistas/plantilla/titulo.php');
 ?>
-<!--<form class="needs-validation" novalidate method="POST">
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="fecha">Fecha</label>
-            <input type="date" class="form-control" id="inputfecha" required>
-            <div class="valid-feedback">
-                Correcto
+
+<!-- Modal -->
+<!-- MODIFICAR UNA ENTRADA -->
+<div class="modal fade" id="modificarentrada" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Entrada</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label> Codigo </label>
+                            <input type="text" name="codigo" id="codigo" class="form-control" disabled=»disabled»>
+                        </div>
+                        <div class="form-group">
+                            <label> Fecha de Entrada </label>
+                            <input type="text" name="fecha" id="fecha" class="form-control" placeholder="Ingrese la fecha de entradaa">
+                        </div>
+                        <div class="form-group">
+                            <label> Id del Proveedor </label>
+                            <input type="text" name="proveedor" id="proveedor" class="form-control" placeholder="Id del Proveedor">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Encargado </label>
+                            <input type="text" name="encargado" id="encargado" class="form-control" placeholder="Ingrese el encargado">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnmodificar">Cerrar</button>
+                        <button type="submit" name="modificar" id="modificar" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="inputproveedor">ID Proveedor</label>
-            <input type="text" class="form-control" id="inputproveedor" placeholder="Ingrese el ID del proveedor" required>
-            <div class="valid-feedback">
-                Correcto
+  </div>
+</div>
+
+
+<!-- ################################################################################################################################################################################# -->
+
+
+<!-- Modal -->
+<!-- ELIMINAR UNA ENTRADA -->
+<div class="modal fade" id="borrarentrada" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Entrada</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label> Codigo </label>
+                            <input type="text" name="delcodigo" id="delcodigo" class="form-control" disabled=»disabled»>
+                        </div>
+                        <h4>Quiere eliminar este registro?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnno">No</button>
+                        <button type="submit" name="btnsi" id="btnsi" class="btn btn-primary" >Si</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="inputusuario">Usuario</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                </div>
-                <input type="text" class="form-control" id="inputusuario" placeholder="Usuario" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                    Ingrese el nombre de usuario
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+</div>
 
+<!-- ############################################################################################################################################################################################ -->
 
-    <button class="btn btn-primary" id="btnGuardar" type="button">Agregar registro</button>
-
-</form>
-<br>
-<script>
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>-->
+<!-- TABLA DE ENTRADAS -->
+<div class="container">
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Fecha Entrada</th>
+            <th scope="col">Proveedor</th>
             <th scope="col">Encargado</th>
             <th scope="col">Acción</th>
         </tr>
@@ -72,16 +94,23 @@ require_once('vistas/plantilla/titulo.php');
         foreach ($this->datos as $f) {
         ?>
             <tr>
-                <th scope="row"><a href=""><?php echo $f['IdCompra']; ?></a>
-                </th>
+                <td scope="row"><?php echo $f['IdCompra']; ?>
+                </td>
                 <td><?php echo $f['Fechaentrada']; ?>
+                </td>
+                <td><?php echo $f['IdProv']; ?>
                 </td>
                 <td><?php echo $f['NomUsr']; ?>
                 </td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Mod</button>
-                        <button type="button" class="btn btn-warning">Del</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Modificar
+                        </button>
+                        <button type="submit" class="btn btn-danger btneliminar" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Eliminar
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -89,6 +118,10 @@ require_once('vistas/plantilla/titulo.php');
     </tbody>
 
 </table>
+
+<!-- ############################################################################################################################################################################### -->
+
+<!-- TABLA DE DETALLE DE ENTRADAS -->
 <h3>DETALLE ENTRADAS</h3>
 <table class="table table-bordered">
     <thead class="thead-dark">
@@ -105,8 +138,8 @@ require_once('vistas/plantilla/titulo.php');
         foreach ($this->datosdetalle as $f2) {
         ?>
             <tr>
-                <th scope="row"><a href=""><?php echo $f2['IdCompra']; ?></a>
-                </th>
+                <td scope="row"><a href=""><?php echo $f2['IdCompra']; ?></a>
+                </td>
                 <td><?php echo $f2['IdProd']; ?>
                 </td>
                 <td><?php echo $f2['Cantidad']; ?>
@@ -124,6 +157,10 @@ require_once('vistas/plantilla/titulo.php');
     </tbody>
 
 </table>
+
+<!-- ###################################################################################################################################################################### -->
+
+<!-- TABLA DE CATEGORIAS -->
 <h3>CATEGORIAS</h3>
 <table class="table table-bordered">
     <thead class="thead-dark">
@@ -157,9 +194,52 @@ require_once('vistas/plantilla/titulo.php');
 </table>
 </div>
 </div>
+</div>
 </section>
 <?php
 require_once('vistas/plantilla/pie.php');
 require_once('vistas/plantilla/js.php');
+?>
+<!-- SCRIPT PARA ELIMINAR -->
+<script>
+$(document).ready(function(){
+    // lo hacemos con una class
+    $('.btneliminar').on('click',function(){
+        $('#borrarentrada').modal('show');
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
+
+        console.log(data);
+
+        $('#delcodigo').val(data[0]);
+
+    });
+});
+</script>
+
+<!-- ################################################################################################################### -->
+
+<!--Script PARA MODIFICAR-->
+<script>
+$(document).ready(function(){
+    $('.modentrada').on('click',function(){
+        $('#modificarentrada').modal('show');
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
+
+        console.log(data);
+
+        $('#codigo').val(data[0]);
+        $('#fecha').val(data[1]);
+        $('#proveedor').val(data[2]);
+        $('#encargado').val(data[3]);
+    });
+});
+</script>
+<?php
 require_once('vistas/plantilla/fin.php');
 ?>
