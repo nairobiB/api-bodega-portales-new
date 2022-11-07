@@ -46,4 +46,14 @@ class salidasModelo extends Modelo
             //throw $th;
         }
     }
+    function guardar($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into salida (FechaVenta, NomUsr) value(:FechaVenta, :NomUsr)');
+        $query->execute($datos);
+    }
+    function guardardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into detallesalida(Codsalida, IdProd, Cantidad, Precsalida) value(:Codsalida, :IdProd, :Cantidad, :Precsalida)');
+        $query->execute($datos);
+    }
 }

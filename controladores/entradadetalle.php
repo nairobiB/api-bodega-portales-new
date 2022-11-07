@@ -39,7 +39,7 @@ class entradadetalle extends Controlador
             $Cantidad = $_POST['Cantidad'];
             $Precio = $_POST['Precio'];
             $this->setModelo('entradas');
-            $this->modelo->guardardetalle(["IdCompra" => $IdCompra,"IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precio" => $Precio]);
+            $this->modelo->guardardetalle(["IdCompra" => $IdCompra, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precio" => $Precio]);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
