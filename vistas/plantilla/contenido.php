@@ -1,4 +1,4 @@
-<span class="image featured"><img src="src/images/banner.jpg" alt="" /></span>
+<span class="image featured"><img src="src/images/Logo.png" alt="" /></span>
 
 <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
     Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.

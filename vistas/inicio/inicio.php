@@ -4,11 +4,11 @@ require_once('vistas/plantilla/head.php');
 require_once('vistas/plantilla/nav.php');
 require_once('vistas/plantilla/titulo.php');
 ?>
-<span class="image featured"><img src="src/images/banner.jpg" alt="" /></span>
+<center><span class=""><img src="src/images/Logo.png" alt="" width=50%/></span></center>
 
 <!-- <?php
       //if($_SESSION['nive'] = 1){
-      //aqui se condiciona al usuario 
+      //aqui se condiciona al usuario
       ?> -->
 
 

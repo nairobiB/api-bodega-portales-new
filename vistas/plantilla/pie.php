@@ -2,50 +2,23 @@
 <div id="footer">
     <div class="container">
         <div class="row">
-            <section class="col-3 col-6-narrower col-12-mobilep">
-                <h3>Links to Stuff</h3>
-                <ul class="links">
-                    <li><a href="#">Mattis et quis rutrum</a></li>
-                    <li><a href="#">Suspendisse amet varius</a></li>
-                    <li><a href="#">Sed et dapibus quis</a></li>
-                    <li><a href="#">Rutrum accumsan dolor</a></li>
-                    <li><a href="#">Mattis rutrum accumsan</a></li>
-                    <li><a href="#">Suspendisse varius nibh</a></li>
-                    <li><a href="#">Sed et dapibus mattis</a></li>
-                </ul>
+            <section class="col-4 col-6-narrower col-12-mobilep">
+                <center><h3>Somos una bodega de confianza</h3></center>
+                <p>Es una empresa dedicada a la distribución de productos masivos en Honduras,
+                    Bodega Todo Cabe está ubicada en San Pedro Sula, la capital industrial
+                     del país. Esta empresa es responsable de
+                    distribuir sus productos en la Zona Norte del territorio hondureño.</p>
             </section>
-            <section class="col-3 col-6-narrower col-12-mobilep">
-                <h3>More Links to Stuff</h3>
-                <ul class="links">
-                    <li><a href="#">Duis neque nisi dapibus</a></li>
-                    <li><a href="#">Sed et dapibus quis</a></li>
-                    <li><a href="#">Rutrum accumsan sed</a></li>
-                    <li><a href="#">Mattis et sed accumsan</a></li>
-                    <li><a href="#">Duis neque nisi sed</a></li>
-                    <li><a href="#">Sed et dapibus quis</a></li>
-                    <li><a href="#">Rutrum amet varius</a></li>
-                </ul>
+            <section class="col-4 col-6-narrower col-12-mobilep">
+                <center><h3>Mision</h3></center>
+                <p>Garantizar el crecimiento de tu negocio a través de nuestra
+                    distribución rápida y segura con un servicio personalizado.</p>
             </section>
-            <section class="col-6 col-12-narrower">
-                <h3>Get In Touch</h3>
-                <form>
-                    <div class="row gtr-50">
-                        <div class="col-6 col-12-mobilep">
-                            <input type="text" name="name" id="name" placeholder="Name" />
-                        </div>
-                        <div class="col-6 col-12-mobilep">
-                            <input type="email" name="email" id="email" placeholder="Email" />
-                        </div>
-                        <div class="col-12">
-                            <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <ul class="actions">
-                                <li><input type="submit" class="button alt" value="Send Message" /></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
+            <section class="col-4 col-6-narrower col-12-mobilep">
+                <center><h3>Vision</h3></center>
+                <p>Ser la empresa número uno en Honduras por la comercialización de prestigiosas
+                    marcas en todo el país, siendo fieles a nuestra filosofía de servicio
+                    de alta calidad y contribuyendo positivamente al desarrollo del país.</p>
             </section>
         </div>
     </div>
@@ -62,7 +35,7 @@
     <div class="copyright">
         <ul class="menu">
             <li>&copy; Untitled. All rights reserved</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>Design: GRUPO #2</li>
         </ul>
     </div>
 
