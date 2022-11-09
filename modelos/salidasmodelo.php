@@ -56,4 +56,14 @@ class salidasModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into detallesalida (Codsalida, IdProd, Cantidad, Precsalida) value(:Codsalida, :IdProd, :Cantidad, :Precsalida)');
         $query->execute($datos);
     }
+    function modificarsalida($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE salida SET `FechaVenta` = :FechaVenta, `NomUsr` = :NomUsr WHERE (`Codsalida` = :Codsalida)");
+        $query->execute($datos);
+    }
+    function eliminarsalida($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE from salida WHERE (`Codsalida` = :Codsalida)");
+        $query->execute($datos);
+    }
 }

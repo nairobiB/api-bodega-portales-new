@@ -10,3 +10,31 @@ $("#btnGuardarSalida").click(function () {
     }
   );
 });
+//ESTO MODIFICA LOS CAMPOS DE LA TABLA DE SALIDAS
+//ESTE ID ES EL DE EL BOTON DEL MODAL
+$("#modsalida").on("click", function () {
+  $.post(
+    "/salidas/modificar",
+    {
+      Codsalida: $("#codsalida").val(),
+      FechaVenta: $("#fechaventa").val(),
+      NomUsr: $("#encargadosalida").val(),
+    },
+    function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+    }
+  );
+});
+
+//ESTO ELIMINA LOS CAMPOS DE LA TABLA DE SALIDAS
+$("#btnsidel").on("click", function () {
+  $.post(
+    "/salidas/eliminar",
+    {
+      Codsalida: $("#delcodigo").val(),
+    },
+    function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+    }
+  );
+});
