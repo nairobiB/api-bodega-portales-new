@@ -129,8 +129,8 @@ require_once('vistas/plantilla/titulo.php');
         </div>
     </div>
 
-    <button class="btn btn-primary" id="btnGuardarProv" type="button">Agregar registro</button>
-
+    <button class="btn btn-primary" id="btnGuardarProv" onClick= 'return validarProveedor()' type="button">Agregar registro</button>
+    <p id="errorProveedor"></p>
 </form>
 <br>
 <table class="table">

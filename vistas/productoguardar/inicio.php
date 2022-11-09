@@ -90,8 +90,9 @@ require_once('vistas/plantilla/titulo.php');
             </div>
         </div>
         <div class="col-md-4 mb-3">
-        <button class="btn btn-primary" id="bguardar" type="submit">Agregar registro</button>
+        <button class="btn btn-primary" id="bguardar" onClick= 'return validarProducto()' type="submit">Agregar registro</button>
         </div>
+        <p id="errorProducto"></p>
     </div>
 </form>
 <br>
