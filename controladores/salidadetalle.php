@@ -44,4 +44,32 @@ class salidadetalle extends Controlador
             echo json_encode(array('success' => 0, 'msj' => ('Error al guardar registro' + $th)));
         }
     }
+    function modificardetalle()
+    {
+        try {
+            print_r($_POST);
+            $Codsalida = $_POST['Codsalida'];
+            $IdProd = $_POST['IdProd'];
+            $Cantidad = $_POST['Cantidad'];
+            $Precsalida = $_POST['Precsalida'];
+            $this->setModelo('salidas');
+            $this->modelo->modificardetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precsalida" => $Precsalida]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    function eliminardetalle()
+    {
+        try {
+            print_r($_POST);
+            $Codsalida = $_POST['Codsalida'];
+            $IdProd = $_POST['IdProd'];
+            $this->setModelo('salidas');
+            $this->modelo->eliminarDetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
 }
