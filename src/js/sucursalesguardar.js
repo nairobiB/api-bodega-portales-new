@@ -1,4 +1,4 @@
-$("#btnGuardar").click(function () {
+$("#btnguardarS").click(function () {
     $.post(
       "/sucursalesguardar/guardar",
       {
@@ -13,4 +13,3 @@ $("#btnGuardar").click(function () {
       }
     );
   });
-  

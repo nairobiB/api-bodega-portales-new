@@ -28,7 +28,7 @@
 						<a href="/productos">Productos</a>
 						<ul>
 							<li><a href="/productos">Listar</a></li>
-							<li><a href="#">Agregar</a></li>
+							<li><a href="/productoguardar">Agregar</a></li>
 						</ul>
 					</li>
 					<li>
@@ -42,7 +42,7 @@
 						<a href="/sucursales">Sucursales</a>
 						<ul>
 							<li><a href="/sucursales">Listar</a></li>
-							<li><a href="#">Agregar</a></li>
+							<li><a href="/sucursalesguardar">Agregar</a></li>
 						</ul>
 					</li>
 				</ul>

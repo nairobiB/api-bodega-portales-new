@@ -1,6 +1,6 @@
 <?php
 
-class productos extends Controlador
+class productoguardar extends Controlador
 {
     function __construct()
     {
@@ -10,7 +10,7 @@ class productos extends Controlador
     function inicio()
     {
         $this->vista->titulo = 'Pagina de Productos';
-        $this->vista->url = 'productos/inicio';
+        $this->vista->url = 'productoguardar/inicio';
         $this->setModelo('productos');
         $this->vista->datos = $this->modelo->listar();
         $this->vista->datosproveedor = $this->modelo->listarproveedores();

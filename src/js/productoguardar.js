@@ -1,4 +1,4 @@
-$("#btnGuardar").click(function () {
+$("#bguardar").click(function () {
     $.post(
       "/productoguardar/guardar",
       {

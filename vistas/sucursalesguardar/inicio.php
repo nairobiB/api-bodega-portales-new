@@ -22,14 +22,14 @@ require_once('vistas/plantilla/titulo.php');
         </div>
         <div class="col-md-4 mb-3">
             <label for="inputtelsucursal">Telefono Sucursal</label>
-            <input type="number" class="form-control" id="inputtelsucursal" placeholder="Ingrese el Numero de telefono de la Sucursal" required>
+            <input type="text" class="form-control" id="inputtelsucursal" placeholder="Ingrese el Numero de telefono de la Sucursal" required>
             <div class="valid-feedback">
                 Correcto
             </div>
         </div>
         <div class="col-md-4 mb-3">
             <label for="inputemail">Email</label>
-            <input type="number" class="form-control" id="inputemail" placeholder="Ingrese el Email de la Sucursal" required>
+            <input type="text" class="form-control" id="inputemail" placeholder="Ingrese el Email de la Sucursal" required>
             <div class="valid-feedback">
                 Correcto
             </div>
@@ -45,7 +45,7 @@ require_once('vistas/plantilla/titulo.php');
     </div>
 
 
-    <button class="btn btn-primary" id="btnGuardar" type="button">Agregar registro</button>
+    <button class="btn btn-primary" id="btnguardarS" type="submit">Agregar registro</button>
 
 </form>
 <br>
@@ -75,5 +75,24 @@ require_once('vistas/plantilla/titulo.php');
 <?php
 require_once('vistas/plantilla/pie.php');
 require_once('vistas/plantilla/js.php');
+?>
+<script>
+    $("#btnguardarS").click(function () {
+    $.post(
+      "/sucursalesguardar/guardar",
+      {
+        IdSucursal: $("#inputIdSucursal").val(),
+        DescSucursal: $("#inputDescSucursal").val(),
+        telsucursal: $("#inputtelsucursal").val(),
+        email: $("#inputemail").val(),
+        direccionsucursal: $("#inputdireccionsucursal").val(),
+      },
+      function (data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+      }
+    );
+  });
+</script>
+<?php
 require_once('vistas/plantilla/fin.php');
 ?>

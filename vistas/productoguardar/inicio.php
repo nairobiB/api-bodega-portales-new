@@ -6,35 +6,35 @@ require_once('vistas/plantilla/titulo.php');
 ?>
 <form class="needs-validation" novalidate method="POST">
     <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputIdProd">Id Producto</label>
             <input type="text" class="form-control" id="inputIdProd" placeholder="Ingrese el ID del producto" required>
             <div class="valid-feedback">
                 Correcto
             </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputNomProd">Nombre Producto</label>
             <input type="text" class="form-control" id="inputNomProd" placeholder="Ingrese el Nombre del Producto" required>
             <div class="valid-feedback">
                 Correcto
             </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputPrecProd">Precio Porducto</label>
             <input type="number" class="form-control" id="inputPrecProd" placeholder="Ingrese el Precio del Porducto" required>
             <div class="valid-feedback">
                 Correcto
             </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputPrecCompra">Precio Compra</label>
             <input type="number" class="form-control" id="inputPrecCompra" placeholder="Ingrese el Precio de compra del Producto" required>
             <div class="valid-feedback">
                 Correcto
             </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputcstock">Stock</label>
             <input type="number" class="form-control" id="inputcstock" placeholder="Ingrese la Cantidad en Stock" required>
             <div class="valid-feedback">
@@ -69,14 +69,13 @@ require_once('vistas/plantilla/titulo.php');
                 Correcto
             </div>
         </div>
-        <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4">
             <label for="fecha">Fecha</label>
             <input type="date" class="form-control" id="inputfechaCad" required>
             <div class="valid-feedback">
                 Correcto
             </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="inputnumero_lote">Numero de Lote</label>
             <input type="text" class="form-control" id="inputnumero_lote" placeholder="Ingrese el Numero de Lote" required>
             <div class="valid-feedback">
@@ -90,11 +89,10 @@ require_once('vistas/plantilla/titulo.php');
                 Correcto
             </div>
         </div>
+        <div class="col-md-4 mb-3">
+        <button class="btn btn-primary" id="bguardar" type="submit">Agregar registro</button>
         </div>
     </div>
-
-    <button class="btn btn-primary" id="btnGuardar" type="button">Agregar registro</button>
-
 </form>
 <br>
 <script>

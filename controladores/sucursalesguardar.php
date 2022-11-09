@@ -1,6 +1,6 @@
 <?php
 
-class sucursales extends Controlador
+class sucursalesguardar extends Controlador
 {
     function __construct()
     {
@@ -10,7 +10,7 @@ class sucursales extends Controlador
     function inicio()
     {
         $this->vista->titulo = 'Pagina de Sucursales';
-        $this->vista->url = 'sucursales/inicio';
+        $this->vista->url = 'sucursalesguardar/inicio';
         $this->setModelo('sucursales');
         $this->vista->datos = $this->modelo->listar();
         $this->vista->render($this->vista->url);
