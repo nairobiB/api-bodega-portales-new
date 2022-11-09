@@ -81,7 +81,7 @@ require_once('vistas/plantilla/titulo.php');
   <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Entrada</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Producto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <form action="" method="POST">
@@ -215,6 +215,8 @@ require_once('vistas/plantilla/titulo.php');
 require_once('vistas/plantilla/pie.php');
 require_once('vistas/plantilla/js.php');
 ?>
+
+<!-- MUESTRA EL MODAL DE ELIMINACION DE UN PRODUCTO -->
 <script>
 $(document).ready(function(){
     // lo hacemos con una class
@@ -232,6 +234,8 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
 <!-- MODIFICAR UN PRODUCTO -->
 <script>
 $(document).ready(function(){
@@ -260,6 +264,8 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<!-- ACCION DEL BOTON DE MODIFICAR DE LA TABLA DE PRODUCTOS -->
 <script>
     //id del modal boton
 $('#modificarP').on('click',function(){
@@ -283,6 +289,22 @@ $('#modificarP').on('click',function(){
       }
       );
   });
+</script>
+
+<!-- ACCION DEL BOTON DE DEL DE LA TABLA DE PRODUCTOS -->
+<script>
+    //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
+    $('#btnsi').on('click',function(){
+      $.post(
+          "/productos/eliminar",
+          {
+            IdProd: $("#delIdProd").val(),
+          },
+          function (data, status) {
+          alert("Data: " + data + "\nStatus: " + status);
+          }
+      );
+    });
 </script>
 <?php
 require_once('vistas/plantilla/fin.php');

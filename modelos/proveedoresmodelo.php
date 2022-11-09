@@ -34,4 +34,14 @@ class proveedoresModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into proveedores (IdProv, Nomproveedor, Telproveedor, Dirproveedor, Estado, email) value(:IdProv, :Nomproveedor, :Telproveedor, :Dirproveedor, :Estado, :email)');
         $query->execute($datos);
     }
+    function modificarproveedor($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE proveedores SET `Nomproveedor` = :Nomproveedor,`Telproveedor` = :Telproveedor,`Dirproveedor` = :Dirproveedor,`email` = :email WHERE (`IdProv` = :IdProv)");
+        $query->execute($datos);
+    }
+    function eliminarProv($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM proveedores  WHERE  (`IdProv` = :IdProv)");
+        $query->execute($datos);
+    }
 }
