@@ -6,6 +6,8 @@
 <script src="src/js/proveedores.js"></script>
 <script src="src/js/sucursalesguardar.js"></script>
 <script src="src/js/entradadetalle.js"></script>
+<script src="src/js/salida.js"></script>
+<script src="src/js/salidadetalle.js"></script>
 <script src="src/js/jquery.min.js"></script>
 <script src="src/js/jquery.dropotron.min.js"></script>
 <script src="src/js/browser.min.js"></script>

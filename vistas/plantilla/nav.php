@@ -21,7 +21,7 @@
 						<a href="/salidas">Salidas</a>
 						<ul>
 							<li><a href="/salidas">Listar</a></li>
-							<li><a href="#">Agregar</a></li>
+							<li><a href="/salidadetalle">Agregar</a></li>
 						</ul>
 					</li>
 					<li>

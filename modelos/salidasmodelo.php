@@ -46,4 +46,34 @@ class salidasModelo extends Modelo
             //throw $th;
         }
     }
+    function guardar($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into salida (FechaVenta, NomUsr) value(:FechaVenta, :NomUsr)');
+        $query->execute($datos);
+    }
+    function guardardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into detallesalida (Codsalida, IdProd, Cantidad, Precsalida) value(:Codsalida, :IdProd, :Cantidad, :Precsalida)');
+        $query->execute($datos);
+    }
+    function modificarsalida($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE salida SET `FechaVenta` = :FechaVenta, `NomUsr` = :NomUsr WHERE (`Codsalida` = :Codsalida)");
+        $query->execute($datos);
+    }
+    function eliminarsalida($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE from salida WHERE (`Codsalida` = :Codsalida)");
+        $query->execute($datos);
+    }
+    function modificardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE detallesalida SET `Cantidad` = :Cantidad, `Precsalida` = :Precsalida WHERE (`Codsalida` = :Codsalida) and (`IdProd` = :IdProd)");
+        $query->execute($datos);
+    }
+    function eliminarDetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM detallesalida  WHERE (`Codsalida` = :Codsalida) and (`IdProd` = :IdProd)");
+        $query->execute($datos);
+    }
 }
