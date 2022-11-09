@@ -12,6 +12,9 @@ $("#btnGuardar").click(function () {
     }
   );
 });
+
+// #################################################################################
+
 //ESTO MODIFICA LOS CAMPOS DE LA TABLA DE ENTRADAS
 //ESTE ID ES EL DE EL BOTON DEL MODAL
 $('#modificar').on('click',function(){
@@ -28,6 +31,8 @@ $('#modificar').on('click',function(){
       }
       );
   });
+
+// ###############################################################################################
 
   //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
   $('#btnsi').on('click',function(){
