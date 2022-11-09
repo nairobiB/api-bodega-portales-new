@@ -38,7 +38,7 @@
 						<a href="/personal">Personal</a>
 						<ul>
 							<li><a href="/personal">Listar</a></li>
-							<li><a href="#">Agregar</a></li>
+							<li><a href="/personalAgregar">Agregar</a></li>
 						</ul>
 					</li>
 					<li>
