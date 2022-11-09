@@ -67,6 +67,31 @@ require_once('vistas/plantilla/titulo.php');
 
 </form>
 <br>
+
+<form class="needs-validation" novalidate method="POST">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="inputcategoria">ID Categoria</label>
+            <input type="text" class="form-control" id="inputcategoria" placeholder="Ingrese el ID de Categoria" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="inputnombre">Nombre</label>
+            <input type="text" class="form-control" id="inputnombre" placeholder="Nombre de la Categoria" required>
+            <div class="valid-feedback">
+                Correcto
+            </div>
+        </div>
+        
+    </div>
+
+    <button class="btn btn-primary" id="btnGuardarCategoria" type="button">Agregar Categoria</button>
+
+</form>
+
+
 <script>
     (function() {
         'use strict';
@@ -87,9 +112,7 @@ require_once('vistas/plantilla/titulo.php');
     })();
 </script>
 
-</div>
-</div>
-</section>
+
 <?php
 require_once('vistas/plantilla/pie.php');
 require_once('vistas/plantilla/js.php');

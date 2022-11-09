@@ -45,6 +45,19 @@ class entradadetalle extends Controlador
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
+    function guardarcategoria()
+    {
+        try {
+            print_r($_POST);
+            $IdCat = $_POST['IdCat'];
+            $NombreCat = $_POST['NombreCat'];
+            $this->setModelo('entradas');
+            $this->modelo->guardarcategoria(["IdCat" => $IdCat, "NombreCat" => $NombreCat]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
     function modificardetalle()
     {
         try {

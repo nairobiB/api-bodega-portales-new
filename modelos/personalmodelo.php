@@ -38,7 +38,7 @@ class personalModelo extends Modelo
             $sql = "select NomUsr, Contra, IdPer, Estado, nivel, IdSucursal from usuarios";
             $datosusuario = $this->db->conectar()->query($sql); //capturan los datos que resultan del pdo, llama a la conexion db que esta en modelo base
             foreach ($datosusuario as $f) {
-                $usuario = [ 
+                $usuario = [
                     'NomUsr' => $f['NomUsr'],
                     'Contra' => $f['Contra'],
                     'IdPer' => $f['IdPer'],
@@ -52,5 +52,17 @@ class personalModelo extends Modelo
         } catch (\Throwable $th) {
             //throw $th;
         }
+    }
+
+    function guardarpersonal($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into personal (IdPer, TelPer, NomPer, ApePer, DirPer, Email, fecha_nacimineto) value(:IdPer, :TelPer, :NomPer, :ApePer, :DirPer, :Email, :fecha_nacimineto)');
+        $query->execute($datos);
+    }
+
+    function guardarusuario($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into usuarios (NomUsr, Contra, IdPer, nivel, IdSucursal) value(:NomUsr, :Contra, :IdPer, :nivel, :IdSucursal)');
+        $query->execute($datos);
     }
 }

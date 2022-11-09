@@ -17,4 +17,5 @@ class personal extends Controlador
 
         $this->vista->render($this->vista->url); //llama a la vista
     }
+
 }
