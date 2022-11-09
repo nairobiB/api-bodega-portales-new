@@ -24,12 +24,20 @@ $("#bguardar").click(function () {
   //id del modal boton
   $('#modificar').on('click',function(){
     $.post(
-        "/entradas/modificar",
+        "/productos/modificar",
         {
-            IdCompra: $("#codigo").val(),
-            Fechaentrada: $("#fecha").val(),
-            IdProv: $("#proveedor").val(),
-            NomUsr: $("#encargado").val(),
+          IdProd: $("#IdProd").val(),
+          NomProd: $("#NomProd").val(),
+          PrecProd: $("#PrecProd").val(),
+          PrecCompra: $("#PrecCompra").val(),
+          stock: $("#stock").val(),
+          Descripcion: $("#Descripcion").val(),
+          IdProv: $("#IdProv").val(),
+          Estado: $("#Estado").val(),
+          IdCat: $("#encargaIdCatdo").val(),
+          FechaCad: $("#FechaCad").val(),
+          numero_lote: $("#numero_lote").val(),
+          IdSucursal: $("#IdSucursal").val(),
         },
         function (data, status) {
         alert("Data: " + data + "\nStatus: " + status);
@@ -42,9 +50,9 @@ $("#bguardar").click(function () {
     //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
     $('#btnsi').on('click',function(){
       $.post(
-          "/entradas/eliminar",
+          "/productos/eliminar",
           {
-              IdCompra: $("#delcodigo").val(),
+            IdProd: $("#borrarproductos").val(),
           },
           function (data, status) {
           alert("Data: " + data + "\nStatus: " + status);
