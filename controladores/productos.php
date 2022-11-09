@@ -39,4 +39,15 @@ class productos extends Controlador
             echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
         }
     }
+    function eliminar()
+    {   try{
+        print_r($_POST);
+            $IdProd = $_POST['IdProd'];
+            $this->setModelo('productos');
+            $this->modelo->eliminarproducto(["IdProd" => $IdProd]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
 }
