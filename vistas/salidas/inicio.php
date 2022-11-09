@@ -118,7 +118,7 @@ require_once('vistas/plantilla/titulo.php');
 
 <!-- Modal -->
 <!-- ELIMINAR UN DETALLE DE SALIDA -->
-<div class="modal fade" id="borrardetalle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="borrardetallesalida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -139,7 +139,7 @@ require_once('vistas/plantilla/titulo.php');
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnno">No</button>
-                    <button type="submit" name="btnaccionardetalle" id="btnaccionar" class="btn btn-primary">Si</button>
+                    <button type="submit" name="btnaccionardetalle" id="btnaccionardetalle" class="btn btn-primary">Si</button>
                 </div>
             </form>
         </div>
@@ -221,7 +221,7 @@ require_once('vistas/plantilla/titulo.php');
                             <button type="button" class="btn btn-primary detsalida" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger deteliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-danger deteliminarsalida" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -278,8 +278,28 @@ require_once('vistas/plantilla/js.php');
 </script>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+<!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
+<script>
+    $(document).ready(function() {
+        // lo hacemos con una class
+        $('.deteliminarsalida').on('click', function() {
+            $('#borrardetallesalida').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
 
-<!--Script PARA MODIFICAR DETALLE DE ENTRADA-->
+            console.log(data);
+
+            $('#elimcodigo').val(data[0]);
+            $('#elimcodigoproducto').val(data[1]);
+
+
+        });
+    });
+</script>
+
+<!--Script PARA MODIFICAR DETALLE DE SALIDA-->
 <script>
     $(document).ready(function() {
         $('.detsalida').on('click', function() {
@@ -299,7 +319,7 @@ require_once('vistas/plantilla/js.php');
     });
 </script>
 
-<!-- MODIFICAR UN DETALLE DE ENTRADA -->
+<!-- MODIFICAR UN DETALLE DE SALIDA -->
 <script>
     $('#detallemod').on('click', function() {
         $.post(
@@ -316,7 +336,7 @@ require_once('vistas/plantilla/js.php');
     });
 </script>
 
-<!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE DETALLE DE DENTRADAS -->
+<!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE DETALLE DE salidas -->
 <script>
     $('#btnaccionardetalle').on('click', function() {
         $.post(
