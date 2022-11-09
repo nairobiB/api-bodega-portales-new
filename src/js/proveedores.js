@@ -1,14 +1,16 @@
-$("#btnGuardar").click(function () {
-    $.post(
-      "/proveedores/guardar",
-      {
-        Fechaentrada: $("#inputfecha").val(),
-        IdProv: $("#inputproveedor").val(),
-        NomUsr: $("#inputusuario").val(),
-      },
-      function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-      }
-    );
-  });
-  
+$("#btnGuardarProv").click(function () {
+  $.post(
+    "/proveedoresguardar/guardar",
+    {
+      IdProv: $("#inputIdProv").val(),
+      Nomproveedor: $("#inputNomproveedor").val(),
+      Telproveedor: $("#inputTelproveedor").val(),
+      Dirproveedor: $("#inputDirproveedor").val(),
+      Estado: $("#inputEstado").val(),
+      email: $("#inputemail").val(),
+    },
+    function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+    }
+  );
+});

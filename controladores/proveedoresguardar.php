@@ -1,6 +1,6 @@
 <?php
 
-class proveedores extends Controlador
+class proveedoresguardar extends Controlador
 {
     function __construct()
     {
@@ -10,9 +10,8 @@ class proveedores extends Controlador
     function inicio()
     {
         $this->vista->titulo = 'Pagina de Proveedores';
-        $this->vista->url = 'proveedores/inicio';
-        $this->setModelo('proveedores');
-        $this->vista->datos = $this->modelo->listar();
+        $this->vista->url = 'proveedoresguardar/inicio';
+        $this->setModelo('productos');
         $this->vista->datosproveedor = $this->modelo->listarproveedores();
         $this->vista->render($this->vista->url);
     }

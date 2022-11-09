@@ -32,6 +32,9 @@
 						</ul>
 					</li>
 					<li>
+						<a href="/proveedoresguardar">Proveedores</a>
+					</li>
+					<li>
 						<a href="/personal">Personal</a>
 						<ul>
 							<li><a href="/personal">Listar</a></li>
