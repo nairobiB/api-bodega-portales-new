@@ -62,4 +62,9 @@ class productosModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into productos (IdProd, NomProd, PrecProd, PrecCompra, stock, Descripcion, IdProv, Estado, IdCat, FechaCad, numero_lote, IdSucursal) value(:IdProd, :NomProd, :PrecProd, :PrecCompra, :stock, :Descripcion, :IdProv, :Estado, :IdCat, :FechaCad, :numero_lote, :IdSucursal)');
         $query->execute($datos);
     }
+    function modificaproducto($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE productos SET `NomProd` = :NomProd,`PrecProd` = :PrecProd,`PrecCompra` = :PrecCompra ,`stock` = :stock,`Descripcion` = :Descripcion ,`IdProv` = :IdProv,`IdCat` = :IdCat,`FechaCad` = :FechaCad,`numero_lote` = :numero_lote,`IdSucursal` = :IdSucursal WHERE (`IdProd` = :IdProd);");
+        $query->execute($datos);
+    }
 }

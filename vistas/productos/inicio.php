@@ -45,10 +45,6 @@ require_once('vistas/plantilla/titulo.php');
                             <input type="text" name="IdProv" id="IdProv" class="form-control" placeholder="Ingrese el ID proveedor">
                         </div>
                         <div class="form-group">
-                            <label> Estado </label>
-                            <input type="text" name="Estado" id="Estado" class="form-control" placeholder="Ingrese el estado">
-                        </div>
-                        <div class="form-group">
                             <label> ID Categoria</label>
                             <input type="text" name="IdCat" id="IdCat" class="form-control" placeholder="Ingrese el ID categoria">
                         </div>
@@ -67,7 +63,7 @@ require_once('vistas/plantilla/titulo.php');
                     </div>
                     <div class="modal-footer"> 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnmodificar">Cerrar</button>
-                        <button type="submit" name="modificar" id="modificar" class="btn btn-primary">Guardar cambios</button>
+                        <button type="submit" name="modificar" id="modificarP" class="btn btn-primary">Guardar cambios</button>
                     </div>
                 </form>
             </div>
@@ -106,11 +102,10 @@ require_once('vistas/plantilla/titulo.php');
   </div>
 </div>
 
-
+</article>
+<div class="container">
 <p>Módulo de gestión de <?php echo $this->titulo ?></p>
 <h3>Productos</h3>
-
-</article>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -214,6 +209,7 @@ require_once('vistas/plantilla/titulo.php');
 </table>
 </div>
 </div>
+</div>
 </section>
 <?php
 require_once('vistas/plantilla/pie.php');
@@ -236,6 +232,7 @@ $(document).ready(function(){
     });
 });
 </script>
+<!-- MODIFICAR UN PRODUCTO -->
 <script>
 $(document).ready(function(){
     //esa clase esta en el boton de modificar de la tabla de entradas
@@ -256,13 +253,36 @@ $(document).ready(function(){
         $('#stock').val(data[4]);
         $('#Descripcion').val(data[5]);
         $('#IdProv').val(data[6]);
-        $('#Estado').val(data[7]);
-        $('#IdCat').val(data[8]);
-        $('#FechaCad').val(data[9]);
-        $('#numero_lote').val(data[10]);
-        $('#IdSucursal').val(data[11]);
+        $('#IdCat').val(data[7]);
+        $('#FechaCad').val(data[8]);
+        $('#numero_lote').val(data[9]);
+        $('#IdSucursal').val(data[10]);
     });
 });
+</script>
+<script>
+    //id del modal boton
+$('#modificarP').on('click',function(){
+  $.post(
+      "/productos/modificar",
+      {
+        IdProd: $("#IdProd").val(),
+        NomProd: $("#NomProd").val(),
+        PrecProd: $("#PrecProd").val(),
+        PrecCompra: $("#PrecCompra").val(),
+        stock: $("#stock").val(),
+        Descripcion: $("#Descripcion").val(),
+        IdProv: $("#IdProv").val(),
+        IdCat: $("#IdCat").val(),
+        FechaCad: $("#FechaCad").val(),
+        numero_lote: $("#numero_lote").val(),
+        IdSucursal: $("#IdSucursal").val(),
+      },
+      function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+      }
+      );
+  });
 </script>
 <?php
 require_once('vistas/plantilla/fin.php');
