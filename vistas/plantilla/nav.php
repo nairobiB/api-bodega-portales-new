@@ -4,7 +4,7 @@
 		<div id="header">
 
 			<!-- Logo -->
-			<h1><a href="index.php" id="logo">Bodega<em>JNES</em></a></h1>
+			<h1><a href="/inicio" id="logo">Bodega<em>JNES</em></a></h1>
 
 			<!-- Nav -->
 			<nav id="nav">
