@@ -76,7 +76,7 @@ require_once('vistas/plantilla/titulo.php');
 require_once('vistas/plantilla/pie.php');
 require_once('vistas/plantilla/js.php');
 ?>
-<script>
+<!-- <script>
     $("#btnguardarS").click(function () {
     $.post(
       "/sucursalesguardar/guardar",
@@ -92,7 +92,7 @@ require_once('vistas/plantilla/js.php');
       }
     );
   });
-</script>
+</script> -->
 <?php
 require_once('vistas/plantilla/fin.php');
 ?>

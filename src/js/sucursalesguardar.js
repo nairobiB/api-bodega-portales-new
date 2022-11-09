@@ -14,7 +14,7 @@ $("#btnguardarS").click(function () {
     );
   });
   //id del modal boton
-  $('#modsucursales').on('click',function(){
+  $('#modificarS').on('click',function(){
     $.post(
         "/sucursales/modificar",
         {
@@ -33,11 +33,11 @@ $("#btnguardarS").click(function () {
   // ###############################################################################################
   
     //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
-    $('#btnsi').on('click',function(){
+    $('#btnconfirmar').on('click',function(){
       $.post(
           "/sucursales/eliminar",
           {
-            IdSucursal: $("#borrarsucursal").val(),
+            IdSucursal: $("#delIdSucursal").val(),
           },
           function (data, status) {
           alert("Data: " + data + "\nStatus: " + status);

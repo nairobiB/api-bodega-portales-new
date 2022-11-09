@@ -10,7 +10,7 @@ require_once('vistas/plantilla/titulo.php');
   <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Productos</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar sucursal</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <form action="" method="POST">
@@ -36,11 +36,10 @@ require_once('vistas/plantilla/titulo.php');
                             <label> Direcion Sucursal </label>
                             <input type="text" name="direccionsucursal" id="direccionsucursal" class="form-control" placeholder="Ingrese la direccion de la sucursal">
                         </div>
-                        
                     </div>
                     <div class="modal-footer"> 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnmodificar">Cerrar</button>
-                        <button type="submit" name="modificar" id="modificar" class="btn btn-primary">Guardar cambios</button>
+                        <button type="submit" name="modificar" id="modificarS" class="btn btn-primary">Guardar cambios</button>
                     </div>
                 </form>
             </div>
@@ -53,7 +52,7 @@ require_once('vistas/plantilla/titulo.php');
 
 
 <!-- Modal -->
-<!-- ELIMINAR UNA ENTRADA -->
+<!-- ELIMINAR UNA SUCURSAL -->
 <div class="modal fade" id="borrarsucursal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
         <div class="modal-content">
@@ -71,7 +70,7 @@ require_once('vistas/plantilla/titulo.php');
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnno">No</button>
-                        <button type="submit" name="btnsi" id="btnsi" class="btn btn-primary" >Si</button>
+                        <button type="submit" name="btnconfirmar" id="btnconfirmar" class="btn btn-primary" >Si</button>
                     </div>
                 </form>
             </div>
@@ -79,8 +78,7 @@ require_once('vistas/plantilla/titulo.php');
   </div>
 </div>
 
-
-
+<div class="container">
 <h3>SUCURSALES</h3>
 
 </article>
@@ -100,8 +98,8 @@ require_once('vistas/plantilla/titulo.php');
         foreach ($this->datos as $f) {
         ?>
             <tr>
-                <th scope="row"><a href=""><?php echo $f['IdSucursal']; ?></a>
-                </th>
+                <td scope="row"><?php echo $f['IdSucursal']; ?>
+                </td>
                 <td><?php echo $f['DescSucursal']; ?>
                 </td>
                 <td><?php echo $f['telsucursal']; ?>
@@ -125,6 +123,7 @@ require_once('vistas/plantilla/titulo.php');
     </tbody>
 
 </table>
+</div>
 </div>
 </div>
 </section>
@@ -167,6 +166,7 @@ $(document).ready(function(){
         $('#telsucursal').val(data[2]);
         $('#email').val(data[3]);
         $('#direccionsucursal').val(data[4]);
+    });
 });
 </script>
 <?php

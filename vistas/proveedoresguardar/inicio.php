@@ -10,7 +10,7 @@ require_once('vistas/plantilla/titulo.php');
   <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Sucursales</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Proveedores</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <form action="" method="POST">
@@ -33,17 +33,13 @@ require_once('vistas/plantilla/titulo.php');
                             <input type="text" name="Dirproveedor" id="Dirproveedor" class="form-control" placeholder="Ingrese el precio de compra">
                         </div>
                         <div class="form-group">
-                            <label> Estado </label>
-                            <input type="text" name="Estado" id="Estado" class="form-control" placeholder="Ingrese el Estado">
-                        </div>
-                        <div class="form-group">
                             <label> Email </label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Ingrese la descripcion">
                         </div>
                     </div>
                     <div class="modal-footer"> 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnmodificar">Cerrar</button>
-                        <button type="submit" name="modificar" id="modificar" class="btn btn-primary">Guardar cambios</button>
+                        <button type="submit" name="modificarProveedor" id="modificarProveedor" class="btn btn-primary">Guardar cambios</button>
                     </div>
                 </form>
             </div>
@@ -74,13 +70,19 @@ require_once('vistas/plantilla/titulo.php');
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnno">No</button>
-                        <button type="submit" name="btnsi" id="btnsi" class="btn btn-primary" >Si</button>
+                        <button type="submit" name="btndelete" id="btndelete" class="btn btn-primary" >Si</button>
                     </div>
                 </form>
             </div>
         </div>
   </div>
 </div>
+
+<!-- ########################################################################################################################################################################### -->
+
+
+
+<div class="container">
 <form class="needs-validation" novalidate method="POST">
     <div class="form-row">
         <div class="col-md-4 mb-3">
@@ -125,7 +127,6 @@ require_once('vistas/plantilla/titulo.php');
                 Correcto
             </div>
         </div>
-        
     </div>
 
     <button class="btn btn-primary" id="btnGuardarProv" type="button">Agregar registro</button>
@@ -161,8 +162,12 @@ require_once('vistas/plantilla/titulo.php');
                 </td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Mod</button>
-                        <button type="button" class="btn btn-warning">Del</button>
+                        <button type="button" class="btn btn-primary modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Modificar
+                        </button>
+                        <button type="submit" class="btn btn-danger BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Eliminar
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -189,7 +194,7 @@ require_once('vistas/plantilla/titulo.php');
         }, false);
     })();
 </script>
-
+</div>
 </div>
 </div>
 </section>
@@ -231,8 +236,8 @@ $(document).ready(function(){
         $('#Nomproveedor').val(data[1]);
         $('#Telproveedor').val(data[2]);
         $('#Dirproveedor').val(data[3]);
-        $('#Estado').val(data[4]);
-        $('#email').val(data[5]);
+        $('#email').val(data[4]);
+    });
 });
 </script>
 <?php
