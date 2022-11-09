@@ -107,4 +107,15 @@ class entradasModelo extends Modelo
         $query = $this->db->conectar()->prepare("DELETE FROM detalleentrada  WHERE (`IdCompra` = :IdCompra) and (`IdProd` = :IdProd)");
         $query->execute($datos);
     }
+    // CATEGORIA
+    function modificarcate($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE categorias SET `NombreCat` = :NombreCat WHERE (`IdCat` = :IdCat)");
+        $query->execute($datos);
+    }
+    function eliminarcate($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM categorias  WHERE (`IdCat` = :IdCat)");
+        $query->execute($datos);
+    }
 }

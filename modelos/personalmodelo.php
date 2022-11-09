@@ -65,4 +65,25 @@ class personalModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into usuarios (NomUsr, Contra, IdPer, nivel, IdSucursal) value(:NomUsr, :Contra, :IdPer, :nivel, :IdSucursal)');
         $query->execute($datos);
     }
+
+    function modificarpersonal($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE personal SET `TelPer` = :TelPer, `NomPer` = :NomPer, `ApePer` = :ApePer, `DirPer` = :DirPer, `Email` = :Email, `Estado` = :Estado, `fecha_nacimineto` = :fecha_nacimineto  WHERE (`IdPer` = :IdPer)");
+        $query->execute($datos);
+    }
+    function eliminarpersonal($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM personal  WHERE (`IdPer` = :IdPer)");
+        $query->execute($datos);
+    }
+    function modificarusuario($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE usuarios SET `Contra` = :Contra, `IdPer` = :IdPer, `Estado` = :Estado, `nivel` = :nivel, `IdSucursal` = :IdSucursal  WHERE (`NomUsr` = :NomUsr)");
+        $query->execute($datos);
+    }
+    function eliminarusuario($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM usuarios  WHERE (`NomUsr` = :NomUsr)");
+        $query->execute($datos);
+    }
 }
