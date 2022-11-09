@@ -3,7 +3,7 @@ class App
 {
     function __construct()
     {
-
+        session_start();
         //$url = $_POST['url']; //captura el url
         //if (isset($_GET['url'])) {
         $url = $_GET['url'];

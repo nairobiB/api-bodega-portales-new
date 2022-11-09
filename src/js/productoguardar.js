@@ -20,4 +20,35 @@ $("#bguardar").click(function () {
       }
     );
   });
+
+  //id del modal boton
+  $('#modificar').on('click',function(){
+    $.post(
+        "/entradas/modificar",
+        {
+            IdCompra: $("#codigo").val(),
+            Fechaentrada: $("#fecha").val(),
+            IdProv: $("#proveedor").val(),
+            NomUsr: $("#encargado").val(),
+        },
+        function (data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+        }
+        );
+    });
+  
+  // ###############################################################################################
+  
+    //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
+    $('#btnsi').on('click',function(){
+      $.post(
+          "/entradas/eliminar",
+          {
+              IdCompra: $("#delcodigo").val(),
+          },
+          function (data, status) {
+          alert("Data: " + data + "\nStatus: " + status);
+          }
+          );
+      });
   

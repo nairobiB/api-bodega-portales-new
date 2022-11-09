@@ -15,7 +15,13 @@ $resultado->execute();
 if ($resultado->rowCount() >= 1) {
     $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     $_SESSION["s_usuario"] = $Usr;
-    echo '<script type="text/javascript"> alert("Bienvenido"); window.location.href="/inicio"; </script>'; //acceder al inicio 
+    $mensajeT = 'Info';
+    $mensaje = $Usr;
+    $mensaje2 = $Pass;
+    setcookie("mensajeT", $mensajeT, time()+3800, "/");
+    setcookie("mensaje", $mensaje, time()+3800, "/");
+    setcookie("mensaje2", $mensaje2, time()+3800, "/");
+    echo '<script type="text/javascript"> alert("Bienvenido"); window.location.href="/inicio"; </script>'; //acceder al inicio
 } else {
     $_SESSION["s_usuario"] = null;
     $data = null;
