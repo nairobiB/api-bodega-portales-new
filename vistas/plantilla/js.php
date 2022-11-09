@@ -5,6 +5,9 @@
 <script src="src/js/entradadetalle.js"></script>
 <script src="src/js/salida.js"></script>
 <script src="src/js/salidadetalle.js"></script>
+<script src="src/js/categoria.js"></script>
+<script src="src/js/personal.js"></script>
+<script src="src/js/usuario.js"></script>
 <script src="src/js/jquery.min.js"></script>
 <script src="src/js/jquery.dropotron.min.js"></script>
 <script src="src/js/browser.min.js"></script>

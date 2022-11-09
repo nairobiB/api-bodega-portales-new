@@ -72,16 +72,25 @@ class entradasModelo extends Modelo
         $query = $this->db->conectar()->prepare('insert into entradas (Fechaentrada, IdProv, NomUsr) value(:Fechaentrada, :IdProv, :NomUsr)');
         $query->execute($datos);
     }
+
     function guardardetalle($datos)
     {
         $query = $this->db->conectar()->prepare('insert into detalleentrada (IdCompra, IdProd, Cantidad, Precio) value(:IdCompra, :IdProd, :Cantidad, :Precio)');
         $query->execute($datos);
     }
+
+    function guardarcategoria($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into categorias (IdCat, NombreCat) value(:IdCat, :NombreCat)');
+        $query->execute($datos);
+    }
+
     function modificarentrada($datos)
     {
         $query = $this->db->conectar()->prepare("UPDATE entradas SET `Fechaentrada` = :Fechaentrada,`IdProv` = :IdProv ,`NomUsr` = :NomUsr WHERE (`IdCompra` = :IdCompra)");
         $query->execute($datos);
     }
+
     function eliminarentrada($datos)
     {
         $query = $this->db->conectar()->prepare("DELETE from entradas WHERE (`IdCompra` = :IdCompra)");

@@ -53,4 +53,16 @@ class personalModelo extends Modelo
             //throw $th;
         }
     }
+
+    function guardarpersonal($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into personal (IdPer, TelPer, NomPer, ApePer, DirPer, Email, fecha_nacimiento) value(:IdPer, :TelPer, :NomPer, :ApePer, :DirPer, :Email, :fecha_nacimiento)');
+        $query->execute($datos);
+    }
+
+    function guardarusuario($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into usuarios (NomUsr, Contra, IdPer, nivel, IdSucursal) value(:NomUsr, :Contra, :IdPer, :nivel, :IdSucursal)');
+        $query->execute($datos);
+    }
 }
