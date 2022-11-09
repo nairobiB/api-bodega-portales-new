@@ -293,6 +293,7 @@ $(document).ready(function(){
 });
 </script>
 <!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
+<!-- ASI SE ELIMINA -->
 <script>
 $(document).ready(function(){
     // lo hacemos con una class
