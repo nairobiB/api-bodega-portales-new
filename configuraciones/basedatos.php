@@ -12,15 +12,9 @@ class BaseDatos
     function __construct()
     {
         //define los parametros
-<<<<<<< HEAD
         $this->host = '192.168.0.54'; //se coloca la ip del servidor de la bd
         //$this->host = '192.168.1.86';
         //$this->host = '192.168.0.10';
-=======
-        //$this->host = '192.168.0.54'; //se coloca la ip del servidor de la bd
-        $this->host = '192.168.1.86';
-        //$this->host = '192.168.100.37';
->>>>>>> c2b6eb179ca2bead00c38ffe369b31b60fc46a4e
         $this->db = 'bodegajn';
         $this->usuario = 'portales';
         $this->contrasena = 'Portales2.';
