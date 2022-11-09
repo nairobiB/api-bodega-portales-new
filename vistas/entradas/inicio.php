@@ -317,8 +317,9 @@ $(document).ready(function(){
 <!--Script PARA MODIFICAR ENTRADA-->
 <script>
 $(document).ready(function(){
-    //esa clase esta en el boton de modificar de la tabla
+    //esa clase esta en el boton de modificar de la tabla de entradas
     $('.modentrada').on('click',function(){
+        //este id es el id del modal
         $('#modificarentrada').modal('show');
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function () {
@@ -326,7 +327,7 @@ $(document).ready(function(){
         }).get();
 
         console.log(data);
-
+        //estos son los id de los campos que estan dentro del modal
         $('#codigo').val(data[0]);
         $('#fecha').val(data[1]);
         $('#proveedor').val(data[2]);
@@ -334,6 +335,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
 <!--Script PARA MODIFICAR DETALLE DE ENTRADA-->
 <script>
 $(document).ready(function(){
@@ -354,8 +356,10 @@ $(document).ready(function(){
 });
 </script>
 
+<!-- ACCION QUE HARA EL BOTON AL DARLE CLICK EN GUARDAR CAMBIOS -->
 <!-- MODIFICAR UN DETALLE DE ENTRADA -->
 <script>
+    //ESTE ID ES EL ID DE EL BOTON DE EL MODAL QUE GUARDARA LOS CAMBIOS
     $('#dmodificar').on('click',function(){
   $.post(
       "/entradadetalle/modificardetalle",
