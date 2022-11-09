@@ -63,8 +63,8 @@ require_once('vistas/plantilla/titulo.php');
     </div>
 
 
-    <button class="btn btn-primary" id="btnGuardar" type="button">Agregar registro</button>
-
+    <button class="btn btn-primary" id="btnGuardar" onClick="return validarEntrada()" type="button">Agregar registro</button>
+    <p id="errorEntrada"></p>
 </form>
 <br>
 
@@ -84,13 +84,11 @@ require_once('vistas/plantilla/titulo.php');
                 Correcto
             </div>
         </div>
-        
     </div>
 
-    <button class="btn btn-primary" id="btnGuardarCategoria" type="button">Agregar Categoria</button>
-
+    <button class="btn btn-primary" id="btnGuardarCategoria" onClick = 'return validarCat()' type="button">Agregar Categoria</button>
+    <p id="errorCat"></p>
 </form>
-
 
 <script>
     (function() {
