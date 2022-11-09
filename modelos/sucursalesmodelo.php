@@ -27,4 +27,9 @@ class sucursalesModelo extends Modelo
             //throw $th;
         }
     }
+    function guardar($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into sucursales (IdSucursal, DescSucursal, telsucursal, email, direccionsucursal) value(:IdSucursal, :DescSucursal, :telsucursal, :email, :direccionsucursal)');
+        $query->execute($datos);
+    }
 }

@@ -57,4 +57,9 @@ class productosModelo extends Modelo
             //throw $th;
         }
     }
+    function guardar($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into productos (IdProd, NomProd, PrecProd, PrecCompra, stock, Descripcion, IdProv, Estado, IdCat, FechaCad, numero_lote, IdSucursal) value(:IdProd, :NomProd, :PrecProd, :PrecCompra, :stock, :Descripcion, :IdProv, :Estado, :IdCat, :FechaCad, :numero_lote, :IdSucursal)');
+        $query->execute($datos);
+    }
 }
