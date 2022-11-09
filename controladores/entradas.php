@@ -31,9 +31,9 @@ class entradas extends Controlador
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
-    function modificar()
+    function modificar() 
     {   try{
-        print_r($_POST);
+            print_r($_POST);
             $IdCompra = $_POST['IdCompra'];
             $Fechaentrada = $_POST['Fechaentrada'];
             $IdProv = $_POST['IdProv'];
