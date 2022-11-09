@@ -31,7 +31,7 @@ $("#btnsidel").on("click", function () {
   $.post(
     "/salidas/eliminar",
     {
-      Codsalida: $("#delcodigo").val(),
+      Codsalida: $("#delcodsalida").val(),
     },
     function (data, status) {
       alert("Data: " + data + "\nStatus: " + status);

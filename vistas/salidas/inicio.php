@@ -6,7 +6,7 @@ require_once('vistas/plantilla/titulo.php');
 ?>
 
 <!-- Modal -->
-<!-- MODIFICAR UNA ENTRADA -->
+<!-- MODIFICAR UNA SALIDA -->
 <div class="modal fade" id="modificarsalida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -64,7 +64,7 @@ require_once('vistas/plantilla/titulo.php');
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnnodel">No</button>
-                    <button type="submit" name="btnsi" id="btnsidel" class="btn btn-primary">Si</button>
+                    <button type="submit" name="btnsidel" id="btnsidel" class="btn btn-primary">Si</button>
                 </div>
             </form>
         </div>
