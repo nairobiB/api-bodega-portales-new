@@ -11,10 +11,15 @@ class BaseDatos
 
     function __construct()
     {
+<<<<<<<<< Temporary merge branch 1
         //define los parametros
-        $this->host = '192.168.0.54'; //se coloca la ip del servidor de la bd
-        //$this->host = '192.168.1.86';
+        //$this->host = '192.168.0.54'; //se coloca la ip del servidor de la bd
+        $this->host = '192.168.1.86';
         //$this->host = '192.168.0.10';
+=========
+
+        $this->host = 'localhost';
+>>>>>>>>> Temporary merge branch 2
         $this->db = 'bodegajn';
         $this->usuario = 'portales';
         $this->contrasena = 'Portales2.';
