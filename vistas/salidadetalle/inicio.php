@@ -63,8 +63,8 @@ require_once('vistas/plantilla/titulo.php');
     </div>
 
 
-    <button class="btn btn-primary" id="btnGuardarSalida" type="button">Agregar registro</button>
-
+    <button class="btn btn-primary" id="btnGuardarSalida" onClick="return validarSalida()" type="button">Agregar registro</button>
+    <p id="errorSalida"></p>
 </form>
 <br>
 <script>

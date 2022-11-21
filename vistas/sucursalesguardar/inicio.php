@@ -45,8 +45,8 @@ require_once('vistas/plantilla/titulo.php');
     </div>
 
 
-    <button class="btn btn-primary" id="btnguardarS" type="submit">Agregar registro</button>
-
+    <button class="btn btn-primary" id="btnguardarS" onClick='return validarSucursal()' type="submit">Agregar registro</button>
+    <p id="errorSucursal"></p>
 </form>
 <br>
 <script>
