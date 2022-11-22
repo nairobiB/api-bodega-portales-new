@@ -3,7 +3,6 @@ class entradadetalle extends Controlador
 {
     function __construct()
     {
-
         parent::__construct();
     }
     function inicio()
