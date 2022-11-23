@@ -32,4 +32,30 @@ class proveedoresguardar extends Controlador
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
+    function modificar() 
+    {   try{
+            print_r($_POST);
+            $IdProv= $_POST['IdProv'];
+            $Nomproveedor = $_POST['Nomproveedor'];
+            $Telproveedor = $_POST['Telproveedor'];
+            $Dirproveedor = $_POST['Dirproveedor'];
+            $email = $_POST['email'];
+            $this->setModelo('proveedores');
+            $this->modelo->modificarproveedor(["IdProv" => $IdProv,"Nomproveedor" => $Nomproveedor, "Telproveedor" => $Telproveedor, "Dirproveedor" => $Dirproveedor, "email" => $email]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    function eliminar()
+    {   try{
+        print_r($_POST);
+            $IdProv = $_POST['IdProv'];
+            $this->setModelo('proveedores');
+            $this->modelo->eliminarProv(["IdProv" => $IdProv]);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
 }
