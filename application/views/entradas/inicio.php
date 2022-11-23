@@ -22,7 +22,7 @@ session_start();
                         <input type="text" name="fecha" id="fecha" class="form-control" placeholder="Ingrese la fecha de entradaa">
                     </div>
                     <div class="form-group">
-                        <label> Id del Proveedor </label>
+                        <label> Proveedor </label>
                         <input type="text" name="proveedor" id="proveedor" class="form-control" placeholder="Id del Proveedor">
                     </div>
 
@@ -213,6 +213,7 @@ session_start();
 
 
 <!-- ################################################################### -->
+
 <!-- TABLA DE ENTRADAS -->
 <div class="container">
     <h3><?php echo $titulo; ?></h3>
@@ -231,15 +232,16 @@ session_start();
             foreach ($lista as $f) {
             ?>
                 <tr>
-                    <td scope="row"><?php echo $f['IdCompra']; ?>
+                    <td scope="row"><?php echo $f->IdCompra; ?>
                     </td>
-                    <td><?php echo $f['Fechaentrada']; ?>
+                    <td><?php echo $f->Fechaentrada; ?>
                     </td>
-                    <td><?php echo $f['IdProv']; ?>
+                    <td><?php echo $f->Nomproveedor; ?>
                     </td>
-                    <td><?php echo $f['NomUsr']; ?>
+                    <td><?php echo $f->NomUsr; ?>
                     </td>
                     <td>
+                    <!-- modentrada -->
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -255,7 +257,6 @@ session_start();
         </tbody>
 
     </table>
-
     <!-- ############################################################################################################################################################################### -->
 
     <!-- TABLA DE DETALLE DE ENTRADAS -->
@@ -296,7 +297,6 @@ session_start();
                 </tr>
             <?php } ?>
         </tbody>
-
     </table>
 
     <!-- ###################################################################################################################################################################### -->
@@ -340,6 +340,11 @@ session_start();
 </div>
 </div>
 </section>
+
+<!-- #################################################################################################################################################### -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
 <script>
     $(document).ready(function() {

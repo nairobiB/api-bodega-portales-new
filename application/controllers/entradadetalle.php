@@ -8,13 +8,21 @@ class entradadetalle extends CI_Controller
         parent::__construct();
         $this->load->helper('html');
         $this->load->helper('url');
+        $this->load->model('proveedores_model');
+        $this->load->model('entradas_model');
+        $this->load->model('productos_model');
+        $this->load->model('personal_model');
     }
     public function index()
     {
         //$this->load->view->titulo= 'Gestion de entradas';
+        $data['lista']= $this->proveedores_model->listarProveedores();
+        $data['listarIdCompra']= $this->entradas_model->listarEntradasId();
+        $data['listarProductos']= $this->productos_model->listarProductos();
+        $data['listarUsuarios']= $this->personal_model->listarNomUsr();
         $this->load->view('plantilla/head');
         $this->load->view('plantilla/nav');
-        $this->load->view('entradadetalle/inicio');
+        $this->load->view('entradadetalle/inicio', $data);
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');

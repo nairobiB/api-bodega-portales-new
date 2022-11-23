@@ -8,7 +8,7 @@ class entradas extends CI_Controller
         parent::__construct();
         $this->load->helper('html');
         $this->load->helper('url');
-        $this->load->model('entradas_model');  
+        $this->load->model('entradas_model');
     }
     public function index()
     {

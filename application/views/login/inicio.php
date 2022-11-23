@@ -17,7 +17,7 @@
       <h1>Accede a tu cuenta<br />Generamos confianza</h1>
 
       <div class="login-form">
-        <form action="vistas/login/ValidacionUsuario.php" method="POST">
+        <form action="views/login/ValidacionUsuario.php" method="POST">
           <input type="text" name="usuario" placeholder="Usuario">
           <input type="password" name="pass" placeholder="Password">
 
