@@ -265,7 +265,7 @@ session_start();
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id Prod</th>
+                <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Acción</th>
@@ -276,13 +276,13 @@ session_start();
             foreach ($listadetalle as $f2) {
             ?>
                 <tr>
-                    <td scope="row"><?php echo $f2['IdCompra']; ?>
+                    <td scope="row"><?php echo $f2->IdCompra; ?>
                     </td>
-                    <td><?php echo $f2['IdProd']; ?>
+                    <td><?php echo $f2->NomProd; ?>
                     </td>
-                    <td><?php echo $f2['Cantidad']; ?>
+                    <td><?php echo $f2->Cantidad; ?>
                     </td>
-                    <td><?php echo $f2['Precio']; ?>
+                    <td><?php echo $f2->Precio; ?>
                     </td>
                     <td>
                         <div class="btn-group" role="group">
@@ -316,7 +316,7 @@ session_start();
             foreach ($listarcategorias as $f3) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f3['IdCat']; ?></a>
+                    <td scope="row"><?php echo $f3['IdCat']; ?></a>
                     </td>
                     <td><?php echo $f3['NombreCat']; ?>
                     </td>

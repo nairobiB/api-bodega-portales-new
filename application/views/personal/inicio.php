@@ -195,7 +195,7 @@ session_start();
             foreach ($lista as $f) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f['IdPer']; ?></a>
+                    <td scope="row"><?php echo $f['IdPer']; ?></a>
                     </td>
                     <td><?php echo $f['TelPer']; ?>
                     </td>
@@ -233,11 +233,10 @@ session_start();
             <tr>
                 <th scope="col">Usuario</th>
                 <th scope="col">Contraseña</th>
-                <th scope="col">#</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Nivel</th>
+                <th scope="col">Nombre</th>
                 <th scope="col">ID de Sucursal</th>
-                <th scope="col">Accion</th>
+                <th scope="col">Nivel</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -245,17 +244,15 @@ session_start();
             foreach ($listaUsuarios as $f) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f['NomUsr']; ?></a>
+                <td scope="row"><?php echo $f->NomUsr; ?>
                     </td>
-                    <td><?php echo $f['Contra']; ?>
+                    <td><?php echo $f->Contra; ?>
                     </td>
-                    <td><?php echo $f['IdPer']; ?>
+                    <td><?php echo $f->NomPer; ?>
                     </td>
-                    <td><?php echo $f['Estado']; ?>
+                    <td><?php echo $f->DescSucursal; ?>
                     </td>
-                    <td><?php echo $f['nivel']; ?>
-                    </td>
-                    <td><?php echo $f['IdSucursal']; ?>
+                    <td><?php echo $f->nivel; ?>
                     </td>
                     <td>
                         <div class="btn-group" role="group">

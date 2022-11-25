@@ -22,11 +22,15 @@ class entradas_model extends CI_Model{
     public function listardetalle($filtros = FALSE){
 
         if ($filtros === FALSE) {
-            $query = $this->db->get('detalleentrada');
-            return $query->result_array();
+            $sql = "SELECT IdCompra, NomProd, Cantidad, Precio FROM detalleentrada
+            inner join productos on productos.IdProd=detalleentrada.IdProd;";
+            // $query = $this->db->get('salidas');
+            // return $query->result_array();
+            $results = $this->db->query($sql)->result();
+            return $results;
         }
-        $query = $this->db->get_where('detalleentrada',$filtros);
-        return $query->row_array();
+        // $query = $this->db->get_where('detalleentrada',$filtros);
+        // return $query->row_array();
     }
     public function listarEntradasId($filtros = FALSE){
 

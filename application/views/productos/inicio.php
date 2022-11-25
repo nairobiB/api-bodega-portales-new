@@ -108,11 +108,11 @@
                 <th scope="col">Precio de Compra</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Descripcion</th>
-                <th scope="col">ID del Proveedor</th>
-                <th scope="col">ID de Categoria</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Fecha de Caducidad</th>
                 <th scope="col">Numero de Lote</th>
-                <th scope="col">ID de Sucursal</th>
+                <th scope="col">Sucursal</th>
                 <th scope="col">Acción</th>
 
             </tr>
@@ -123,31 +123,32 @@
             ?>
                 <tr>
 
-                    <td><?php echo $f['IdProd']; ?>
+                <td scope="row"><?php echo $f->IdProd; ?>
                     </td>
-                    <td><?php echo $f['NomProd']; ?>
+                    <td><?php echo $f->NomProd ?>
                     </td>
-                    <td><?php echo $f['PrecProd']; ?>
+                    <td><?php echo $f->PrecProd ?>
                     </td>
-                    <td><?php echo $f['PrecCompra']; ?>
+                    <td><?php echo $f->PrecCompra ?>
                     </td>
-                    <td><?php echo $f['stock']; ?>
+                    <td><?php echo $f->stock ?>
                     </td>
-                    <td><?php echo $f['Descripcion']; ?>
+                    <td><?php echo $f->Descripcion ?>
                     </td>
-                    <td><?php echo $f['IdProv']; ?>
+                    <td><?php echo $f->Nomproveedor?>
                     </td>
-
-                    <td><?php echo $f['IdCat']; ?>
+                    <td><?php echo $f->NombreCat?>
                     </td>
-                    <td><?php echo $f['FechaCad']; ?>
+                    <td><?php echo $f->FechaCad?>
                     </td>
-                    <td><?php echo $f['numero_lote']; ?>
+                    <td><?php echo $f->numero_lote?>
                     </td>
-                    <td><?php echo $f['IdSucursal']; ?>
+                    <td><?php echo $f->DescSucursal ?>
                     </td>
                     <td>
+                        <!-- modentrada -->
                         <div class="btn-group" role="group">
+                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary modproductos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>

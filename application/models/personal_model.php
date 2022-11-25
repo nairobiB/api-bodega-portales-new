@@ -19,12 +19,17 @@ class personal_model extends CI_Model{
     public function listarUsuarios($filtros = FALSE){
 
         if ($filtros === FALSE) {
-            $query = $this->db->get('usuarios');
-            return $query->result_array();
+            $sql = "SELECT NomUsr, Contra, NomPer, DescSucursal, nivel FROM usuarios
+            inner join personal on personal.IdPer=usuarios.IdPer
+            inner join sucursales on sucursales.IdSucursal=usuarios.IdSucursal;";
+            // $query = $this->db->get('salidas');
+            // return $query->result_array();
+            $results = $this->db->query($sql)->result();
+            return $results;
         }
 
-        $query = $this->db->get_where('usuarios',$filtros);
-        return $query->row_array();
+        // $query = $this->db->get_where('usuarios',$filtros);
+        // return $query->row_array();
     }
     public function listarNomUsr($filtros = FALSE){
 
