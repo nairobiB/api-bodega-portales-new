@@ -8,13 +8,15 @@ class productoguardar extends CI_Controller
         parent::__construct();
         $this->load->helper('html');
         $this->load->helper('url');
+        $this->load->model('proveedores_model');
     }
     public function index()
     {
         //$this->load->view->titulo= 'Gestion de entradas';
+        $data['listar'] = $this->proveedores_model->listarProveedoresProductos();
         $this->load->view('plantilla/head');
         $this->load->view('plantilla/nav');
-        $this->load->view('productoguardar/inicio');
+        $this->load->view('productoguardar/inicio', $data);
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');

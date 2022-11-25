@@ -10,10 +10,16 @@ class salidadetalle extends CI_Controller
         parent::__construct();
         $this->load->helper('html');
         $this->load->helper('url');
+        $this->load->model('productos_model');
+        $this->load->model('personal_model');
+        $this->load->model('salidas_model');
     }
     public function index()
     {
-        $data['titulo']= 'Gestion de salidas';
+        $data['titulo'] = 'Gestion de salidas';
+        $data['listarProductos'] = $this->productos_model->listarProductos();
+        $data['listarUsuarios'] = $this->personal_model->listarNomUsr();
+        $data['listarIdVenta'] = $this->salidas_model->listarSalidasId();
         $this->load->view('plantilla/head');
         $this->load->view('plantilla/nav');
         $this->load->view('salidadetalle/inicio', $data);
