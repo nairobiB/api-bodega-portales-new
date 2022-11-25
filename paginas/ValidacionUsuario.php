@@ -15,7 +15,7 @@ $resultado->execute();
 if ($resultado->rowCount() >= 1) {
     $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     $_SESSION["s_usuario"] = $Usr;
-    $mensajeT = 'Info';
+    $mensajeT = 'Info'; 
     $mensaje = $Usr;
     $mensaje2 = $Pass;
     setcookie("mensajeT", $mensajeT, time()+3800, "/");

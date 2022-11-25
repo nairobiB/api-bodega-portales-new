@@ -14,12 +14,12 @@ class productos_model extends CI_Model{
         }
 
         $query = $this->db->get_where('productos',$filtros);
-        return $query->row_array();
+        return $query->row_array(); 
     }
     public function listarProductos($filtros = FALSE){
 
         if ($filtros === FALSE) {
-            $sql = "SELECT NomProd FROM productos";
+            $sql = "SELECT IdProd,NomProd FROM productos";
             // $query = $this->db->get('entradas');
             // return $query->result_array();
             $results=$this->db->query($sql)->result();

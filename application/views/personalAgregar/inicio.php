@@ -61,56 +61,6 @@ session_start();
         <p id="errorPersonal"></p>
     </form>
     <br>
-
-    <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="inputusuario">Usuario</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    </div>
-                    <input type="text" class="form-control" id="inputusuario" placeholder="Ingrese el Username" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                        Ingrese el nombre de usuario
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="inputcontraseña">Contraseña</label>
-                <input type="password" class="form-control" id="inputcontraseña" placeholder="Ingrese la Contraseña" required>
-                <div class="valid-feedback">
-                    Correcto
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="inputidpersonal">ID Personal</label>
-                <input type="text" class="form-control" id="inputidpersonal" placeholder="Ingrese el ID Personal" required>
-                <div class="valid-feedback">
-                    Correcto
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="inputnivel">Nivel</label>
-                <input type="text" class="form-control" id="inputnivel" placeholder="Ingrese el Nivel del Usuario" required>
-                <div class="valid-feedback">
-                    Correcto
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="inputidsucursal">ID Sucursal</label>
-                <input type="text" class="form-control" id="inputidsucursal" placeholder="Ingrese el ID de la Sucursal" required>
-                <div class="valid-feedback">
-                    Correcto
-                </div>
-            </div> 
-        </div>
-
-
-        <button class="btn btn-primary" id="btnGuardarUsuario" onClick='return validarUsuario()' type="button">Agregar Usuario</button>
-        <p id="errorUser"></p>
-    </form>
 </div>
 
 

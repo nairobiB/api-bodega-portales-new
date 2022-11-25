@@ -3,7 +3,7 @@ session_start();
 ?>
 <div class="container">
     <br><br>
-<form class="needs-validation" novalidate method="POST">
+<form class="needs-validation" novalidate method="POST" action="">
     <div class="form-row">
         <div class="col-md-3 mb-3">
             <label for="fecha">Fecha</label>
@@ -14,12 +14,12 @@ session_start();
         </div>
         <div class="col-md-2 mb-3">
             <label> Proveedores </label>
-            <select class="form-select form-control" aria-label="Default select example">
+            <select class="form-select form-control" name="IdProv" id='inputproveedor' aria-label="Default select example">
             <option selected>Elija proveedor</option>
             <?php
             foreach ($lista as $f) {
             ?>
-                <option value=""><?php echo $f->Nomproveedor; ?></option>
+                <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
             <?php } ?>
             </select>
         </div>
@@ -33,12 +33,12 @@ session_start();
 
         <div class="col-md-2 mb-3">
             <label> Id de Compras </label>
-            <select class="form-select form-control" aria-label="Default select example">
+            <select class="form-select form-control" id='inputcompra' aria-label="Default select example">
             <option selected>Elija compra</option>
             <?php
             foreach ($listarIdCompra as $f) {
             ?>
-                <option value=""><?php echo $f->IdCompra; ?></option>
+                <option value="<?php echo $f->IdCompra; ?>"><?php echo $f->IdCompra; ?></option>
             <?php } ?>
             </select>
         </div>
@@ -52,12 +52,12 @@ session_start();
         </div> -->
         <div class="col-md-2 mb-3">
             <label> Productos </label>
-            <select class="form-select form-control" aria-label="Default select example">
+            <select class="form-select form-control" id='inputproducto' aria-label="Default select example">
             <option selected>Elija producto</option>
             <?php
             foreach ($listarProductos as $f) {
             ?>
-                <option value=""><?php echo $f->NomProd; ?></option>
+                <option value="<?php echo $f->IdProd; ?>"><?php echo $f->NomProd; ?></option>
             <?php } ?>
             </select>
         </div>
@@ -86,12 +86,12 @@ session_start();
 
         <div class="col-md-2 mb-3">
             <label> Usuario </label>
-            <select class="form-select form-control" aria-label="Default select example">
+            <select class="form-select form-control" id="inputusuario" aria-label="Default select example">
             <option selected>Elija usuario</option>
             <?php
             foreach ($listarUsuarios as $f) {
             ?>
-                <option value=""><?php echo $f->NomUsr; ?></option>
+                <option value="<?php echo $f->NomUsr; ?>"><?php echo $f->NomUsr; ?></option>
             <?php } ?>
             </select>
         </div>
@@ -109,38 +109,17 @@ session_start();
             </div>
         </div> -->
 
-        
     </div>
 
 
-    <button class="btn btn-primary" id="btnGuardar" onClick="return validarEntrada()" type="button">Agregar registro</button>
+    <button class="btn btn-primary" id="btnGuardarDetalle" onClick="return validarEntrada()" type="button">Agregar registro</button>
     <p id="errorEntrada"></p>
 </form>
 <br>
 
-<form class="needs-validation" novalidate method="POST">
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="inputcategoria">ID Categoria</label>
-            <input type="text" class="form-control" id="inputcategoria" placeholder="Ingrese el ID de Categoria" required>
-            <div class="valid-feedback">
-                Correcto
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="inputnombre">Nombre</label>
-            <input type="text" class="form-control" id="inputnombre" placeholder="Nombre de la Categoria" required>
-            <div class="valid-feedback">
-                Correcto
-            </div>
-        </div>
-    </div>
-
-    <button class="btn btn-primary" id="btnGuardarCategoria" onClick = 'return validarCat()' type="button">Agregar Categoria</button>
-    <p id="errorCat"></p>
-</form>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 <script>
     (function() {
@@ -161,3 +140,36 @@ session_start();
         }, false);
     })();
 </script>
+
+<script>
+    $("#btnGuardarDetalle").click(function () {
+  $.post(
+    "/entradadetalle/guardar",
+    {
+      Fechaentrada: $("#inputfecha").val(),
+      IdProv: $("#inputproveedor").val(),
+      NomUsr: $("#inputusuario").val(),
+    },
+    function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+    }
+  );
+});
+</script>
+<script>
+    $("#btnGuardarDetalle").click(function () {
+  $.post(
+    "/entradadetalle/guardardetalle",
+    {
+        IdCompra: $("#inputcompra").val(),
+        IdProd: $("#inputproducto").val(),
+        Cantidad: $("#inputcantidad").val(),
+        Precio: $("#inputprecio").val(),
+    },
+    function (data, status) {
+      alert("Data: " + data + "\nStatus: " + status);
+    }
+  );
+});
+</script>
+

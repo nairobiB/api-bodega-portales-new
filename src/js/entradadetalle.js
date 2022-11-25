@@ -1,18 +1,19 @@
 //CAMPOS DE GUARDAR DETALLE DE ENTRADA
-$("#btnGuardar").click(function () {
-  $.post(
-    "/entradadetalle/guardardetalle",
-    {
-      IdCompra: $("#inputcompra").val(),
-      IdProd: $("#inputproducto").val(),
-      Cantidad: $("#inputcantidad").val(),
-      Precio: $("#inputprecio").val(),
-    },
-    function (data, status) {
-      alert("Data: " + data + "\nStatus: " + status);
-    }
-  );
-});
+// $("#btnGuardar").click(function () {
+//   $.post(
+//     "/entradadetalle/guardardetalle",
+//     {
+//       IdCompra: $("#inputcompra").val(),
+//       IdProd: $("#inputproducto").val(),
+//       Cantidad: $("#inputcantidad").val(),
+//       Precio: $("#inputprecio").val(),
+//     },
+//     function (data, status) {
+//       alert("Data: " + data + "\nStatus: " + status);
+//     }
+//   );
+// });
+
 
 var fecha = document.getElementById('inputfecha')
 var proveedorFK = document.getElementById('inputproveedor')

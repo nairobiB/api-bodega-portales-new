@@ -16,7 +16,6 @@ class entradas extends CI_Controller
         $data['titulo']= 'Gestion de entradas';
         $data['lista']= $this->entradas_model->listar();
         $data['listadetalle']= $this->entradas_model->listardetalle();
-        $data['listarcategorias']= $this->entradas_model->listarcategorias();
         $this->load->view('plantilla/head');
         $this->load->view('plantilla/nav');
         $this->load->view('entradas/inicio', $data);

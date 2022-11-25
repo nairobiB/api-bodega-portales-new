@@ -5,7 +5,7 @@ class proveedores_model extends CI_Model{
 
     public function __construct(){
         $this->load->database();
-    }
+    } 
     public function listar($filtros = FALSE){
 
         if ($filtros === FALSE) {
@@ -19,7 +19,7 @@ class proveedores_model extends CI_Model{
     public function listarProveedores($filtros = FALSE){
 
         if ($filtros === FALSE) {
-            $sql = "SELECT Nomproveedor FROM proveedores";
+            $sql = "SELECT IdProv, Nomproveedor FROM proveedores";
             // $query = $this->db->get('entradas');
             // return $query->result_array();
             $results=$this->db->query($sql)->result();

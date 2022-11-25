@@ -14,7 +14,6 @@ class personal extends CI_Controller
     {
         $data['titulo']= 'Gestion de personal';
         $data['lista']= $this->personal_model->listar();
-        $data['listaUsuarios']= $this->personal_model->listarUsuarios();
         // $data['listadetalle']= $this->entradas_model->listardetalle();
         // $data['listarcategorias']= $this->entradas_model->listarcategorias();
         $this->load->view('plantilla/head');
@@ -23,9 +22,6 @@ class personal extends CI_Controller
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
-        // $this->setModelo('personal');
-        // $this->vista->datos = $this->modelo->listar();
-        // $this->vista->datosusuario = $this->modelo->listarusuarios();
     }
     // function modificarP()
     // {

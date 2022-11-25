@@ -38,15 +38,11 @@ class entradas_model extends CI_Model{
             return $results;
         }
     }
-    public function listarcategorias($filtros = FALSE){
-
-        if ($filtros === FALSE) {
-            $query = $this->db->get('categorias');
-            return $query->result_array();
-        }
-
-        $query = $this->db->get_where('categorias',$filtros);
-        return $query->row_array();
+    public function guardarEntrada(string $Fechaentrada, string $IdProv, string $NomUsr){
+        $this->db->query("INSERT INTO entradas (Fechaentrada, IdProv, NomUsr) values({$Fechaentrada}, {$IdProv}, {$NomUsr})");
+    }
+    public function guardarDetEntrada(string $IdCompra, string $IdProd, string $Cantidad, string $Precio){
+        $this->db->query("INSERT INTO detalleentrada (IdCompra, IdProd, Cantidad, Precio) values({$IdCompra}, {$IdProd}, {$Cantidad}, {$Precio})");
     }
 
 }

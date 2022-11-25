@@ -32,6 +32,12 @@
 						</ul>
 					</li>
 					<li>
+						<a href="/categorias">Categorias</a>
+						<ul>
+							<li><a href="/categorias">Listar</a></li>
+						</ul>
+					</li>
+					<li>
 						<a href="/proveedoresguardar">Proveedores</a>
 					</li>
 					<li>
@@ -39,6 +45,12 @@
 						<ul>
 							<li><a href="/personal">Listar</a></li>
 							<li><a href="/personalAgregar">Agregar</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/usuarios">Usuarios</a>
+						<ul>
+							<li><a href="/usuarios">Listar</a></li>
 						</ul>
 					</li>
 					<li>

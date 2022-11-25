@@ -26,40 +26,37 @@ class entradadetalle extends CI_Controller
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
-        //$this->load->model('entradas');
-        /*$this->load->view->datos = $this->load->model->listar();
-        $this->load->view->datosdetalle = $this->load->model->listardetalle();
-        $this->load->view->datoscate = $this->modelo->listarcategorias();*/
     }
-    /*function guardar()
+    public function guardar()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                $Fechaentrada = $this->db->escape($_POST["Fechaentrada"]);
+                $IdProv = $this->db->escape($_POST["IdProv"]);
+                $NomUsr = $this->db->escape($_POST["NomUsr"]);
+                $this->entradas_model->guardarEntrada($Fechaentrada,$IdProv,$NomUsr);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
+    public function guardardetalle()
     {
         try {
             print_r($_POST);
-            $Fechaentrada = $_POST['Fechaentrada'];
-            $IdProv = $_POST['IdProv'];
-            $NomUsr = $_POST['NomUsr'];
-            $this->setModelo('entradas');
-            $this->modelo->guardar(["Fechaentrada" => $Fechaentrada, "IdProv" => $IdProv, "NomUsr" => $NomUsr]);
+            $IdCompra =  $this->db->escape($_POST["IdCompra"]);
+            $IdProd = $this->db->escape($_POST["IdProd"]);
+            $Cantidad = $this->db->escape($_POST["Cantidad"]);
+            $Precio = $this->db->escape($_POST["Precio"]);
+            $this->entradas_model->guardarDetEntrada($IdCompra,$IdProd,$Cantidad,$Precio);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
-    function guardardetalle()
-    {
-        try {
-            print_r($_POST);
-            $IdCompra = $_POST['IdCompra'];
-            $IdProd = $_POST['IdProd'];
-            $Cantidad = $_POST['Cantidad'];
-            $Precio = $_POST['Precio'];
-            $this->setModelo('entradas');
-            $this->modelo->guardardetalle(["IdCompra" => $IdCompra, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precio" => $Precio]);
-            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
-        } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
-        }
-    }
+    /*
     function guardarcategoria()
     {
         try {
