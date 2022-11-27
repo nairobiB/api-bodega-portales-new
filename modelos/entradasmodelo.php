@@ -67,9 +67,55 @@ class entradasModelo extends Modelo
             //throw $th;
         }
     }
+    //GUARDA ENTRADA
     function guardar($datos)
     {
         $query = $this->db->conectar()->prepare('insert into entradas (Fechaentrada, IdProv, NomUsr) value(:Fechaentrada, :IdProv, :NomUsr)');
+        $query->execute($datos);
+    }
+    //GUARDA DETALLE DE ENTRADA
+    function guardardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into detalleentrada (IdCompra, IdProd, Cantidad, Precio) value(:IdCompra, :IdProd, :Cantidad, :Precio)');
+        $query->execute($datos);
+    }
+
+    function guardarcategoria($datos)
+    {
+        $query = $this->db->conectar()->prepare('insert into categorias (IdCat, NombreCat) value(:IdCat, :NombreCat)');
+        $query->execute($datos);
+    }
+
+    function modificarentrada($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE entradas SET `Fechaentrada` = :Fechaentrada,`IdProv` = :IdProv ,`NomUsr` = :NomUsr WHERE (`IdCompra` = :IdCompra)");
+        $query->execute($datos);
+    }
+
+    function eliminarentrada($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE from entradas WHERE (`IdCompra` = :IdCompra)");
+        $query->execute($datos);
+    }
+    function modificardetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE detalleentrada SET `Cantidad` = :Cantidad, `Precio` = :Precio WHERE (`IdCompra` = :IdCompra) and (`IdProd` = :IdProd)");
+        $query->execute($datos);
+    }
+    function eliminarDetalle($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM detalleentrada  WHERE (`IdCompra` = :IdCompra) and (`IdProd` = :IdProd)");
+        $query->execute($datos);
+    }
+    // CATEGORIA
+    function modificarcate($datos)
+    {
+        $query = $this->db->conectar()->prepare("UPDATE categorias SET `NombreCat` = :NombreCat WHERE (`IdCat` = :IdCat)");
+        $query->execute($datos);
+    }
+    function eliminarcate($datos)
+    {
+        $query = $this->db->conectar()->prepare("DELETE FROM categorias  WHERE (`IdCat` = :IdCat)");
         $query->execute($datos);
     }
 }
