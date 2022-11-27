@@ -56,20 +56,33 @@ class entradadetalle extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
-    /*
-    function guardarcategoria()
+    public function modificardetalle()
     {
         try {
             print_r($_POST);
-            $IdCat = $_POST['IdCat'];
-            $NombreCat = $_POST['NombreCat'];
-            $this->setModelo('entradas');
-            $this->modelo->guardarcategoria(["IdCat" => $IdCat, "NombreCat" => $NombreCat]);
-            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+            $IdCompra =  $this->db->escape($_POST["IdCompra"]);
+            $IdProd = $this->db->escape($_POST["IdProd"]);
+            $Cantidad = $this->db->escape($_POST["Cantidad"]);
+            $Precio = $this->db->escape($_POST["Precio"]);
+            $this->entradas_model->modificarDetalle($IdCompra,$IdProd,$Cantidad,$Precio);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
         } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
         }
     }
+    public function eliminardetalle()
+    {
+        try {
+            print_r($_POST);
+            $IdCompra =  $this->db->escape($_POST["IdCompra"]);
+            $IdProd = $this->db->escape($_POST["IdProd"]);
+            $this->entradas_model->eliminarDetalle($IdCompra,$IdProd);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
+    /*
     function modificardetalle()
     {
         try {

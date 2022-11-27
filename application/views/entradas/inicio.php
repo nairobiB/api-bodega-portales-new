@@ -22,9 +22,20 @@ session_start();
                         <input type="text" name="fecha" id="fecha" class="form-control" placeholder="Ingrese la fecha de entradaa">
                     </div>
                     <div class="form-group">
+                        <label> Proveedores </label>
+                        <select class="form-select form-control" name="IdProv" id='proveedor' aria-label="Default select example">
+                        <option selected>Elija proveedor</option>
+                        <?php
+                        foreach ($lista as $f) {
+                        ?>
+                            <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
+                        <?php } ?>
+                        </select>
+                    </div>
+                    <!-- <div class="form-group">
                         <label> Proveedor </label>
                         <input type="text" name="proveedor" id="proveedor" class="form-control" placeholder="Id del Proveedor">
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label> Encargado </label>
@@ -105,7 +116,7 @@ session_start();
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnmodificar">Cerrar</button>
-                    <button type="submit" name="dmodificar" id="dmodificar" class="btn btn-primary">Guardar cambios</button>
+                    <button type="submit" name="dmodificar" id="detalleEntradaModificar" class="btn btn-primary">Guardar cambios</button>
                 </div>
             </form>
         </div>
@@ -243,47 +254,6 @@ session_start();
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
-<script>
-    $(document).ready(function() {
-        // lo hacemos con una class
-        $('.btneliminar').on('click', function() {
-            $('#borrarentrada').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#delcodigo').val(data[0]);
-
-        });
-    });
-</script>
-<!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
-<!-- ASI SE ELIMINA -->
-<script>
-    $(document).ready(function() {
-        // lo hacemos con una class
-        $('.deteliminar').on('click', function() {
-            $('#borrardetalle').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#delDcodigo').val(data[0]);
-            $('#delDcodigoP').val(data[1]);
-
-
-        });
-    });
-</script>
-
-<!-- ################################################################################################################### -->
 <!--Script PARA MODIFICAR ENTRADA-->
 <script>
     $(document).ready(function() {
@@ -305,8 +275,58 @@ session_start();
         });
     });
 </script>
+<script>
+    $("#modificar").on("click", function () {
+    $.post(
+        "/entradas/modificarEntrada",
+        {
+        IdCompra: $("#codigo").val(),
+        Fechaentrada: $("#fecha").val(),
+        IdProv: $("#proveedor").val(),
+        NomUsr: $("#encargado").val(),
+        },
+        function (data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+        }
+    );
+    });
+</script>
+<!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
+<script>
+    $(document).ready(function() {
+        // lo hacemos con una class
+        $('.btneliminar').on('click', function() {
+            $('#borrarentrada').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
 
+            console.log(data);
+
+            $('#delcodigo').val(data[0]);
+
+        });
+    });
+</script>
+<script>
+    $("#btnsi").on("click", function () {
+        $.post(
+            "/entradas/eliminarEntrada",
+            {
+            IdCompra: $("#delcodigo").val(),
+            },
+            function (data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+
+<!-- ################################################################################################################### -->
 <!--Script PARA MODIFICAR DETALLE DE ENTRADA-->
+<!-- LLAMA A EL MODAL -->
 <script>
     $(document).ready(function() {
         $('.detentrada').on('click', function() {
@@ -325,12 +345,10 @@ session_start();
         });
     });
 </script>
-
 <!-- ACCION QUE HARA EL BOTON AL DARLE CLICK EN GUARDAR CAMBIOS -->
-<!-- MODIFICAR UN DETALLE DE ENTRADA -->
 <script>
     //ESTE ID ES EL ID DE EL BOTON DE EL MODAL QUE GUARDARA LOS CAMBIOS
-    $('#dmodificar').on('click', function() {
+    $('#detalleEntradaModificar').on('click', function() {
         $.post(
             "/entradadetalle/modificardetalle", {
                 IdCompra: $("#dcodigo").val(),
@@ -342,6 +360,27 @@ session_start();
                 alert("Data: " + data + "\nStatus: " + status);
             }
         );
+    });
+</script>
+<!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
+<!-- ASI SE LLAMA AL MODAL DE ELIMINAR DETALLE ENTRADA -->
+<script>
+    $(document).ready(function() {
+        // lo hacemos con una class
+        $('.deteliminar').on('click', function() {
+            $('#borrardetalle').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#delDcodigo').val(data[0]);
+            $('#delDcodigoP').val(data[1]);
+
+
+        });
     });
 </script>
 

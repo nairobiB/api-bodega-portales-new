@@ -89,7 +89,7 @@ session_start();
             <select class="form-select form-control" id="inputusuario" aria-label="Default select example">
             <option selected>Elija usuario</option>
             <?php
-            foreach ($listarUsuarios as $f) {
+            foreach ($listarUsuarios as $f) { 
             ?>
                 <option value="<?php echo $f->NomUsr; ?>"><?php echo $f->NomUsr; ?></option>
             <?php } ?>

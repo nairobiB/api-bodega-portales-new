@@ -27,6 +27,35 @@ class entradas extends CI_Controller
         $this->load->view->datosdetalle = $this->load->model->listardetalle();
         $this->load->view->datoscate = $this->modelo->listarcategorias();*/
     }
+    public function modificarEntrada()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                $IdCompra = $this->db->escape($_POST["IdCompra"]);
+                $Fechaentrada = $this->db->escape($_POST["Fechaentrada"]);
+                $IdProv = $this->db->escape($_POST["IdProv"]);
+                $NomUsr = $this->db->escape($_POST["NomUsr"]);
+                $this->entradas_model->modificarEntrada($IdCompra,$Fechaentrada,$IdProv,$NomUsr);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Actualizado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    public function eliminarEntrada()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                $IdCompra = $this->db->escape($_POST["IdCompra"]);
+                $this->entradas_model->eliminarEntrada($IdCompra);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Eliminado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
     // function guardar()
     // {
     //     try {

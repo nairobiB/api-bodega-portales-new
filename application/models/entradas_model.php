@@ -44,5 +44,17 @@ class entradas_model extends CI_Model{
     public function guardarDetEntrada(string $IdCompra, string $IdProd, string $Cantidad, string $Precio){
         $this->db->query("INSERT INTO detalleentrada (IdCompra, IdProd, Cantidad, Precio) values({$IdCompra}, {$IdProd}, {$Cantidad}, {$Precio})");
     }
+    public function modificarEntrada(string $IdCompra, string $Fechaentrada, string $IdProv, string $NomUsr){
+        $this->db->query("UPDATE entradas SET `Fechaentrada` = {$Fechaentrada},`IdProv` = {$IdProv} ,`NomUsr` = {$NomUsr} WHERE (`IdCompra` = {$IdCompra})");
+    }
+    public function eliminarEntrada(string $IdCompra){
+        $this->db->query("DELETE from entradas WHERE (`IdCompra` = {$IdCompra})");
+    }
+    public function modificarDetalle(string $IdCompra, string $IdProd,string $Cantidad,string $Precio){
+        $this->db->query("UPDATE detalleentrada SET `Cantidad` = {$Cantidad}, `Precio` = {$Precio} WHERE (`IdCompra` = {$IdCompra}) and (`IdProd` = {$IdProd})");
+    }
+    public function eliminarDetalle(string $IdCompra, string $IdProd){
+        $this->db->query("DELETE FROM detalleentrada  WHERE (`IdCompra` = {$IdCompra}) and (`IdProd` = {$IdProd})");
+    }
 
 }
