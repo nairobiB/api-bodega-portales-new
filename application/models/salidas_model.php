@@ -23,8 +23,12 @@ class salidas_model extends CI_Model
     {
 
         if ($filtros === FALSE) {
-            $query = $this->db->get('detallesalida');
-            return $query->result_array();
+            $sql = "SELECT Codsalida, NomProd,Cantidad, Precsalida FROM detallesalida
+            inner join productos on productos.IdProd=detallesalida.IdProd;";
+            // $query = $this->db->get('salidas');
+            // return $query->result_array();
+            $results = $this->db->query($sql)->result();
+            return $results;
         }
 
         $query = $this->db->get_where('detallesalida', $filtros);

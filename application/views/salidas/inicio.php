@@ -145,7 +145,7 @@
 <!-- TABLA DE SALIDAS -->
 <div class="container">
 
-<h3><?php echo $titulo; ?></h3>
+    <h3><?php echo $titulo; ?></h3>
 
     <table class="table">
         <thead class="thead-dark">
@@ -161,7 +161,7 @@
             foreach ($lista as $f) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f['Codsalida']; ?></a>
+                    <td scope="row"><?php echo $f['Codsalida']; ?></a>
                     </td>
                     <td><?php echo $f['FechaVenta']; ?>
                     </td>
@@ -190,7 +190,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">ID Producto</th>
+                <th scope="col">Nombre Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio de Salida</th>
                 <th scope="col">Accion</th>
@@ -201,13 +201,13 @@
             foreach ($listadetalle as $f) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f['Codsalida']; ?></a>
+                    <td scope="row"><?php echo $f->Codsalida; ?></a>
                     </td>
-                    <td><?php echo $f['IdProd']; ?>
+                    <td><?php echo $f->NomProd; ?>
                     </td>
-                    <td><?php echo $f['Cantidad']; ?>
+                    <td><?php echo $f->Cantidad; ?>
                     </td>
-                    <td><?php echo $f['PrecSalida']; ?>
+                    <td><?php echo $f->Precsalida; ?>
                     </td>
                     <td>
                         <div class="btn-group" role="group">

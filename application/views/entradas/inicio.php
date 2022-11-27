@@ -24,12 +24,12 @@ session_start();
                     <div class="form-group">
                         <label> Proveedores </label>
                         <select class="form-select form-control" name="IdProv" id='proveedor' aria-label="Default select example">
-                        <option selected>Elija proveedor</option>
-                        <?php
-                        foreach ($lista as $f) {
-                        ?>
-                            <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
-                        <?php } ?>
+                            <option selected>Elija proveedor</option>
+                            <?php
+                            foreach ($lista as $f) {
+                            ?>
+                                <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <!-- <div class="form-group">
@@ -186,7 +186,7 @@ session_start();
                     <td><?php echo $f->NomUsr; ?>
                     </td>
                     <td>
-                    <!-- modentrada -->
+                        <!-- modentrada -->
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -210,7 +210,7 @@ session_start();
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id Prod</th>
+                <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Acción</th>
@@ -221,13 +221,13 @@ session_start();
             foreach ($listadetalle as $f2) {
             ?>
                 <tr>
-                    <td scope="row"><?php echo $f2['IdCompra']; ?>
+                    <td scope="row"><?php echo $f2->IdCompra; ?>
                     </td>
-                    <td><?php echo $f2['IdProd']; ?>
+                    <td><?php echo $f2->NomProd; ?>
                     </td>
-                    <td><?php echo $f2['Cantidad']; ?>
+                    <td><?php echo $f2->Cantidad; ?>
                     </td>
-                    <td><?php echo $f2['Precio']; ?>
+                    <td><?php echo $f2->Precio; ?>
                     </td>
                     <td>
                         <div class="btn-group" role="group">
@@ -245,7 +245,9 @@ session_start();
     </table>
 
     <!-- ###################################################################################################################################################################### -->
-</div>
+
+    <!-- TABLA DE CATEGORIAS -->
+
 </div>
 </div>
 </section>
@@ -276,19 +278,18 @@ session_start();
     });
 </script>
 <script>
-    $("#modificar").on("click", function () {
-    $.post(
-        "/entradas/modificarEntrada",
-        {
-        IdCompra: $("#codigo").val(),
-        Fechaentrada: $("#fecha").val(),
-        IdProv: $("#proveedor").val(),
-        NomUsr: $("#encargado").val(),
-        },
-        function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-        }
-    );
+    $("#modificar").on("click", function() {
+        $.post(
+            "/entradas/modificarEntrada", {
+                IdCompra: $("#codigo").val(),
+                Fechaentrada: $("#fecha").val(),
+                IdProv: $("#proveedor").val(),
+                NomUsr: $("#encargado").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>
 <!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
@@ -310,14 +311,13 @@ session_start();
     });
 </script>
 <script>
-    $("#btnsi").on("click", function () {
+    $("#btnsi").on("click", function() {
         $.post(
-            "/entradas/eliminarEntrada",
-            {
-            IdCompra: $("#delcodigo").val(),
+            "/entradas/eliminarEntrada", {
+                IdCompra: $("#delcodigo").val(),
             },
-            function (data, status) {
-            alert("Data: " + data + "\nStatus: " + status);
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
             }
         );
     });
