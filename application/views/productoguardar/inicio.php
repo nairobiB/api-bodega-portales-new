@@ -47,25 +47,47 @@ session_start();
                 </div>
             </div>
             <div class="col-md-4 mb-3">
+                <label> Proveedores </label>
+                <select class="form-select form-control" aria-label="Default select example">
+                    <option selected>Elija proveedor</option>
+                    <?php
+                    foreach ($listar as $f2) {
+                    ?>
+                        <option value="<?php echo $f2->IdProv; ?>"><?php echo $f2->Nomproveedor; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdProv">ID Proveedor</label>
                 <input type="text" class="form-control" id="inputIdProv" placeholder="Ingrese el ID del Proveedor" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
-            <div class="col-md-4 mb-3">
+            </div> -->
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputEstado">Estado</label>
                 <input type="number" class="form-control" id="inputEstado" placeholder="Ingrese el estado" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
-            <div class="col-md-4 mb-3">
+            </div> -->
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdCat">ID Categoria</label>
                 <input type="text" class="form-control" id="inputIdCat" placeholder="Ingrese el ID de la Categoria" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
+            </div> -->
+            <div class="col-md-4 mb-3">
+                <label> Categorías </label>
+                <select class="form-select form-control" aria-label="Default select example">
+                    <option selected>Elija categoría</option>
+                    <?php
+                    foreach ($listarcat as $f2) {
+                    ?>
+                        <option value="<?php echo $f2->IdCat; ?>"><?php echo $f2->NombreCat; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="fecha">Fecha</label>
@@ -81,18 +103,29 @@ session_start();
                     Correcto
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <!-- <div class="col-md-3 mb-3">
                 <label for="inputIdSucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputIdSucursal" placeholder="Ingrese el ID de la Sucursal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
+            </div> -->
+            <div class="col-md-4 mb-3">
+                <label> Sucursales </label>
+                <select class="form-select form-control" aria-label="Default select example">
+                    <option selected>Elija sucursal</option>
+                    <?php
+                    foreach ($listarSuc as $f2) {
+                    ?>
+                        <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <p id="errorProducto"></p>
         </div>
-            <div class="col-md-3 mb-3">
-                <button class="btn btn-primary" id="bguardar" onClick= 'return validarProducto()' type="submit">Agregar registro</button>
-            </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn btn-primary" id="bguardar" onClick='return validarProducto()' type="submit">Agregar registro</button>
+        </div>
     </form>
 </div>
 <br>

@@ -160,41 +160,7 @@
             <?php } ?>
         </tbody>
     </table>
-    <h3>PROVEEDORES</h3>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre del Proveedor</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Direccion</th>
 
-                <th scope="col">Email</th>
-
-
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($listaProvs as $f) {
-            ?>
-                <tr>
-                    <td><?php echo $f['IdProv']; ?>
-                    </td>
-                    <td><?php echo $f['Nomproveedor']; ?>
-                    </td>
-                    <td><?php echo $f['Telproveedor']; ?>
-                    </td>
-                    <td><?php echo $f['Dirproveedor']; ?>
-                    </td>
-                    <td><?php echo $f['email']; ?>
-                    </td>
-
-                </tr>
-            <?php } ?>
-        </tbody>
-
-    </table>
 </div>
 </div>
 </div>
