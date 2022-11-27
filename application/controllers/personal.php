@@ -10,7 +10,7 @@ class personal extends CI_Controller
         $this->load->helper('url');
         $this->load->model('personal_model');
     }
-    public function index()
+    public function index() 
     {
         $data['titulo']= 'Gestion de personal';
         $data['lista']= $this->personal_model->listar();

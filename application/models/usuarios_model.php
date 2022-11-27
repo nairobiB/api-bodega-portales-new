@@ -20,7 +20,7 @@ class usuarios_model extends CI_Model{
         // $query = $this->db->get_where('usuarios',$filtros);
         // return $query->row_array();
     }
-    public function guardar(string $NombreCat){
-        $this->db->query("INSERT INTO categorias (NombreCat) values({$NombreCat})");
+    public function guardar(string $NomUsr, string $Contra,string $IdPer,string $nivel,string $IdSucursal){
+        $this->db->query("INSERT INTO usuarios (NomUsr,Contra,IdPer,nivel,IdSucursal) values({$NomUsr},{$Contra},{$IdPer},{$nivel},{$IdSucursal})");
     }
 }

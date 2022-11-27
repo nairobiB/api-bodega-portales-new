@@ -26,5 +26,13 @@ class personal_model extends CI_Model{
             return $results;
         }
     }
+    public function listarPersonal($filtros = FALSE){
+
+        if ($filtros === FALSE) {
+            $sql = "SELECT IdPer,NomPer FROM personal";
+            $results=$this->db->query($sql)->result();
+            return $results;
+        }
+    }
 
 }

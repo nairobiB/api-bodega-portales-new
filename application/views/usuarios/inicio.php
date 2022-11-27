@@ -75,6 +75,7 @@
 
 <!-- ################################################################### -->
 <div class="container-sm">
+<br><br>
 <h3>USUARIOS</h3>
 <form class="needs-validation" novalidate method="POST">
         <div class="form-row">
@@ -98,9 +99,20 @@
                     Correcto
                 </div>
             </div>
+            <!-- <div class="col-md-3 mb-3">
+                <label> Empleado </label>
+                <select class="form-select form-control" id="inputpersonal" aria-label="Default select example">
+                <option selected>Elija empleado</option>
+                <?php
+                foreach ($listarPersonal as $f) {
+                ?>
+                    <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
+                <?php } ?>
+                </select>
+            </div> -->
             <div class="col-md-4 mb-3">
-                <label for="inputidpersonal">ID Personal</label>
-                <input type="text" class="form-control" id="inputidpersonal" placeholder="Ingrese el ID Personal" required>
+                <label for="inputidpersonal">Identidad</label>
+                <input type="text" class="form-control" id="inputpersonal" placeholder="Ingrese el ID Personal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
@@ -112,20 +124,32 @@
                     Correcto
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+
+            <!-- <div class="col-md-3 mb-3">
+                <label> Sucursales </label>
+                <select class="form-select form-control" id="inputidsucursal" aria-label="Default select example">
+                <option selected>Elija sucursal</option>
+                <?php
+                foreach ($listarSucursales as $f2) {
+                ?>
+                    <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
+                <?php } ?>
+                </select>
+            </div> -->
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputidsucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputidsucursal" placeholder="Ingrese el ID de la Sucursal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
         <button class="btn btn-primary" id="btnGuardarUsuario" onClick='return validarUsuario()' type="button">Agregar Usuario</button>
         <p id="errorUser"></p>
     </form>
-    <table class="table">
+    <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Usuario</th>
@@ -141,7 +165,7 @@
             foreach ($listaUsuarios as $f) {
             ?>
                 <tr>
-                    <td scope="row"><a href=""><?php echo $f->NomUsr; ?></a>
+                    <td scope="row"><?php echo $f->NomUsr; ?>
                     </td>
                     <td><?php echo $f->Contra; ?>
                     </td>
@@ -181,7 +205,7 @@
     {
       NomUsr: $("#inputusuario").val(),
       Contra: $("#inputcontraseña").val(),
-      IdPer: $("#inputidpersonal").val(),
+      IdPer: $("#inputpersonal").val(),
       nivel: $("#inputnivel").val(),
       IdSucursal: $("#inputidsucursal").val(),
     },

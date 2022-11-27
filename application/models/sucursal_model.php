@@ -16,4 +16,12 @@ class sucursal_model extends CI_Model{
         $query = $this->db->get_where('sucursales',$filtros);
         return $query->row_array();
     }
+    public function listarSucursales($filtros = FALSE){
+
+        if ($filtros === FALSE) {
+            $sql = "SELECT IdSucursal,DescSucursal FROM sucursales";
+            $results=$this->db->query($sql)->result();
+            return $results;
+        }
+    }
 }
