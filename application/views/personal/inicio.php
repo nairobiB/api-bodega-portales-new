@@ -143,49 +143,7 @@ session_start();
         </tbody>
 
     </table>
-    <h3>USUARIOS</h3>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Usuario</th>
-                <th scope="col">Contraseña</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">ID de Sucursal</th>
-                <th scope="col">Nivel</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($listaUsuarios as $f) {
-            ?>
-                <tr>
-                    <td scope="row"><?php echo $f->NomUsr; ?>
-                    </td>
-                    <td><?php echo $f->Contra; ?>
-                    </td>
-                    <td><?php echo $f->NomPer; ?>
-                    </td>
-                    <td><?php echo $f->DescSucursal; ?>
-                    </td>
-                    <td><?php echo $f->nivel; ?>
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modusuario" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Modificar
-                            </button>
-                            <button type="submit" class="btn btn-danger eliminate" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Eliminar
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
 
-    </table>
 </div>
 </div>
 </div>
