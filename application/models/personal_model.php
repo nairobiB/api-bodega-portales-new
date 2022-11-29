@@ -48,11 +48,20 @@ class personal_model extends CI_Model
     }
     public function listarPersonal($filtros = FALSE)
     {
-
         if ($filtros === FALSE) {
             $sql = "SELECT IdPer,NomPer FROM personal";
             $results = $this->db->query($sql)->result();
             return $results;
         }
+    }
+
+    public function guardarPersonal(string $IdPer, string $TelPer, string $NomPer, string $ApePer, string $DirPer, string $Email, string $fecha_nacimineto){
+        $this->db->query("INSERT INTO personal (IdPer, TelPer, NomPer, ApePer, DirPer, Email, fecha_nacimineto) values({$IdPer},{$TelPer}, {$NomPer}, {$ApePer}, {$DirPer}, {$Email}, {($fecha_nacimineto})");
+    }
+    public function modificarPersonal(string $IdPer, string $TelPer, string $NomPer, string $ApePer, string $DirPer, string $Email, string $Estado, string $fecha_nacimineto){
+        $this->db->query("UPDATE personal SET `TelPer` = {$TelPer},`NomPer` = {$NomPer} ,`ApePer` = {$ApePer}, `DirPer` = {$DirPer} , `Email` = {$Email}, `Estado` = {$Estado}, `fecha_nacimineto` = {$fecha_nacimineto} WHERE (`IdPer` = {$IdPer})");
+    }
+    public function eliminarPersonal(string $IdPer){
+        $this->db->query("DELETE from personal WHERE (`IdPer` = {$IdPer})");
     }
 }

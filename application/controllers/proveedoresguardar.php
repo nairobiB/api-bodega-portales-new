@@ -24,6 +24,51 @@ class proveedoresguardar extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
+
+    public function guardar()
+    {
+        try {
+            print_r($_POST);
+            $Nomproveedor = $this->db->escape($_POST["Nomproveedor"]);
+            $Telproveedor = $this->db->escape($_POST["Telproveedor"]);
+            $Dirproveedor = $this->db->escape($_POST["Dirproveedor"]);
+            $email = $this->db->escape($_POST["email"]);
+            $this->proveedores_model->guardarProveedor($Nomproveedor,$Telproveedor,$Dirproveedor, $email);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
+    public function modificar()
+    {
+        try {
+            print_r($_POST);
+            $IdProv =  $this->db->escape($_POST["IdProv"]);
+            $Nomproveedor = $this->db->escape($_POST["Nomproveedor"]);
+            $Telproveedor = $this->db->escape($_POST["Telproveedor"]);
+            $Dirproveedor = $this->db->escape($_POST["Dirproveedor"]);
+            $email = $this->db->escape($_POST["email"]);
+            $this->proveedores_model->modificarProveedor($IdProv,$Nomproveedor,$Telproveedor,$Dirproveedor, $email);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+
+    public function eliminar()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                $IdProv = $this->db->escape($_POST["IdProv"]);
+                $this->proveedores_model->eliminarProveedor($IdProv);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Eliminado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
+
     // function guardar()
     // {
     //     try {

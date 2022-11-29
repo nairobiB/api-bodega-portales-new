@@ -44,4 +44,14 @@ class proveedores_model extends CI_Model
             return $results;
         }
     }
+
+    public function guardarProveedor(string $Nomproveedor, string $Telproveedor, string $Dirproveedor, string $email){
+        $this->db->query("INSERT INTO proveedores ( Nomproveedor, Telproveedor, Dirproveedor, email) values({$Nomproveedor}, {$Telproveedor}, {$Dirproveedor}, {$email})");
+    }
+    public function modificarProveedor(string $IdProv, string $Nomproveedor, string $Telproveedor, string $Dirproveedor, string $email){
+        $this->db->query("UPDATE proveedores SET `Nomproveedor` = {$Nomproveedor},`Telproveedor` = {$Telproveedor} ,`Dirproveedor` = {$Dirproveedor}, `email` = {$email} WHERE (`IdProv` = {$IdProv})");
+    }
+    public function eliminarProveedor(string $IdProv){
+        $this->db->query("DELETE from proveedores WHERE (`IdProv` = {$IdProv})");
+    }
 }
