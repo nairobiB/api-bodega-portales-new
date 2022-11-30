@@ -145,7 +145,7 @@
 <!-- TABLA DE SALIDAS -->
 <div class="container">
 
-<h3><?php echo $titulo; ?></h3>
+    <h3><?php echo $titulo; ?></h3>
 
     <table class="table">
         <thead class="thead-dark">
@@ -207,7 +207,7 @@
                     </td>
                     <td><?php echo $f['Cantidad']; ?>
                     </td>
-                    <td><?php echo $f['PrecSalida']; ?>
+                    <td><?php echo $f['Precsalida']; ?>
                     </td>
                     <td>
                         <div class="btn-group" role="group">
@@ -228,6 +228,9 @@
 </div>
 </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- SCRIPT PARA ELIMINAR -->
 <script>
     $(document).ready(function() {
