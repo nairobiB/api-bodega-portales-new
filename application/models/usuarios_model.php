@@ -23,4 +23,10 @@ class usuarios_model extends CI_Model{
     public function guardar(string $NomUsr, string $Contra,string $IdPer,string $nivel,string $IdSucursal){
         $this->db->query("INSERT INTO usuarios (NomUsr,Contra,IdPer,nivel,IdSucursal) values({$NomUsr},{$Contra},{$IdPer},{$nivel},{$IdSucursal})");
     }
+    public function modificarUsuarios(string $NomUsr, string $Contra,string $IdPer,string $nivel,string $IdSucursal){
+        $this->db->query("UPDATE usuarios SET `NomUsr` = {$NomUsr},`Contra` = {$Contra} ,`IdPer` = {$IdPer}, `nivel` = {$nivel} WHERE (`IdSucursal` = {$IdSucursal})");
+    }
+    public function eliminarDetalle(string $NomUsr, string $IdPer){
+        $this->db->query("DELETE FROM usuarios  WHERE (`NomUsr` = {$NomUsr}) and (`IdPer` = {$IdPer})");
+    }
 }

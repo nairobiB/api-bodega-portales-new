@@ -28,4 +28,13 @@ class sucursal_model extends CI_Model
             return $results;
         }
     }
+    public function guardarSucursales(string $IdSucursal,string $DescSucursal,string $TelSucursal,string $email,string $direccionsucursal){
+        $this->db->query("INSERT INTO sucursales (IdSucursal, DescSucursal, TelSucursal, email, direccionsucursal) values({$IdSucursal}, {$DescSucursal}, {$TelSucursal}, {$email}, {$direccionsucursal})");
+    }
+    public function modificarSucursales(string $IdSucursal,string $DescSucursal,string $TelSucursal,string $email,string $direccionsucursal){
+        $this->db->query("UPDATE sucursales SET `IdSucursal` = {$IdSucursal},`DescSucursal` = {$DescSucursal} ,`TelSucursal` = {$TelSucursal}, `email` = {$email} and (`direccionsucursal` = {$direccionsucursal})");
+    }
+    public function eliminarSucursales(string $IdSucursal){
+        $this->db->query("DELETE from sucursales WHERE (`IdSucursal` = {$IdSucursal})");
+    }
 }
