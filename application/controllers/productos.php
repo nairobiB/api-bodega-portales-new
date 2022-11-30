@@ -14,9 +14,9 @@ class productos extends CI_Controller
     public function index()
     {
         //$this->load->view->titulo= 'Gestion de entradas';
-        $data['titulo']= 'Gestion de productos';
-        $data['lista']= $this->productos_model->listar();
-        $data['listaProvs']= $this->proveedores_model->listar();
+        $data['titulo'] = 'Gestion de productos';
+        $data['lista'] = $this->productos_model->listar();
+        $data['listaProvs'] = $this->proveedores_model->listar();
         // $data['listadetalle']= $this->productos_model->listardetalle();
         // $data['listarcategorias']= $this->productos_model->listarcategorias();
         $this->load->view('plantilla/head');
@@ -46,7 +46,7 @@ class productos extends CI_Controller
             $FechaCad = $this->db->escape($_POST["FechaCad"]);
             $numero_lote = $this->db->escape($_POST["numero_lote"]);
             $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
-            $this->entradas_model->guardarProductos($IdProd,$NomProd,$PrecProd,$PrecCompra,$stock,$Descripcion,$IdProv,$Estado, $IdCat,$FechaCad,$numero_lote,$IdSucursal);
+            $this->productos_model->guardarProductos($IdProd, $NomProd, $PrecProd, $PrecCompra, $stock, $Descripcion, $IdProv, $Estado, $IdCat, $FechaCad, $numero_lote, $IdSucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
@@ -68,7 +68,7 @@ class productos extends CI_Controller
             $FechaCad = $this->db->escape($_POST["FechaCad"]);
             $numero_lote = $this->db->escape($_POST["numero_lote"]);
             $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
-            $this->entradas_model->modicarProductos($IdProd,$NomProd,$PrecProd,$PrecCompra,$stock,$Descripcion,$IdProv,$Estado, $IdCat,$FechaCad,$numero_lote,$IdSucursal);
+            $this->productos_model->modificarProductos($IdProd, $NomProd, $PrecProd, $PrecCompra, $stock, $Descripcion, $IdProv, $Estado, $IdCat, $FechaCad, $numero_lote, $IdSucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
