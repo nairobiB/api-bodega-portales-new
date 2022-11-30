@@ -18,12 +18,12 @@ session_start();
             </div>
             <div class="col-md-4 mb-3">
                 <label> Id de Ventas </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" aria-label="Default select example" id="inputventa">
                     <option selected>Elija venta</option>
                     <?php
                     foreach ($listarIdVenta as $f) {
                     ?>
-                        <option value=""><?php echo $f->Codsalida; ?></option>
+                        <option value="<?php echo $f->Codsalida; ?>"><?php echo $f->Codsalida; ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -37,12 +37,12 @@ session_start();
 
             <div class="col-md-4 mb-3">
                 <label> Productos </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" aria-label="Default select example" id="inputproducto">
                     <option selected>Elija producto</option>
                     <?php
                     foreach ($listarProductos as $f) {
                     ?>
-                        <option value=""><?php echo $f->NomProd; ?></option>
+                        <option value="<?php echo $f->IdProd; ?>"><?php echo $f->NomProd; ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -69,12 +69,12 @@ session_start();
             </div>
             <div class="col-md-4 mb-3">
                 <label> Usuario </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" aria-label="Default select example" id="inputusuario">
                     <option selected>Elija usuario</option>
                     <?php
                     foreach ($listarUsuarios as $f) {
                     ?>
-                        <option value=""><?php echo $f->NomUsr; ?></option>
+                        <option value="<?php echo $f->NomUsr; ?>"><?php echo $f->NomUsr; ?></option>
                     <?php } ?>
                 </select>
             </div>

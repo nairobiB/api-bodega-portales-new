@@ -44,4 +44,29 @@ class salidas_model extends CI_Model
             return $results;
         }
     }
+
+    public function guardarSalida(string $FechaVenta, string $NomUsr)
+    {
+        $this->db->query("INSERT INTO salida (FechaVenta, NomUsr) values({$FechaVenta}, {$NomUsr})");
+    }
+    public function guardarDetSalida(string $Codsalida, string $IdProd, string $Cantidad, string $Precsalida)
+    {
+        $this->db->query("INSERT INTO detallesalida (Codsalida, IdProd, Cantidad, Precsalida) values({$Codsalida}, {$IdProd}, {$Cantidad}, {$Precsalida})");
+    }
+    public function modificarSalida(string $Codsalida, string $FechaVenta, string $NomUsr)
+    {
+        $this->db->query("UPDATE salida SET `FechaVenta` = {$FechaVenta},`NomUsr` = {$NomUsr} WHERE (`Codsalida` = {$Codsalida})");
+    }
+    public function eliminarSalida(string $Codsalida)
+    {
+        $this->db->query("DELETE from salida WHERE (`Codsalida` = {$Codsalida})");
+    }
+    public function modificarDetalleS(string $Codsalida, string $IdProd, string $Cantidad, string $Precsalida)
+    {
+        $this->db->query("UPDATE detallesalida SET `Cantidad` = {$Cantidad}, `Precsalida` = {$Precsalida} WHERE (`Codsalida` = {$Codsalida}) and (`IdProd` = {$IdProd})");
+    }
+    public function eliminarDetalleS(string $Codsalida, string $IdProd)
+    {
+        $this->db->query("DELETE FROM detallesalida  WHERE (`Codsalida` = {$Codsalida}) and (`IdProd` = {$IdProd})");
+    }
 }

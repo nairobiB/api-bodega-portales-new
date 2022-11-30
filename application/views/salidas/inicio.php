@@ -228,6 +228,9 @@
 </div>
 </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- SCRIPT PARA ELIMINAR -->
 <script>
     $(document).ready(function() {
@@ -244,6 +247,18 @@
             $('#delcodsalida').val(data[0]);
 
         });
+    });
+</script>
+<script>
+    $("#btnsidel").on("click", function() {
+        $.post(
+            "/salidas/eliminarSalida", {
+                Codsalida: $("#delcodsalida").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>
 <!--Script PARA MODIFICAR-->
@@ -265,29 +280,22 @@
         });
     });
 </script>
-
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
 <script>
-    $(document).ready(function() {
-        // lo hacemos con una class
-        $('.deteliminarsalida').on('click', function() {
-            $('#borrardetallesalida').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#elimcodigo').val(data[0]);
-            $('#elimcodigoproducto').val(data[1]);
-
-
-        });
+    $("#modsalida").on("click", function() {
+        $.post(
+            "/salidas/modificarSalida", {
+                Codsalida: $("#codsalida").val(),
+                FechaVenta: $("#fechaventa").val(),
+                NomUsr: $("#encargadosalida").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>
 
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 <!--Script PARA MODIFICAR DETALLE DE SALIDA-->
 <script>
     $(document).ready(function() {
@@ -312,7 +320,7 @@
 <script>
     $('#detallemod').on('click', function() {
         $.post(
-            "/salidadetalle/modificardetalle", {
+            "/salidadetalle/modificardetalleS", {
                 Codsalida: $("#detallecod").val(),
                 IdProd: $("#codprod").val(),
                 Cantidad: $("#cantidadsalida").val(),
@@ -324,12 +332,31 @@
         );
     });
 </script>
+<!-- SCRIPT PARA ELIMINAR UN DETALLE DE SALIDA-->
+<script>
+    $(document).ready(function() {
+        // lo hacemos con una class
+        $('.deteliminarsalida').on('click', function() {
+            $('#borrardetallesalida').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
 
+            console.log(data);
+
+            $('#elimcodigo').val(data[0]);
+            $('#elimcodigoproducto').val(data[1]);
+
+
+        });
+    });
+</script>
 <!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE DETALLE DE salidas -->
 <script>
     $('#btnaccionardetalle').on('click', function() {
         $.post(
-            "/salidadetalle/eliminardetalle", {
+            "/salidadetalle/eliminardetalleS", {
                 Codsalida: $("#elimcodigo").val(),
                 IdProd: $("#elimcodigoproducto").val(),
             },
