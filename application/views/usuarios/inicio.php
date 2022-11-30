@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <!-- <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-3">
                 <label> Sucursales </label>
                 <select class="form-select form-control" id="inputidsucursal" aria-label="Default select example">
                 <option selected>Elija sucursal</option>
@@ -135,7 +135,7 @@
                     <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
                 <?php } ?>
                 </select>
-            </div> -->
+            </div>
             <!-- <div class="col-md-4 mb-3">
                 <label for="inputidsucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputidsucursal" placeholder="Ingrese el ID de la Sucursal" required>
