@@ -30,6 +30,61 @@ class productos extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
+    public function guardarproductos()
+    {
+        try {
+            print_r($_POST);
+            $IdProd =  $this->db->escape($_POST["IdProd"]);
+            $NomProd = $this->db->escape($_POST["NomProd"]);
+            $PrecProd = $this->db->escape($_POST["PrecProd"]);
+            $PrecCompra = $this->db->escape($_POST["PrecCompra"]);
+            $stock = $this->db->escape($_POST["stock"]);
+            $Descripcion = $this->db->escape($_POST["Descripcion"]);
+            $IdProv = $this->db->escape($_POST["IdProv"]);
+            $Estado = $this->db->escape($_POST["Estado"]);
+            $IdCat = $this->db->escape($_POST["IdCat"]);
+            $FechaCad = $this->db->escape($_POST["FechaCad"]);
+            $numero_lote = $this->db->escape($_POST["numero_lote"]);
+            $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
+            $this->entradas_model->guardarProductos($IdProd,$NomProd,$PrecProd,$PrecCompra,$stock,$Descripcion,$IdProv,$Estado, $IdCat,$FechaCad,$numero_lote,$IdSucursal);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
+    public function modicarproductos()
+    {
+        try {
+            print_r($_POST);
+            $IdProd =  $this->db->escape($_POST["IdProd"]);
+            $NomProd = $this->db->escape($_POST["NomProd"]);
+            $PrecProd = $this->db->escape($_POST["PrecProd"]);
+            $PrecCompra = $this->db->escape($_POST["PrecCompra"]);
+            $stock = $this->db->escape($_POST["stock"]);
+            $Descripcion = $this->db->escape($_POST["Descripcion"]);
+            $IdProv = $this->db->escape($_POST["IdProv"]);
+            $Estado = $this->db->escape($_POST["Estado"]);
+            $IdCat = $this->db->escape($_POST["IdCat"]);
+            $FechaCad = $this->db->escape($_POST["FechaCad"]);
+            $numero_lote = $this->db->escape($_POST["numero_lote"]);
+            $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
+            $this->entradas_model->modicarProductos($IdProd,$NomProd,$PrecProd,$PrecCompra,$stock,$Descripcion,$IdProv,$Estado, $IdCat,$FechaCad,$numero_lote,$IdSucursal);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    public function eliminarproductos()
+    {
+        try {
+            print_r($_POST);
+            $IdProd = $this->db->escape($_POST["IdProd"]);
+            $this->entradas_model->eliminarProductos($IdProd);
+            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
     // function modificar()
     // {   try{
     //         print_r($_POST);
