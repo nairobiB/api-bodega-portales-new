@@ -210,6 +210,7 @@ session_start();
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id Producto</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
@@ -222,6 +223,8 @@ session_start();
             ?>
                 <tr>
                     <td scope="row"><?php echo $f2->IdCompra; ?>
+                    </td>
+                    <td><?php echo $f2->IdProd; ?>
                     </td>
                     <td><?php echo $f2->NomProd; ?>
                     </td>
@@ -258,7 +261,7 @@ session_start();
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!--Script PARA MODIFICAR ENTRADA-->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() { 
         //esa clase esta en el boton de modificar de la tabla de entradas
         $('.modentrada').on('click', function() {
             //este id es el id del modal
@@ -340,8 +343,8 @@ session_start();
 
             $('#dcodigo').val(data[0]);
             $('#idprod').val(data[1]);
-            $('#cantidad').val(data[2]);
-            $('#precio').val(data[3]);
+            $('#cantidad').val(data[3]);
+            $('#precio').val(data[4]);
         });
     });
 </script>

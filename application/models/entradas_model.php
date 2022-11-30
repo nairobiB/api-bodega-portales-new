@@ -22,7 +22,7 @@ class entradas_model extends CI_Model{
     public function listardetalle($filtros = FALSE){
 
         if ($filtros === FALSE) {
-            $sql = "SELECT IdCompra, NomProd, Cantidad, Precio FROM detalleentrada
+            $sql = "SELECT IdCompra,productos.IdProd, NomProd, Cantidad, Precio FROM detalleentrada
             inner join productos on productos.IdProd=detalleentrada.IdProd;";
             // $query = $this->db->get('salidas');
             // return $query->result_array();
