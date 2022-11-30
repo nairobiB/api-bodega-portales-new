@@ -83,13 +83,13 @@ session_start();
     <br><br>
     <form class="needs-validation" novalidate method="POST">
         <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdProv">Id Proveedores</label>
                 <input type="text" class="form-control" id="inputIdProv" placeholder="Ingrese el ID del proveedor" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4 mb-3">
                 <label for="inputNomproveedor">Nombre Proveedor</label>
                 <input type="text" class="form-control" id="inputNomproveedor" placeholder="Ingrese el Nombre del Proveedor" required>
@@ -127,10 +127,11 @@ session_start();
             </div>
         </div>
 
-        <button class="btn btn-primary" id="btnGuardarProv" onClick='return validarProveedor()' type="button">Agregar registro</button>
+        <button class="btn btn-primary" id="btnGuardarProve" type="button">Agregar registro</button>
         <p id="errorProveedor"></p>
     </form>
     <br>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -173,6 +174,10 @@ session_start();
         </tbody>
 
     </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
     <script>
         (function() {
             'use strict';
@@ -192,11 +197,14 @@ session_start();
             }, false);
         })();
     </script>
+
 </div>
 </div>
 </div>
 </section>
 
+<!-- SCRIPT PARA ELIMINAR UN PROVEEDOR-->
+<!-- ASI SE LLAMA AL MODAL DE PROVEEDORES -->
 <script>
     $(document).ready(function() {
         // lo hacemos con una class
@@ -214,6 +222,22 @@ session_start();
         });
     });
 </script>
+<!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE PROVEEDORES -->
+<script>
+    $('#btndelete').on('click', function() {
+        $.post(
+            "/proveedoresguardar/eliminar", {
+                IdProv: $("#delIdProv").val()
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+<!-- SCRIPT PARA MODIFICAR UN PROVEEDOR-->
+<!-- ASI SE LLAMA AL MODAL DE PROVEEDORES -->
 <script>
     $(document).ready(function() {
         //esa clase esta en el boton de modificar de la tabla de entradas
@@ -233,5 +257,38 @@ session_start();
             $('#Dirproveedor').val(data[3]);
             $('#email').val(data[4]);
         });
+    });
+</script>
+<!-- //ESTO MODIFICA LOS CAMPOS DE LA TABLA DE PROVEEDORES -->
+<script>
+    $('#modificarProveedor').on('click', function() {
+        $.post(
+            "/proveedoresguardar/modificar", {
+                IdProv: $("#IdProv").val(),
+                Nomproveedor: $("#Nomproveedor").val(),
+                Telproveedor: $("#Telproveedor").val(),
+                Dirproveedor: $("#Dirproveedor").val(),
+                email: $("#email").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+<script>
+    $("#btnGuardarProve").click(function() {
+        $.post(
+            "/proveedoresguardar/guardar", {
+                Nomproveedor: $("#inputNomproveedor").val(),
+                Telproveedor: $("#inputTelproveedor").val(),
+                Dirproveedor: $("#inputDirproveedor").val(),
+                email: $("#inputemail").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>

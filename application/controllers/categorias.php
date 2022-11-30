@@ -29,11 +29,41 @@ class categorias extends CI_Controller
                 print_r($_POST);
                 //$IdCat = $this->db->escape($_POST["IdCat"]);
                 $NombreCat = $this->db->escape($_POST["NombreCat"]);
-                $this->categorias_model->guardar($NombreCat);
+                $this->categorias_model->guardarCategoria($NombreCat);
                 echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
             }
         }catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+        }
+    }
+
+    public function modificar()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                //$IdCat = $this->db->escape($_POST["IdCat"]);
+                $IdCat = $this->db->escape($_POST["IdCat"]);
+                $NombreCat = $this->db->escape($_POST["NombreCat"]);
+                $this->categorias_model->modificarCategoria($IdCat, $NombreCat);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array("success' => 0, 'msj' => 'Error al actualizar registro"));
+        }
+    }
+
+    public function eliminar()
+    {
+        try{
+            if($this->input->post()){
+                print_r($_POST);
+                $IdCat = $this->db->escape($_POST["IdCat"]);
+                $this->categorias_model->eliminarCategoria($IdCat);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Eliminado'));
+            }
+        }catch (\Throwable $th) {
+            echo json_encode(array("success' => 0, 'msj' => 'Error al eliminar registro"));
         }
     }
 }

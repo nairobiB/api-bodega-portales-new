@@ -46,7 +46,7 @@ session_start();
                     Correcto
                 </div>
             </div>
-            
+
             <div class="col-md-4 mb-3">
                 <label for="inputfechanacimiento">Fecha de Nacimiento</label>
                 <input type="date" class="form-control" id="inputfechanacimiento" required>
@@ -63,6 +63,8 @@ session_start();
     <br>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 <script>
     (function() {
@@ -82,4 +84,23 @@ session_start();
             });
         }, false);
     })();
+</script>
+
+<script>
+    $("#btnGuardarPersonal").click(function() {
+        $.post(
+            "/personalAgregar/guardar", {
+                IdPer: $("#inputpersonal").val(),
+                TelPer: $("#inputTelefono").val(),
+                NomPer: $("#inputnombre").val(),
+                ApePer: $("#inputapellido").val(),
+                DirPer: $("#inputdireccion").val(),
+                Email: $("#inputemail").val(),
+                fecha_nacimineto: $("#inputfechanacimiento").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
 </script>
