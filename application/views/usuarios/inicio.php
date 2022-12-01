@@ -75,9 +75,9 @@
 
 <!-- ################################################################### -->
 <div class="container-sm">
-<br><br>
-<h3>USUARIOS</h3>
-<form class="needs-validation" novalidate method="POST">
+    <br><br>
+    <h3>USUARIOS</h3>
+    <form class="needs-validation" novalidate method="POST">
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="inputusuario">Usuario</label>
@@ -93,8 +93,8 @@
             </div>
 
             <div class="col-md-4 mb-3">
-                <label for="inputcontraseña">Contraseña</label>
-                <input type="password" class="form-control" id="inputcontraseña" placeholder="Ingrese la Contraseña" required>
+                <label for="inputcontrasena">Contraseña</label>
+                <input type="password" class="form-control" id="inputcontrasena" placeholder="Ingrese la Contraseña" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
@@ -128,12 +128,12 @@
             <div class="col-md-3 mb-3">
                 <label> Sucursales </label>
                 <select class="form-select form-control" id="inputidsucursal" aria-label="Default select example">
-                <option selected>Elija sucursal</option>
-                <?php
-                foreach ($listarSucursales as $f2) {
-                ?>
-                    <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
-                <?php } ?>
+                    <option selected>Elija sucursal</option>
+                    <?php
+                    foreach ($listarSucursales as $f2) {
+                    ?>
+                        <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <!-- <div class="col-md-4 mb-3">
@@ -191,7 +191,7 @@
         </tbody>
 
     </table>
-    
+
 </div>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -199,21 +199,20 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- PARTE DE USUARIOS -->
 <script>
-    $("#btnGuardarUsuario").click(function () {
-  $.post(
-    "/usuarios/guardar",
-    {
-      NomUsr: $("#inputusuario").val(),
-      Contra: $("#inputcontraseña").val(),
-      IdPer: $("#inputpersonal").val(),
-      nivel: $("#inputnivel").val(),
-      IdSucursal: $("#inputidsucursal").val(),
-    },
-    function (data, status) {
-      alert("Data: " + data + "\nStatus: " + status);
-    }
-  );
-});
+    $("#btnGuardarUsuario").click(function() {
+        $.post(
+            "/usuarios/guardar", {
+                NomUsr: $("#inputusuario").val(),
+                Contra: $("#inputcontrasena").val(),
+                IdPer: $("#inputpersonal").val(),
+                nivel: $("#inputnivel").val(),
+                IdSucursal: $("#inputidsucursal").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
 </script>
 <!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
 <script>
@@ -255,5 +254,40 @@
 
 
         });
+    });
+</script>
+
+<script>
+    // //ESTO MODIFICA LOS CAMPOS DE LA TABLA DE USUARIOS
+    // //ESTE ID ES EL DE EL BOTON DEL MODAL
+    $("#moduser").on("click", function() {
+        $.post(
+            "/personal/modificarU", {
+                NomUsr: $("#usrname").val(),
+                Contra: $("#contra").val(),
+                IdPer: $("#idperson").val(),
+                Estado: $("#state").val(),
+                nivel: $("#level").val(),
+                IdSucursal: $("#idsucu").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+<script>
+    // // ###############################################################################################
+
+    // //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE USUARIOS
+    $("#btnDelete").on("click", function() {
+        $.post(
+            "/personal/eliminarU", {
+                NomUsr: $("#userdel").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>
