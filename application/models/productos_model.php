@@ -50,23 +50,13 @@ class productos_model extends CI_Model
             return $results;
         }
     }
-    public function guardarProductos(string $IdProd, string $NomProd, string $PrecProd, string $PrecCompra, string $stock, string $Descripcion, string $IdProv, string $Estado, string $IdCat, string $FechaCad, string $numero_lote, string $IdSucursal){
-        $this->db->query("INSERT INTO productos (IdProd, NomProd, PrecProd, PrecCompra, stock, Descripcion, IdProv, Estado,  IdCat, FechaCad, numero_lote, IdSucursal) values({$IdProd}, {$NomProd}, {$PrecProd}, {$PrecCompra}, {$stock}, {$Descripcion}, {$IdProv}, {$Estado}, {$IdCat}, {$FechaCad}, {$numero_lote}, {$IdSucursal})");
+    public function guardarProductos(string $IdProd, string $NomProd, string $PrecProd, string $PrecCompra, string $stock, string $Descripcion, string $IdProv, string $IdCat, string $FechaCad, string $numero_lote, string $IdSucursal){
+        $this->db->query("INSERT INTO productos (IdProd, NomProd, PrecProd, PrecCompra, stock, Descripcion, IdProv, IdCat, FechaCad, numero_lote, IdSucursal) values({$IdProd}, {$NomProd}, {$PrecProd}, {$PrecCompra}, {$stock}, {$Descripcion}, {$IdProv}, {$IdCat}, {$FechaCad}, {$numero_lote}, {$IdSucursal})");
     }
-    public function modificarProductos(string $IdProd, string $NomProd, string $PrecProd, string $PrecCompra, string $stock, string $Descripcion, string $IdProv, string $Estado, string $IdCat, string $FechaCad, string $numero_lote, string $IdSucursal){
-        $this->db->query("UPDATE productos SET `IdProd` = {$IdProd}, `NomProd` = {$NomProd}, `PrecProd` = {$PrecProd}, `PrecCompra` = {$PrecCompra}, `stock` = {$stock}, `Descripcion` = {$Descripcion}, `IdProv` = {$IdProv}, `Estado` = {$Estado}, `IdCat` = {$IdCat}, `FechaCad` = {$FechaCad}, `numero_lote` = {$numero_lote}, `IdSucursal` = {$IdSucursal})");
+    public function modificarProductos(string $IdProd, string $NomProd, string $PrecProd, string $PrecCompra, string $stock, string $Descripcion, string $IdProv, string $IdCat, string $FechaCad, string $numero_lote, string $IdSucursal){
+        $this->db->query("UPDATE productos SET `IdProd` = {$IdProd}, `NomProd` = {$NomProd}, `PrecProd` = {$PrecProd}, `PrecCompra` = {$PrecCompra}, `stock` = {$stock}, `Descripcion` = {$Descripcion}, `IdProv` = {$IdProv}, `IdCat` = {$IdCat}, `FechaCad` = {$FechaCad}, `numero_lote` = {$numero_lote}, `IdSucursal` = {$IdSucursal})");
     }
     public function eliminarProductos(string $IdProd){
         $this->db->query("DELETE from productos WHERE (`IdProd` = {$IdProd})");
     }
-    // public function listardetalleS($filtros = FALSE){
-
-    //     if ($filtros === FALSE) {
-    //         $query = $this->db->get('detallesalida');
-    //         return $query->result_array();
-    //     }
-
-    //     $query = $this->db->get_where('detallesalida',$filtros);
-    //     return $query->row_array();
-    // }
 }

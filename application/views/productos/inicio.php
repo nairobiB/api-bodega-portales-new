@@ -35,11 +35,22 @@
                         <input type="text" name="Descripcion" id="Descripcion" class="form-control" placeholder="Ingrese la descripcion">
                     </div>
                     <div class="form-group">
-                        <label> ID Proveedor </label>
-                        <input type="text" name="IdProv" id="IdProv" class="form-control" placeholder="Ingrese el ID proveedor">
+                        <label> Proveedores </label>
+                        <select class="form-select form-control" name="IdProv" id="IdProv" aria-label="Default select example">
+                            <option selected>Elija proveedor</option>
+                            <?php
+                            foreach ($listarProveedores as $f) {
+                            ?>
+                                <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
+                    <!-- <div class="form-group">
+                        <label> Proveedor </label>
+                        <input type="text" name="IdProv" id="IdProv" class="form-control" placeholder="Ingrese el ID proveedor">
+                    </div> -->
                     <div class="form-group">
-                        <label> ID Categoria</label>
+                        <label> Categoria</label>
                         <input type="text" name="IdCat" id="IdCat" class="form-control" placeholder="Ingrese el ID categoria">
                     </div>
                     <div class="form-group">
@@ -51,7 +62,7 @@
                         <input type="text" name="numero_lote" id="numero_lote" class="form-control" placeholder="Ingrese el numero de lote">
                     </div>
                     <div class="form-group">
-                        <label> ID Sucursal</label>
+                        <label> Sucursal</label>
                         <input type="text" name="IdSucursal" id="IdSucursal" class="form-control" placeholder="Ingrese el ID sucursal">
                     </div>
                 </div>
@@ -99,7 +110,7 @@
 </article>
 <div class="container">
     <h3><?php echo $titulo; ?></h3>
-    <table class="table">
+    <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -190,6 +201,19 @@
         });
     });
 </script>
+<script>
+    //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE PRODUCTOS
+    $('#btnsi').on('click', function() {
+        $.post(
+            "/productos/eliminarproductos", {
+                IdProd: $("#delIdProd").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
 
 
 <!-- MODIFICAR UN PRODUCTO -->
@@ -226,7 +250,7 @@
     //id del modal boton
     $('#modificarP').on('click', function() {
         $.post(
-            "/productos/modificar", {
+            "/productos/modicarproductos", {
                 IdProd: $("#IdProd").val(),
                 NomProd: $("#NomProd").val(),
                 PrecProd: $("#PrecProd").val(),
@@ -238,21 +262,6 @@
                 FechaCad: $("#FechaCad").val(),
                 numero_lote: $("#numero_lote").val(),
                 IdSucursal: $("#IdSucursal").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
-</script>
-
-<!-- ACCION DEL BOTON DE DEL DE LA TABLA DE PRODUCTOS -->
-<script>
-    //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE ENTRADAS
-    $('#btnsi').on('click', function() {
-        $.post(
-            "/productos/eliminar", {
-                IdProd: $("#delIdProd").val(),
             },
             function(data, status) {
                 alert("Data: " + data + "\nStatus: " + status);
