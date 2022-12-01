@@ -23,16 +23,16 @@ class usuarios_model extends CI_Model
         // $query = $this->db->get_where('usuarios',$filtros);
         // return $query->row_array();
     }
-    public function guardar(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
+    public function guardarUsuario(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
     {
         $this->db->query("INSERT INTO usuarios (NomUsr, Contra, IdPer, nivel, IdSucursal) values({$NomUsr},{$Contra},{$IdPer},{$nivel},{$IdSucursal})");
     }
-    public function modificarUsuarios(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
+    public function modificarUsuario(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
     {
-        $this->db->query("UPDATE usuarios SET `NomUsr` = {$NomUsr},`Contra` = {$Contra} ,`IdPer` = {$IdPer}, `nivel` = {$nivel} WHERE (`IdSucursal` = {$IdSucursal})");
+        $this->db->query("UPDATE usuarios SET `Contra` = {$Contra} ,`IdPer` = {$IdPer}, `nivel` = {$nivel}, `IdSucursal` = {$IdSucursal} WHERE `NomUsr` = {$NomUsr}");
     }
-    public function eliminarDetalle(string $NomUsr, string $IdPer)
+    public function eliminarUsuario(string $NomUsr, string $IdPer)
     {
-        $this->db->query("DELETE FROM usuarios  WHERE (`NomUsr` = {$NomUsr}) and (`IdPer` = {$IdPer})");
+        $this->db->query("DELETE FROM usuarios  WHERE `NomUsr` = {$NomUsr}");
     }
 }

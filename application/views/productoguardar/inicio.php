@@ -152,14 +152,11 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
 <!-- GUARDAR DATOS EN LA TABLA DE PRODUCTOS -->
 <script>
     $("#btn_guardarProd").click(function () {
   $.post(
-    "/productos/guardarproductos",
+    "/productos/guardar",
     {
       IdProd: $("#inputIdProd").val(),
       NomProd: $("#inputNomProd").val(),

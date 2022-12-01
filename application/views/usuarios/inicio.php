@@ -214,24 +214,7 @@
         );
     });
 </script>
-<!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
-<script>
-    $(document).ready(function() {
-        // lo hacemos con una class
-        $('.eliminate').on('click', function() {
-            $('#borrarusuario').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
 
-            console.log(data);
-
-            $('#userdel').val(data[0]);
-
-        });
-    });
-</script>
 <!--Script PARA MODIFICAR USUARIO-->
 <script>
     $(document).ready(function() {
@@ -262,7 +245,7 @@
     // //ESTE ID ES EL DE EL BOTON DEL MODAL
     $("#moduser").on("click", function() {
         $.post(
-            "/personal/modificarU", {
+            "/usuarios/modificar", {
                 NomUsr: $("#usrname").val(),
                 Contra: $("#contra").val(),
                 IdPer: $("#idperson").val(),
@@ -276,13 +259,32 @@
         );
     });
 </script>
+
+<!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
+<script>
+    $(document).ready(function() {
+        // lo hacemos con una class
+        $('.eliminate').on('click', function() {
+            $('#borrarusuario').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#userdel').val(data[0]);
+
+        });
+    });
+</script>
 <script>
     // // ###############################################################################################
 
     // //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE USUARIOS
     $("#btnDelete").on("click", function() {
         $.post(
-            "/personal/eliminarU", {
+            "/usuarios/eliminar", {
                 NomUsr: $("#userdel").val(),
             },
             function(data, status) {

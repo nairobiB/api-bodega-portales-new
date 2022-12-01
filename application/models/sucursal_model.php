@@ -35,7 +35,7 @@ class sucursal_model extends CI_Model
     public function modificarSucursales(string $IdSucursal, string $DescSucursal, string $telsucursal, string $email, string $direccionsucursal)
     {
         $this->db->query("UPDATE sucursales SET `DescSucursal` = {$DescSucursal} ,`telsucursal` = {$telsucursal}, `email` = {$email}, `direccionsucursal` = {$direccionsucursal} WHERE `IdSucursal` = {$IdSucursal}");
-    } //ta malo el sql
+    }
     public function eliminarSucursales(string $IdSucursal)
     {
         $this->db->query("DELETE from sucursales WHERE (`IdSucursal` = {$IdSucursal})");
