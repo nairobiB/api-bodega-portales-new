@@ -46,8 +46,11 @@ session_start();
         </div>
     </form>
 </div>
-
 <br>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
 <script>
     (function() {
         'use strict';
@@ -68,13 +71,10 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
-<!-- <script>
+<script>
     $("#btnguardarS").click(function () {
     $.post(
-      "/sucursalesguardar/guardar",
+      "/sucursales/guardar",
       {
         IdSucursal: $("#inputIdSucursal").val(),
         DescSucursal: $("#inputDescSucursal").val(),
@@ -87,4 +87,4 @@ session_start();
       }
     );
   });
-</script> -->
+</script>
