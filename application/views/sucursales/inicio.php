@@ -108,10 +108,10 @@
                 </td>
                 <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-warning modsucursales" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-outline-warning btn-sm modsucursales" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Modificar
                         </button>
-                        <button type="submit" class="btn btn-outline-danger Btneliminarsucur" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="submit" class="btn btn-outline-danger btn-sm Btneliminarsucur" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Eliminar
                         </button>
                     </div>

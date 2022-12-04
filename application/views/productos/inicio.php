@@ -171,10 +171,10 @@
                     </td>
                     <td>
 
-                        <button type="button" class="btn btn-outline-warning modproductos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="button" class="btn btn-outline-warning btn-sm modproductos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Modificar
                         </button>
-                        <button type="submit" class="btn btn-outline-danger Btneliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="submit" class="btn btn-outline-danger btn-sm Btneliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Eliminar
                         </button>
                     </td>

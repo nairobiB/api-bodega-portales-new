@@ -131,10 +131,10 @@ session_start();
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-warning modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-outline-danger buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>

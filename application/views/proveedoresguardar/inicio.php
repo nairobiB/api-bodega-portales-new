@@ -164,10 +164,10 @@ session_start();
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-warning modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-outline-danger BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>

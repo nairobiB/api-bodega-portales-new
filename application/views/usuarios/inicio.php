@@ -199,10 +199,10 @@
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class=" btn btn-outline-warning modusuario" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class=" btn btn-outline-warning btn-sm modusuario" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-outline-danger eliminate" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm eliminate" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -212,7 +212,6 @@
         </tbody>
 
     </table>
-    
 </div>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->

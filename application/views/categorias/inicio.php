@@ -100,10 +100,10 @@
                         <td>
                             <div class="btn-group" role="group">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-outline-warning modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button type="button" class="btn btn-outline-warning btn-sm modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Modificar
                                 </button>
-                                <button type="submit" class="btn btn-outline-danger elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button type="submit" class="btn btn-outline-danger btn-sm elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Eliminar
                                 </button>
                             </div>
