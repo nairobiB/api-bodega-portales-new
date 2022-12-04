@@ -1,14 +1,15 @@
 <?php
 session_start();
 ?>
-
+<br>
+<center><img src="public/assets/images/revisa.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UNA SALIDA</h2>
+</center>
 
 <div class="container">
-    <br><br>
-    <h3><?php echo $titulo; ?></h3>
-
+    <br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-4 mb-3">
                 <label for="fecha">Fecha</label>
                 <input type="date" class="form-control" id="inputfecha" required>
@@ -17,7 +18,7 @@ session_start();
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label> Id de Ventas </label>
+                <label> Id de Venta </label>
                 <select class="form-select form-control" aria-label="Default select example" id="inputventa">
                     <option selected>Elija venta</option>
                     <?php
@@ -92,9 +93,10 @@ session_start();
             </div> -->
         </div>
 
-
-        <button class="btn btn-primary" id="btnGuardarSalida" onClick="return validarSalida()" type="button">Agregar registro</button>
+        <center>
+        <button class="btn btn-success" id="btnGuardarSalida" onClick="return validarSalida()" type="button">Agregar registro</button>
         <p id="errorSalida"></p>
+        </center>
     </form>
 </div>
 

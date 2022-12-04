@@ -73,10 +73,14 @@
 </div>
 
 <div class="container">
-<h3>SUCURSALES</h3>
+    <br>
+<center><img src="public/assets/images/mapa.png" alt="" srcset="" width="200px">
+    <h2>NUESTRAS SUCURSALES</h2>
+    <br>
+</center>
 
 </article>
-<table class="table table-bordered">
+<table class="table table-striped table-responsive-lg">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -104,10 +108,10 @@
                 </td>
                 <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-primary modsucursales" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-outline-warning modsucursales" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Modificar
                         </button>
-                        <button type="submit" class="btn btn-danger Btneliminarsucur" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="submit" class="btn btn-outline-danger Btneliminarsucur" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Eliminar
                         </button>
                     </div>

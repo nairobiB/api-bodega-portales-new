@@ -12,7 +12,7 @@ class productos_model extends CI_Model
     {
 
         if ($filtros === FALSE) {
-            $sql = "SELECT IdProd, NomProd, PrecProd, PrecCompra, stock, Descripcion, Nomproveedor, NombreCat, FechaCad, numero_lote, DescSucursal from productos
+            $sql = "SELECT IdProd, NomProd, PrecProd, PrecCompra, stock,Descripcion, proveedores.IdProv, Nomproveedor,categorias.IdCat, NombreCat, FechaCad, numero_lote,sucursales.IdSucursal, DescSucursal from productos
             inner join proveedores on proveedores.IdProv=productos.IdProv
             inner join categorias on categorias.IdCat=productos.IdCat
             inner join sucursales on sucursales.IdSucursal=productos.IdSucursal;";

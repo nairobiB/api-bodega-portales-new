@@ -161,8 +161,11 @@ session_start();
 
 <!-- TABLA DE ENTRADAS -->
 <div class="container">
-    <h3><?php echo $titulo; ?></h3>
-    <table class="table table-bordered">
+        <center><img src="public/assets/images/listaProductos.png" alt="" srcset="" width="200px">
+            <h2>PRODUCTOS DE NUESTRA BODEGA</h2>
+            <br>
+        </center>
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -189,10 +192,10 @@ session_start();
                         <!-- modentrada -->
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger btneliminar" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btneliminar" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -206,7 +209,7 @@ session_start();
 
     <!-- TABLA DE DETALLE DE ENTRADAS -->
     <h3>DETALLE ENTRADAS</h3>
-    <table class="table table-bordered">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>

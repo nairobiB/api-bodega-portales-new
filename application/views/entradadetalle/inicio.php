@@ -4,7 +4,11 @@ session_start();
 <div class="container">
     <br><br>
     <form class="needs-validation" novalidate method="POST" action="">
-        <div class="form-row">
+    <center><img src="public/assets/images/bandeja-de-entrada.png" alt="" srcset="" width="200px">
+            <h2>INGRESA LAS NUEVAS ENTRADAS</h2>
+            <br>
+        </center>
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-3 mb-3">
                 <label for="fecha">Fecha</label>
                 <input type="date" class="form-control" id="inputfecha" required>
@@ -111,9 +115,10 @@ session_start();
 
         </div>
 
-
-        <button class="btn btn-primary" id="btnGuardarDetalle" onClick="return validarEntrada()" type="button">Agregar registro</button>
+        <center>
+        <button class="btn btn-success" id="btnGuardarDetalle" onClick="return validarEntrada()" type="button">Agregar registro</button>
         <p id="errorEntrada"></p>
+        </center>
     </form>
     <br>
 

@@ -78,11 +78,13 @@ session_start();
 <!-- ########################################################################################################################################################################### -->
 
 
-
-<div class="container">
-    <br><br>
+<center><img src="public/assets/images/PROVEEDORES.png" alt="" srcset="" width="200px">
+    <h2>PROVEEDORES</h2>
+</center>
+<div class="container-sm">
+    <br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdProv">Id Proveedores</label>
                 <input type="text" class="form-control" id="inputIdProv" placeholder="Ingrese el ID del proveedor" required>
@@ -126,13 +128,14 @@ session_start();
                 </div>
             </div>
         </div>
-
-        <button class="btn btn-primary" id="btnGuardarProve" type="button">Agregar registro</button>
+        <center>
+        <button class="btn btn-success" id="btnGuardarProve" type="button">Agregar registro</button>
         <p id="errorProveedor"></p>
+        </center>
     </form>
     <br>
 
-    <table class="table">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -161,10 +164,10 @@ session_start();
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>

@@ -65,7 +65,7 @@
             <h2>CREA TU NUEVA CATEGORÍA</h2>
         </center>
         <form class="needs-validation" novalidate method="POST">
-            <div class="form-row">
+            <div class="form-row d-flex justify-content-center">
                 <div class="col-md-4 mb-3">
                     <label for="inputnombre">Nombre</label>
                     <input type="text" class="form-control" id="inputnombre" placeholder="Nombre de la Categoria" required>
@@ -74,13 +74,13 @@
                     </div>
                 </div>
             </div>
-
-            <button class="btn btn-primary" id="btnGuardarCategoria" onClick='return validarCat()' type="button">Agregar Categoria</button>
+            <center>
+            <button class="btn btn-success" id="btnGuardarCategoria" onClick='return validarCat()' type="button">Agregar Categoria</button>
             <p id="errorCat"></p>
+            </center>
         </form>
         <!-- TABLA DE CATEGORIAS -->
-        <h3>CATEGORIAS</h3>
-        <table class="table table-bordered">
+        <table class="table table-striped table-responsive-lg">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -100,10 +100,10 @@
                         <td>
                             <div class="btn-group" role="group">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button type="button" class="btn btn-outline-warning modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Modificar
                                 </button>
-                                <button type="submit" class="btn btn-danger elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button type="submit" class="btn btn-outline-danger elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Eliminar
                                 </button>
                             </div>

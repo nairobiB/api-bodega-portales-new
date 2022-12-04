@@ -88,11 +88,12 @@ session_start();
 <!-- ############################################################################################################################################################################################ -->
 <div class="container">
     <br>
-    <h3><?php echo $titulo; ?></h3>
-    <br>
-    <h2>Personal</h2>
+    <center><img src="public/assets/images/ListaPersonal.png" alt="" srcset="" width="200px">
+            <h2>PERSONAL DE NUESTRA BODEGA</h2>
+            <br>
+        </center>
     </article>
-    <table class="table">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -130,10 +131,10 @@ session_start();
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>

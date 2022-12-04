@@ -14,6 +14,18 @@
                         <input type="text" name="IdProd" id="IdProd" class="form-control" disabled=»disabled»>
                     </div>
                     <div class="form-group">
+                        <label> Proveedor </label>
+                        <input type="text" name="IdProv" id="IdProv" class="form-control" disabled=»disabled»>
+                    </div>
+                    <div class="form-group">
+                        <label> Categoria</label>
+                        <input type="text" name="IdCat" id="IdCat" class="form-control" disabled=»disabled»>
+                    </div>
+                    <div class="form-group">
+                        <label> Sucursal</label>
+                        <input type="text" name="IdSucursal" id="IdSucursal" class="form-control" disabled=»disabled»>
+                    </div>
+                    <div class="form-group">
                         <label> Nombre Producto </label>
                         <input type="text" name="NomProd" id="NomProd" class="form-control" placeholder="Ingrese el nombre del producto">
                     </div>
@@ -34,7 +46,7 @@
                         <label> Descripcion </label>
                         <input type="text" name="Descripcion" id="Descripcion" class="form-control" placeholder="Ingrese la descripcion">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label> Proveedores </label>
                         <select class="form-select form-control" name="IdProv" id="IdProv" aria-label="Default select example">
                             <option selected>Elija proveedor</option>
@@ -44,15 +56,7 @@
                                 <option value="<?php echo $f->IdProv; ?>"><?php echo $f->Nomproveedor; ?></option>
                             <?php } ?>
                         </select>
-                    </div>
-                    <!-- <div class="form-group">
-                        <label> Proveedor </label>
-                        <input type="text" name="IdProv" id="IdProv" class="form-control" placeholder="Ingrese el ID proveedor">
                     </div> -->
-                    <div class="form-group">
-                        <label> Categoria</label>
-                        <input type="text" name="IdCat" id="IdCat" class="form-control" placeholder="Ingrese el ID categoria">
-                    </div>
                     <div class="form-group">
                         <label> Fecha Caducidad</label>
                         <input type="text" name="FechaCad" id="FechaCad" class="form-control" placeholder="Ingrese la fecha caducidad">
@@ -60,10 +64,6 @@
                     <div class="form-group">
                         <label> Numero de Lote</label>
                         <input type="text" name="numero_lote" id="numero_lote" class="form-control" placeholder="Ingrese el numero de lote">
-                    </div>
-                    <div class="form-group">
-                        <label> Sucursal</label>
-                        <input type="text" name="IdSucursal" id="IdSucursal" class="form-control" placeholder="Ingrese el ID sucursal">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -108,10 +108,14 @@
 </div>
 
 </article>
-<div class="container">
-    <h3><?php echo $titulo; ?></h3>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
+<br>
+<center><img src="public/assets/images/productos.png" alt="" srcset="" width="200px">
+    <h2>NUESTROS PRODUCTOS</h2>
+    <br>
+</center>
+<div class="container-sm">
+    <table class="table table-striped table-responsive-lg">
+        <thead class="thead-dark align-middle">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
@@ -119,10 +123,13 @@
                 <th scope="col">Precio de Compra</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Descripcion</th>
+                <th scope="col">Id Proveedor</th>
                 <th scope="col">Proveedor</th>
+                <th scope="col">Id Categoria</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Fecha de Caducidad</th>
                 <th scope="col">Numero de Lote</th>
+                <th scope="col">Id Sucursal</th>
                 <th scope="col">Sucursal</th>
                 <th scope="col">Acción</th>
 
@@ -146,7 +153,11 @@
                     </td>
                     <td><?php echo $f->Descripcion ?>
                     </td>
+                    <td><?php echo $f->IdProv?>
+                    </td>
                     <td><?php echo $f->Nomproveedor?>
+                    </td>
+                    <td><?php echo $f->IdCat?>
                     </td>
                     <td><?php echo $f->NombreCat?>
                     </td>
@@ -154,19 +165,18 @@
                     </td>
                     <td><?php echo $f->numero_lote?>
                     </td>
+                    <td><?php echo $f->IdSucursal ?>
+                    </td>
                     <td><?php echo $f->DescSucursal ?>
                     </td>
                     <td>
-                        <!-- modentrada -->
-                        <div class="btn-group" role="group">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modproductos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Modificar
-                            </button>
-                            <button type="submit" class="btn btn-danger Btneliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Eliminar
-                            </button>
-                        </div>
+
+                        <button type="button" class="btn btn-outline-warning modproductos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Modificar
+                        </button>
+                        <button type="submit" class="btn btn-outline-danger Btneliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Eliminar
+                        </button>
                     </td>
                 </tr>
             <?php } ?>
@@ -237,10 +247,10 @@
             $('#stock').val(data[4]);
             $('#Descripcion').val(data[5]);
             $('#IdProv').val(data[6]);
-            $('#IdCat').val(data[7]);
-            $('#FechaCad').val(data[8]);
-            $('#numero_lote').val(data[9]);
-            $('#IdSucursal').val(data[10]);
+            $('#IdCat').val(data[8]);
+            $('#FechaCad').val(data[10]);
+            $('#numero_lote').val(data[11]);
+            $('#IdSucursal').val(data[12]);
         });
     });
 </script>

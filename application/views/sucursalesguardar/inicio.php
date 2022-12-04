@@ -2,9 +2,13 @@
 session_start();
 ?>
 <div class="container">
-    <br><br>
+<br>
+<center><img src="public/assets/images/tienda.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UNA SUCURSAL</h2>
+</center>
+    <br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-4 mb-3">
                 <label for="inputIdSucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputIdSucursal" placeholder="Ingrese el ID de la Sucursal" required>
@@ -41,8 +45,11 @@ session_start();
                 </div>
             </div>
             </div>
-            <button class="btn btn-primary" id="btnguardarS" onClick='return validarSucursal()' type="submit">Agregar registro</button>
-        <p id="errorSucursal"></p>
+            <center>
+            <button class="btn btn-success" id="btnguardarS" onClick='return validarSucursal()' type="submit">Agregar registro</button>
+            <p id="errorSucursal"></p>
+            </center>
+
         </div>
     </form>
 </div>

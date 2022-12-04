@@ -52,7 +52,7 @@ class usuarios extends CI_Controller
             $IdPer = $this->db->escape($_POST["IdPer"]);
             $nivel = $this->db->escape($_POST["nivel"]);
             $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
-            $this->usuarios_model->modificarUsuario($NomUsr,$Contra,$IdPer,$nivel,$IdSucursal);
+            $this->usuarios_model->modificarUsuarios($NomUsr,$Contra,$IdPer,$nivel,$IdSucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
@@ -63,8 +63,7 @@ class usuarios extends CI_Controller
         try {
             print_r($_POST);
             $NomUsr = $this->db->escape($_POST["NomUsr"]);
-            $IdPer = $this->db->escape($_POST["IdPer"]);
-            $this->entradas_model->eliminarUsuario($NomUsr,$IdPer);
+            $this->usuarios_model->eliminarUsuario($NomUsr);
             echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));

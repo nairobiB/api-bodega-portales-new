@@ -1,9 +1,14 @@
 <?php
 session_start();
 ?>
+<br>
+<center><img src="public/assets/images/agregarPersonal.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UN NUEVO EMPLEADO</h2>
+    <br>
+</center>
 <div class="container">
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-4 mb-3">
                 <label for="inputpersonal">ID Personal</label>
                 <input type="text" class="form-control" id="inputpersonal" placeholder="Ingrese el ID del Personal" required>
@@ -56,9 +61,10 @@ session_start();
             </div>
         </div>
 
-
-        <button class="btn btn-primary" id="btnGuardarPersonal" onClick='return validarPersonal()' type="button">Agregar Personal</button>
+        <center>
+        <button class="btn btn-success" id="btnGuardarPersonal" onClick='return validarPersonal()' type="button">Agregar Personal</button>
         <p id="errorPersonal"></p>
+        </center>
     </form>
     <br>
 </div>

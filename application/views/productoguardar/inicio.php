@@ -1,10 +1,15 @@
 <?php
 session_start();
 ?>
+<br>
+<center><img src="public/assets/images/productoGuardar.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UN NUEVO PRODUCTO</h2>
+    <br>
+</center>
 <div class="container-sm">
     <br><br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-3 mb-3">
                 <label for="inputIdProd">Id Producto</label>
                 <input type="text" class="form-control" id="inputIdProd" placeholder="Ingrese el ID del producto" required>
@@ -124,9 +129,12 @@ session_start();
             </div>
             <p id="errorProducto"></p>
         </div>
+        <center>
         <div class="col-md-3 mb-3">
-            <button class="btn btn-primary" id="btn_guardarProd" onClick='return validarProducto()' type="submit">Agregar registro</button>
+            <button class="btn btn-success" id="btn_guardarProd" onClick='return validarProducto()' type="submit">Agregar registro</button>
         </div>
+        </center>
+        
     </form>
 </div>
 <br>
