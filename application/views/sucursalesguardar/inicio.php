@@ -2,10 +2,10 @@
 session_start();
 ?>
 <div class="container">
-<br>
-<center><img src="public/assets/images/tienda.png" alt="" srcset="" width="200px">
-    <h2>AGREGA UNA SUCURSAL</h2>
-</center>
+    <br>
+    <center><img src="public/assets/images/tienda.png" alt="" srcset="" width="200px">
+        <h2>AGREGA UNA SUCURSAL</h2>
+    </center>
     <br>
     <form class="needs-validation" novalidate method="POST">
         <div class="form-row d-flex justify-content-center">
@@ -44,20 +44,22 @@ session_start();
                     Correcto
                 </div>
             </div>
-            </div>
-            <center>
-            <button class="btn btn-success" id="btnguardarS" onClick='return validarSucursal()' type="submit">Agregar registro</button>
-            <p id="errorSucursal"></p>
-            </center>
-
         </div>
-    </form>
+        <center>
+            <button class="btn btn-success" id="btnguardarS" type="submit">Agregar registro</button>
+            <p id="errorSucursal"></p>
+        </center>
+
+</div>
+</form>
 </div>
 <br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
+
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -79,19 +81,38 @@ session_start();
 </script>
 
 <script>
-    $("#btnguardarS").click(function () {
-    $.post(
-      "/sucursales/guardar",
-      {
-        // IdSucursal: $("#inputIdSucursal").val(),
-        DescSucursal: $("#inputDescSucursal").val(),
-        telsucursal: $("#inputtelsucursal").val(),
-        email: $("#inputemail").val(),
-        direccionsucursal: $("#inputdireccionsucursal").val(),
-      },
-      function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-      }
-    );
-  });
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/sucursales/guardar", {
+                                DescSucursal: $("#inputDescSucursal").val(),
+                                telsucursal: $("#inputtelsucursal").val(),
+                                email: $("#inputemail").val(),
+                                direccionsucursal: $("#inputdireccionsucursal").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

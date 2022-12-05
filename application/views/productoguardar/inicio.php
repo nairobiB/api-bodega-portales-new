@@ -130,15 +130,18 @@ session_start();
             <p id="errorProducto"></p>
         </div>
         <center>
-        <div class="col-md-3 mb-3">
-            <button class="btn btn-success" id="btn_guardarProd" onClick='return validarProducto()' type="submit">Agregar registro</button>
-        </div>
+            <div class="col-md-3 mb-3">
+                <button class="btn btn-success" id="btn_guardarProd" type="submit">Agregar registro</button>
+            </div>
         </center>
     </form>
 </div>
 <br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -155,31 +158,48 @@ session_start();
                     form.classList.add('was-validated');
                 }, false);
             });
-        }, false); 
+        }, false);
     })();
 </script>
 
-<!-- GUARDAR DATOS EN LA TABLA DE PRODUCTOS -->
 <script>
-    $("#btn_guardarProd").click(function () {
-  $.post(
-    "/productos/guardar",
-    {
-      IdProd: $("#inputIdProd").val(),
-      NomProd: $("#inputNomProd").val(),
-      PrecProd: $("#inputPrecProd").val(),
-      PrecCompra: $("#inputPrecCompra").val(),
-      stock: $("#inputcstock").val(),
-      Descripcion: $("#inputDescripcion").val(),
-      IdProv: $("#inputIdProv").val(),
-      IdCat: $("#inputIdCat").val(),
-      FechaCad: $("#inputfechaCad").val(),
-      numero_lote: $("#inputnumero_lote").val(),
-      IdSucursal: $("#inputIdSucursal").val(),
-    },
-    function (data, status) {
-      alert("Data: " + data + "\nStatus: " + status);
-    }
-  );
-});
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE PRODUCTOS
+                        $.post(
+                            "/productos/guardar", {
+                                IdProd: $("#inputIdProd").val(),
+                                NomProd: $("#inputNomProd").val(),
+                                PrecProd: $("#inputPrecProd").val(),
+                                PrecCompra: $("#inputPrecCompra").val(),
+                                stock: $("#inputcstock").val(),
+                                Descripcion: $("#inputDescripcion").val(),
+                                IdProv: $("#inputIdProv").val(),
+                                IdCat: $("#inputIdCat").val(),
+                                FechaCad: $("#inputfechaCad").val(),
+                                numero_lote: $("#inputnumero_lote").val(),
+                                IdSucursal: $("#inputIdSucursal").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

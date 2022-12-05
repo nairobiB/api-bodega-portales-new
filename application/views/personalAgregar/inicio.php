@@ -62,8 +62,7 @@ session_start();
         </div>
 
         <center>
-        <button class="btn btn-success" id="btnGuardarPersonal" onClick='return validarPersonal()' type="button">Agregar Personal</button>
-        <p id="errorPersonal"></p>
+            <button class="btn btn-success" id="btnGuardarPersonal" type="submit">Agregar Personal</button>
         </center>
     </form>
     <br>
@@ -72,6 +71,7 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -93,20 +93,40 @@ session_start();
 </script>
 
 <script>
-    $("#btnGuardarPersonal").click(function() {
-        $.post(
-            "/personalAgregar/guardar", {
-                IdPer: $("#inputpersonal").val(),
-                TelPer: $("#inputTelefono").val(),
-                NomPer: $("#inputnombre").val(),
-                ApePer: $("#inputapellido").val(),
-                DirPer: $("#inputdireccion").val(),
-                Email: $("#inputemail").val(),
-                fecha_nacimineto: $("#inputfechanacimiento").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/personalAgregar/guardar", {
+                                IdPer: $("#inputpersonal").val(),
+                                TelPer: $("#inputTelefono").val(),
+                                NomPer: $("#inputnombre").val(),
+                                ApePer: $("#inputapellido").val(),
+                                DirPer: $("#inputdireccion").val(),
+                                Email: $("#inputemail").val(),
+                                fecha_nacimineto: $("#inputfechanacimiento").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>
