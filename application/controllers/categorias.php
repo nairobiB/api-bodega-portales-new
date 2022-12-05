@@ -27,7 +27,6 @@ class categorias extends CI_Controller
         try{
             if($this->input->post()){
                 print_r($_POST);
-                //$IdCat = $this->db->escape($_POST["IdCat"]);
                 $NombreCat = $this->db->escape($_POST["NombreCat"]);
                 $this->categorias_model->guardarCategoria($NombreCat);
                 echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));

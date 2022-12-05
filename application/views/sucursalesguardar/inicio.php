@@ -9,13 +9,13 @@ session_start();
     <br>
     <form class="needs-validation" novalidate method="POST">
         <div class="form-row d-flex justify-content-center">
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdSucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputIdSucursal" placeholder="Ingrese el ID de la Sucursal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4 mb-3">
                 <label for="inputDescSucursal">Descripcion de la Sucursal</label>
                 <input type="text" class="form-control" id="inputDescSucursal" placeholder="Ingrese descripcion de la sucursal" required>
@@ -53,8 +53,11 @@ session_start();
         </div>
     </form>
 </div>
-
 <br>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
 <script>
     (function() {
         'use strict';
@@ -75,15 +78,12 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
-<!-- <script>
+<script>
     $("#btnguardarS").click(function () {
     $.post(
-      "/sucursalesguardar/guardar",
+      "/sucursales/guardar",
       {
-        IdSucursal: $("#inputIdSucursal").val(),
+        // IdSucursal: $("#inputIdSucursal").val(),
         DescSucursal: $("#inputDescSucursal").val(),
         telsucursal: $("#inputtelsucursal").val(),
         email: $("#inputemail").val(),
@@ -94,4 +94,4 @@ session_start();
       }
     );
   });
-</script> -->
+</script>

@@ -117,19 +117,30 @@
             </div>
 
             <div class="col-md-4 mb-3">
-                <label for="inputcontraseña">Contraseña</label>
-                <input type="password" class="form-control" id="inputcontraseña" placeholder="Ingrese la Contraseña" required>
+                <label for="inputcontrasena">Contraseña</label>
+                <input type="password" class="form-control" id="inputcontrasena" placeholder="Ingrese la Contraseña" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
             </div>
             <div class="col-md-4 mb-3">
+                <label> Empleado </label>
+                <select class="form-select form-control" id="inputpersonal" aria-label="Default select example">
+                <option selected>Elija empleado</option>
+                <?php
+                    foreach ($listarPersonal as $f) {
+                ?>
+                    <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
+                <?php } ?>
+                    </select>
+            </div>
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputidpersonal">Identidad</label>
                 <input type="text" class="form-control" id="inputpersonal" placeholder="Ingrese el ID Personal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-2 mb-3">
                 <label for="inputnivel">Nivel</label>
                 <input type="text" class="form-control" id="inputnivel" placeholder="Ingrese el Nivel" required>
@@ -141,12 +152,12 @@
             <div class="col-md-2 mb-3">
                 <label> Sucursales </label>
                 <select class="form-select form-control" id="inputidsucursal" aria-label="Default select example">
-                <option selected>Elija sucursal</option>
-                <?php
-                foreach ($listarSucursales as $f2) {
-                ?>
-                    <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
-                <?php } ?>
+                    <option selected>Elija sucursal</option>
+                    <?php
+                    foreach ($listarSucursales as $f2) {
+                    ?>
+                        <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <!-- <div class="col-md-4 mb-3">
@@ -219,21 +230,20 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- PARTE DE USUARIOS -->
 <script>
-    $("#btnGuardarUsuario").click(function () {
-  $.post(
-    "/usuarios/guardar",
-    {
-      NomUsr: $("#inputusuario").val(),
-      Contra: $("#inputcontraseña").val(),
-      IdPer: $("#inputpersonal").val(),
-      nivel: $("#inputnivel").val(),
-      IdSucursal: $("#inputidsucursal").val(),
-    },
-    function (data, status) {
-      alert("Data: " + data + "\nStatus: " + status);
-    }
-  );
-});
+    $("#btnGuardarUsuario").click(function() {
+        $.post(
+            "/usuarios/guardar", {
+                NomUsr: $("#inputusuario").val(),
+                Contra: $("#inputcontrasena").val(),
+                IdPer: $("#inputpersonal").val(),
+                nivel: $("#inputnivel").val(),
+                IdSucursal: $("#inputidsucursal").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
 </script>
 <!-- SCRIPT PARA ELIMINAR UN USUARIO-->
 <script>
@@ -256,7 +266,7 @@
 <script>
     $('#btnDelete').on('click', function() {
         $.post(
-            "/usuarios/eliminarusuario",
+            "/usuarios/eliminar",
             {
             NomUsr: $("#userdelete").val(),
             },

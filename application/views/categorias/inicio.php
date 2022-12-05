@@ -84,45 +84,43 @@
                     Correcto
                 </div>
             </div>
-        </div>
-        <center>
+            <center>
             <button class="btn btn-success" id="btnGuardarCategoria" type="submit">Agregar Categoria</button>
 
-            <!-- <div id="liveAlertPlaceholderCat"></div> -->
-        </center>
-    </form>
-    <!-- TABLA DE CATEGORIAS -->
-    <table class="table table-striped table-responsive-lg">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre Categoria</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($listarcategorias as $f3) {
-            ?>
+            </center>
+        </form>
+        <!-- TABLA DE CATEGORIAS -->
+        <table class="table table-striped table-responsive-lg">
+            <thead class="thead-dark">
                 <tr>
-                    <td scope="row"><?php echo $f3['IdCat']; ?>
-                    </td>
-                    <td><?php echo $f3['NombreCat']; ?>
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-warning btn-sm modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Modificar
-                            </button>
-                            <button type="submit" class="btn btn-outline-danger btn-sm elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Eliminar
-                            </button>
-                        </div>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre Categoria</th>
+                    <th scope="col">Acciones</th>
                 </tr>
-            <?php } ?>
-        </tbody>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($listarcategorias as $f3) {
+                ?>
+                    <tr>
+                        <td scope="row"><?php echo $f3['IdCat']; ?>
+                        </td>
+                        <td><?php echo $f3['NombreCat']; ?>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-outline-warning btn-sm modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Modificar
+                                </button>
+                                <button type="submit" class="btn btn-outline-danger btn-sm elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
 
     </table>
 </div>

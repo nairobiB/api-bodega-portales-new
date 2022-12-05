@@ -81,7 +81,7 @@
 
 
 <!-- Modal -->
-<!-- ELIMINAR UNA ENTRADA -->
+<!-- ELIMINAR UN PRODUCTO -->
 <div class="modal fade" id="borrarproductos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -195,7 +195,7 @@
 
 <!-- MUESTRA EL MODAL DE ELIMINACION DE UN PRODUCTO -->
 <script>
-    $(document).ready(function() () {
+    $(document).ready(function() {
         // lo hacemos con una class
         $('.Btneliminar').on('click', function() {
             $('#borrarproductos').modal('show');
@@ -215,7 +215,7 @@
     //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE PRODUCTOS
     $('#btnsi').on('click', function() {
         $.post(
-            "/productos/eliminarproductos", {
+            "/productos/eliminar", {
                 IdProd: $("#delIdProd").val(),
             },
             function(data, status) {
@@ -257,10 +257,10 @@
 
 <!-- ACCION DEL BOTON DE MODIFICAR DE LA TABLA DE PRODUCTOS -->
 <script>
-    //id del modal boton
+    //id del modal boton 
     $('#modificarP').on('click', function() {
         $.post(
-            "/productos/modicarproductos", {
+            "/productos/modificar", {
                 IdProd: $("#IdProd").val(),
                 NomProd: $("#NomProd").val(),
                 PrecProd: $("#PrecProd").val(),

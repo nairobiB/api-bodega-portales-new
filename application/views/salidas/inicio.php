@@ -193,6 +193,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id Producto</th>
                 <th scope="col">Nombre Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio de Salida</th>
@@ -205,6 +206,8 @@
             ?>
                 <tr>
                     <td scope="row"><?php echo $f->Codsalida; ?></a>
+                    </td>
+                    <td><?php echo $f->IdProd; ?>
                     </td>
                     <td><?php echo $f->NomProd; ?>
                     </td>
@@ -313,8 +316,8 @@
 
             $('#detallecod').val(data[0]);
             $('#codprod').val(data[1]);
-            $('#cantidadsalida').val(data[2]);
-            $('#preciosalida').val(data[3]);
+            $('#cantidadsalida').val(data[3]);
+            $('#preciosalida').val(data[4]);
         });
     });
 </script>

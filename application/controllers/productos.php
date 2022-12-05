@@ -6,7 +6,7 @@ class productos extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->helper('html');
+        $this->load->helper('html'); 
         $this->load->helper('url');
         $this->load->model('productos_model');
         $this->load->model('proveedores_model');
@@ -29,7 +29,7 @@ class productos extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
-    public function guardarproductos() 
+    public function guardar() 
     {
         try {
             print_r($_POST);
@@ -50,7 +50,7 @@ class productos extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
-    public function modicarproductos()
+    public function modificar()
     {
         try {
             print_r($_POST);
@@ -68,18 +68,18 @@ class productos extends CI_Controller
             $this->productos_model->modificarProductos($IdProd, $NomProd, $PrecProd, $PrecCompra, $stock, $Descripcion, $IdProv, $IdCat, $FechaCad, $numero_lote, $IdSucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
         } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+            echo json_encode(array("success' => 0, 'msj' => 'Error al actualizar registro {$th}"));
         }
     }
-    public function eliminarproductos()
+    public function eliminar()
     {
         try {
             print_r($_POST);
             $IdProd = $this->db->escape($_POST["IdProd"]);
-            $this->entradas_model->eliminarProductos($IdProd);
+            $this->productos_model->eliminarProductos($IdProd);
             echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
         } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+            echo json_encode(array("success' => 0, 'msj' => 'Error al eliminar registro{$th}"));
         }
     }
 }
