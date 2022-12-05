@@ -2,16 +2,20 @@
 session_start();
 ?>
 <div class="container">
-    <br><br>
+    <br>
+    <center><img src="public/assets/images/tienda.png" alt="" srcset="" width="200px">
+        <h2>AGREGA UNA SUCURSAL</h2>
+    </center>
+    <br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
+        <div class="form-row d-flex justify-content-center">
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdSucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputIdSucursal" placeholder="Ingrese el ID de la Sucursal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4 mb-3">
                 <label for="inputDescSucursal">Descripcion de la Sucursal</label>
                 <input type="text" class="form-control" id="inputDescSucursal" placeholder="Ingrese descripcion de la sucursal" required>
@@ -40,14 +44,22 @@ session_start();
                     Correcto
                 </div>
             </div>
-            </div>
-            <button class="btn btn-primary" id="btnguardarS" onClick='return validarSucursal()' type="submit">Agregar registro</button>
-        <p id="errorSucursal"></p>
         </div>
-    </form>
-</div>
+        <center>
+            <button class="btn btn-success" id="btnguardarS" type="submit">Agregar registro</button>
+            <p id="errorSucursal"></p>
+        </center>
 
+</div>
+</form>
+</div>
 <br>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -68,23 +80,39 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
-<!-- <script>
-    $("#btnguardarS").click(function () {
-    $.post(
-      "/sucursalesguardar/guardar",
-      {
-        IdSucursal: $("#inputIdSucursal").val(),
-        DescSucursal: $("#inputDescSucursal").val(),
-        telsucursal: $("#inputtelsucursal").val(),
-        email: $("#inputemail").val(),
-        direccionsucursal: $("#inputdireccionsucursal").val(),
-      },
-      function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-      }
-    );
-  });
-</script> -->
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/sucursales/guardar", {
+                                DescSucursal: $("#inputDescSucursal").val(),
+                                telsucursal: $("#inputtelsucursal").val(),
+                                email: $("#inputemail").val(),
+                                direccionsucursal: $("#inputdireccionsucursal").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

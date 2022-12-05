@@ -161,8 +161,11 @@ session_start();
 
 <!-- TABLA DE ENTRADAS -->
 <div class="container">
-    <h3><?php echo $titulo; ?></h3>
-    <table class="table table-bordered">
+        <center><img src="public/assets/images/listaProductos.png" alt="" srcset="" width="200px">
+            <h2>PRODUCTOS DE NUESTRA BODEGA</h2>
+            <br>
+        </center>
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -189,10 +192,10 @@ session_start();
                         <!-- modentrada -->
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger btneliminar" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm btneliminar" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -206,10 +209,11 @@ session_start();
 
     <!-- TABLA DE DETALLE DE ENTRADAS -->
     <h3>DETALLE ENTRADAS</h3>
-    <table class="table table-bordered">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id Producto</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
@@ -223,6 +227,8 @@ session_start();
                 <tr>
                     <td scope="row"><?php echo $f2->IdCompra; ?>
                     </td>
+                    <td><?php echo $f2->IdProd; ?>
+                    </td>
                     <td><?php echo $f2->NomProd; ?>
                     </td>
                     <td><?php echo $f2->Cantidad; ?>
@@ -231,10 +237,10 @@ session_start();
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary detentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm detentrada" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger deteliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm deteliminar" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -258,7 +264,7 @@ session_start();
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!--Script PARA MODIFICAR ENTRADA-->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() { 
         //esa clase esta en el boton de modificar de la tabla de entradas
         $('.modentrada').on('click', function() {
             //este id es el id del modal
@@ -340,8 +346,8 @@ session_start();
 
             $('#dcodigo').val(data[0]);
             $('#idprod').val(data[1]);
-            $('#cantidad').val(data[2]);
-            $('#precio').val(data[3]);
+            $('#cantidad').val(data[3]);
+            $('#precio').val(data[4]);
         });
     });
 </script>

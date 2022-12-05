@@ -1,9 +1,14 @@
 <?php
 session_start();
 ?>
+<br>
+<center><img src="public/assets/images/agregarPersonal.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UN NUEVO EMPLEADO</h2>
+    <br>
+</center>
 <div class="container">
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-4 mb-3">
                 <label for="inputpersonal">ID Personal</label>
                 <input type="text" class="form-control" id="inputpersonal" placeholder="Ingrese el ID del Personal" required>
@@ -46,7 +51,7 @@ session_start();
                     Correcto
                 </div>
             </div>
-            
+
             <div class="col-md-4 mb-3">
                 <label for="inputfechanacimiento">Fecha de Nacimiento</label>
                 <input type="date" class="form-control" id="inputfechanacimiento" required>
@@ -56,14 +61,17 @@ session_start();
             </div>
         </div>
 
-
-        <button class="btn btn-primary" id="btnGuardarPersonal" onClick='return validarPersonal()' type="button">Agregar Personal</button>
-        <p id="errorPersonal"></p>
+        <center>
+            <button class="btn btn-success" id="btnGuardarPersonal" type="submit">Agregar Personal</button>
+        </center>
     </form>
     <br>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -82,4 +90,43 @@ session_start();
             });
         }, false);
     })();
+</script>
+
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/personalAgregar/guardar", {
+                                IdPer: $("#inputpersonal").val(),
+                                TelPer: $("#inputTelefono").val(),
+                                NomPer: $("#inputnombre").val(),
+                                ApePer: $("#inputapellido").val(),
+                                DirPer: $("#inputdireccion").val(),
+                                Email: $("#inputemail").val(),
+                                fecha_nacimineto: $("#inputfechanacimiento").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

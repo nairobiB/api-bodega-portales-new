@@ -1,4 +1,4 @@
-    <!-- !!!!!!!!!!!!!!!!!!PARTE DE CATEGORIAS!!!!!!!!!!!!! -->
+<!-- !!!!!!!!!!!!!!!!!!PARTE DE CATEGORIAS!!!!!!!!!!!!! -->
 <!-- Modal -->
 <!-- MODIFICAR UNA CATEGORIA -->
 <div class="modal fade" id="modificarcate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -59,27 +59,27 @@
 
 
 
-    <div class="container-sm">
-        <br><br>
-        <center><img src="public/assets/images/categoria.png" alt="" srcset="">
-        <h2>CREA TU NUEVA CATEGORÍA</h2></center>
+<div class="container-sm">
+    <br><br>
+    <center><img src="public/assets/images/categoria.png" alt="" srcset="">
+        <h2>CREA TU NUEVA CATEGORÍA</h2>
+    </center>
     <form class="needs-validation" novalidate method="POST">
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="inputnombre">Nombre</label>
-            <input type="text" class="form-control" id="inputnombre" placeholder="Nombre de la Categoria" required>
-            <div class="valid-feedback">
-                Correcto
+        <div class="form-row d-flex justify-content-center">
+            <div class="col-md-4 mb-3">
+                <label for="inputnombre">Nombre</label>
+                <input type="text" class="form-control" id="inputnombre" placeholder="Nombre de la Categoria" required>
+                <div class="valid-feedback">
+                    Correcto
+                </div>
             </div>
-        </div>
-    </div>
+            <center>
+                <button class="btn btn-success" id="btnGuardarCategoria" type="submit">Agregar Categoria</button>
 
-    <button class="btn btn-primary" id="btnGuardarCategoria" onClick = 'return validarCat()' type="button">Agregar Categoria</button>
-    <p id="errorCat"></p>
-</form>
+            </center>
+    </form>
     <!-- TABLA DE CATEGORIAS -->
-    <h3>CATEGORIAS</h3>
-    <table class="table table-bordered">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -99,10 +99,10 @@
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modcate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm elmnt" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -112,27 +112,13 @@
         </tbody>
 
     </table>
-    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 <!-- PARTE DE CATEGORIAS -->
-<!-- GUARDAR CATEGORIA -->
-<script>
-    $("#btnGuardarCategoria").click(function () {
-    $.post(
-        "/categorias/guardar",
-        {
-            //IdCat: $("#inputcategoria").val(),
-            NombreCat: $("#inputnombre").val(),
-        },
-        function (data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-        }
-    );
-});
-</script>
+
 <!-- SCRIPT PARA ELIMINAR UNA CATEGORIA-->
 <script>
     $(document).ready(function() {
@@ -154,7 +140,7 @@
 <script>
     $("#btnsicate").on("click", function() {
         $.post(
-            "/entradas/eliminarcategoria", {
+            "/categorias/eliminar", {
                 IdCat: $("#catedelcod").val(),
             },
             function(data, status) {
@@ -180,15 +166,14 @@
             $('#codcategoria').val(data[0]);
             $('#nombrecategoria').val(data[1]);
 
-
-
         });
     });
 </script>
+
 <script>
     $("#modificarcategoria").on("click", function() {
         $.post(
-            "/entradas/modificarcategoria", {
+            "/categorias/modificar", {
                 IdCat: $("#codcategoria").val(),
                 NombreCat: $("#nombrecategoria").val(),
             },
@@ -197,4 +182,61 @@
             }
         );
     });
+</script>
+
+<!-- VALIDACIONES -->
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+
+                        $.post(
+                            "/categorias/guardar", {
+                                //IdCat: $("#inputcategoria").val(),
+                                NombreCat: $("#inputnombre").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

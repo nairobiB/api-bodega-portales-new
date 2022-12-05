@@ -1,9 +1,15 @@
 <?php
 session_start();
 ?>
-<div class="container">
+<br>
+<center><img src="public/assets/images/productoGuardar.png" alt="" srcset="" width="200px">
+    <h2>AGREGA UN NUEVO PRODUCTO</h2>
+    <br>
+</center>
+<div class="container-sm">
+    <br><br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="col-md-3 mb-3">
                 <label for="inputIdProd">Id Producto</label>
                 <input type="text" class="form-control" id="inputIdProd" placeholder="Ingrese el ID del producto" required>
@@ -48,7 +54,7 @@ session_start();
             </div>
             <div class="col-md-4 mb-3">
                 <label> Proveedores </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" id="inputIdProv" aria-label="Default select example">
                     <option selected>Elija proveedor</option>
                     <?php
                     foreach ($listar as $f2) {
@@ -80,7 +86,7 @@ session_start();
             </div> -->
             <div class="col-md-4 mb-3">
                 <label> Categorías </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" id="inputIdCat" aria-label="Default select example">
                     <option selected>Elija categoría</option>
                     <?php
                     foreach ($listarcat as $f2) {
@@ -112,7 +118,7 @@ session_start();
             </div> -->
             <div class="col-md-4 mb-3">
                 <label> Sucursales </label>
-                <select class="form-select form-control" aria-label="Default select example">
+                <select class="form-select form-control" id="inputIdSucursal" aria-label="Default select example">
                     <option selected>Elija sucursal</option>
                     <?php
                     foreach ($listarSuc as $f2) {
@@ -123,12 +129,19 @@ session_start();
             </div>
             <p id="errorProducto"></p>
         </div>
-        <div class="col-md-3 mb-3">
-            <button class="btn btn-primary" id="bguardar" onClick='return validarProducto()' type="submit">Agregar registro</button>
-        </div>
+        <center>
+            <div class="col-md-3 mb-3">
+                <button class="btn btn-success" id="btn_guardarProd" type="submit">Agregar registro</button>
+            </div>
+        </center>
     </form>
 </div>
 <br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -149,6 +162,44 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE PRODUCTOS
+                        $.post(
+                            "/productos/guardar", {
+                                IdProd: $("#inputIdProd").val(),
+                                NomProd: $("#inputNomProd").val(),
+                                PrecProd: $("#inputPrecProd").val(),
+                                PrecCompra: $("#inputPrecCompra").val(),
+                                stock: $("#inputcstock").val(),
+                                Descripcion: $("#inputDescripcion").val(),
+                                IdProv: $("#inputIdProv").val(),
+                                IdCat: $("#inputIdCat").val(),
+                                FechaCad: $("#inputfechaCad").val(),
+                                numero_lote: $("#inputnumero_lote").val(),
+                                IdSucursal: $("#inputIdSucursal").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

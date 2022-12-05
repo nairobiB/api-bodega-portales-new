@@ -78,18 +78,20 @@ session_start();
 <!-- ########################################################################################################################################################################### -->
 
 
-
-<div class="container">
-    <br><br>
+<center><img src="public/assets/images/PROVEEDORES.png" alt="" srcset="" width="200px">
+    <h2>PROVEEDORES</h2>
+</center>
+<div class="container-sm">
+    <br>
     <form class="needs-validation" novalidate method="POST">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
+        <div class="form-row d-flex justify-content-center">
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdProv">Id Proveedores</label>
                 <input type="text" class="form-control" id="inputIdProv" placeholder="Ingrese el ID del proveedor" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4 mb-3">
                 <label for="inputNomproveedor">Nombre Proveedor</label>
                 <input type="text" class="form-control" id="inputNomproveedor" placeholder="Ingrese el Nombre del Proveedor" required>
@@ -126,12 +128,14 @@ session_start();
                 </div>
             </div>
         </div>
-
-        <button class="btn btn-primary" id="btnGuardarProv" onClick='return validarProveedor()' type="button">Agregar registro</button>
-        <p id="errorProveedor"></p>
+        <center>
+            <button class="btn btn-success" id="btnGuardarProve" type="submit">Agregar registro</button>
+            <p id="errorProveedor"></p>
+        </center>
     </form>
     <br>
-    <table class="table">
+
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -160,10 +164,10 @@ session_start();
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modproveedores" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm BtneliminarProv" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -173,6 +177,10 @@ session_start();
         </tbody>
 
     </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
     <script>
         (function() {
             'use strict';
@@ -192,11 +200,14 @@ session_start();
             }, false);
         })();
     </script>
+
 </div>
 </div>
 </div>
 </section>
 
+<!-- SCRIPT PARA ELIMINAR UN PROVEEDOR-->
+<!-- ASI SE LLAMA AL MODAL DE PROVEEDORES -->
 <script>
     $(document).ready(function() {
         // lo hacemos con una class
@@ -214,6 +225,22 @@ session_start();
         });
     });
 </script>
+<!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE PROVEEDORES -->
+<script>
+    $('#btndelete').on('click', function() {
+        $.post(
+            "/proveedoresguardar/eliminar", {
+                IdProv: $("#delIdProv").val()
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+<!-- SCRIPT PARA MODIFICAR UN PROVEEDOR-->
+<!-- ASI SE LLAMA AL MODAL DE PROVEEDORES -->
 <script>
     $(document).ready(function() {
         //esa clase esta en el boton de modificar de la tabla de entradas
@@ -234,4 +261,79 @@ session_start();
             $('#email').val(data[4]);
         });
     });
+</script>
+<!-- //ESTO MODIFICA LOS CAMPOS DE LA TABLA DE PROVEEDORES -->
+<script>
+    $('#modificarProveedor').on('click', function() {
+        $.post(
+            "/proveedoresguardar/modificar", {
+                IdProv: $("#IdProv").val(),
+                Nomproveedor: $("#Nomproveedor").val(),
+                Telproveedor: $("#Telproveedor").val(),
+                Dirproveedor: $("#Dirproveedor").val(),
+                email: $("#email").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+
+<!-- VALIDACIONES -->
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/proveedoresguardar/guardar", {
+                                Nomproveedor: $("#inputNomproveedor").val(),
+                                Telproveedor: $("#inputTelproveedor").val(),
+                                Dirproveedor: $("#inputDirproveedor").val(),
+                                email: $("#inputemail").val(),
+                            },
+                            function(data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

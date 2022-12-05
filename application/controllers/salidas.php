@@ -12,9 +12,9 @@ class salidas extends CI_Controller
     }
     public function index()
     {
-        $data['titulo']= 'Gestion de salidas';
-        $data['lista']= $this->salidas_model->listar();
-        $data['listadetalle']= $this->salidas_model->listardetalleS();
+        $data['titulo'] = 'Gestion de salidas';
+        $data['lista'] = $this->salidas_model->listar();
+        $data['listadetalle'] = $this->salidas_model->listardetalleS();
         //$data['listarcategorias']= $this->salidas_model->listarcategorias();
         $this->load->view('plantilla/head');
         $this->load->view('plantilla/nav');
@@ -23,6 +23,37 @@ class salidas extends CI_Controller
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
     }
+
+    public function modificarSalida()
+    {
+        try {
+            if ($this->input->post()) {
+                print_r($_POST);
+                $Codsalida = $this->db->escape($_POST["Codsalida"]);
+                $FechaVenta = $this->db->escape($_POST["FechaVenta"]);
+
+                $NomUsr = $this->db->escape($_POST["NomUsr"]);
+                $this->salidas_model->modificarSalida($Codsalida, $FechaVenta, $NomUsr);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Actualizado'));
+            }
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
+        }
+    }
+    public function eliminarSalida()
+    {
+        try {
+            if ($this->input->post()) {
+                print_r($_POST);
+                $Codsalida = $this->db->escape($_POST["Codsalida"]);
+                $this->salidas_model->eliminarSalida($Codsalida);
+                echo json_encode(array('success' => 1, 'msj' => 'Registro Eliminado'));
+            }
+        } catch (\Throwable $th) {
+            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
+        }
+    }
+
     // function modificar()
     // {
     //     try {

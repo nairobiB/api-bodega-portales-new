@@ -16,7 +16,14 @@ class categorias_model extends CI_Model{
         $query = $this->db->get_where('categorias',$filtros);
         return $query->row_array();
     }
-    public function guardar(string $NombreCat){
+    public function guardarCategoria($NombreCat){
         $this->db->query("INSERT INTO categorias (NombreCat) values({$NombreCat})");
     }
+    public function modificarCategoria(string $NombreCat, string $IdCat){
+        $this->db->query("UPDATE categorias SET `NombreCat` = {$NombreCat} WHERE (`IdCat` = {$IdCat})");
+    }
+    public function eliminarCategoria(string $IdCat){
+        $this->db->query("DELETE FROM categorias WHERE (`IdCat` = {$IdCat})");
+    }
+
 }

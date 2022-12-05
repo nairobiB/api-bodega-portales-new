@@ -88,11 +88,12 @@ session_start();
 <!-- ############################################################################################################################################################################################ -->
 <div class="container">
     <br>
-    <h3><?php echo $titulo; ?></h3>
-    <br>
-    <h2>Personal</h2>
+    <center><img src="public/assets/images/ListaPersonal.png" alt="" srcset="" width="200px">
+            <h2>PERSONAL DE NUESTRA BODEGA</h2>
+            <br>
+        </center>
     </article>
-    <table class="table">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -130,10 +131,10 @@ session_start();
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modpersonal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm buttondel" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -148,6 +149,58 @@ session_start();
 </div>
 </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<!--Script PARA MODIFICAR PERSONAL-->
+<script>
+    $(document).ready(function() {
+        //esa clase esta en el boton de modificar de la tabla de entradas
+        $('.modpersonal').on('click', function() {
+            //este id es el id del modal
+            $('#modificarpersonal').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+            
+            console.log(data);
+            //estos son los id de los campos que estan dentro del modal
+            $('#idpersonal').val(data[0]);
+            $('#tel').val(data[1]);
+            $('#nombre').val(data[2]);
+            $('#apellido').val(data[3]);
+            $('#direccion').val(data[4]);
+            $('#email').val(data[5]);
+            $('#estado').val(data[6]);
+            $('#fechaNac').val(data[7]);
+            
+        });
+    });
+</script>
+<!-- ACCION QUE HARA EL BOTON AL DARLE CLICK EN GUARDAR CAMBIOS -->
+<script>
+    //ESTE ID ES EL ID DE EL BOTON DE EL MODAL QUE GUARDARA LOS CAMBIOS
+    $('#modifypersonal').on('click', function() {
+        $.post(
+            "/personalAgregar/modificar", {
+                IdPer: $("#idpersonal").val(),
+                TelPer: $("#tel").val(),
+                NomPer: $("#nombre").val(),
+                ApePer: $("#apellido").val(),
+                DirPer: $("#direccion").val(),
+                Email: $("#email").val(),
+                Estado: $("#estado").val(),
+                fecha_nacimineto: $("#fechaNac").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
 <!-- SCRIPT PARA ELIMINAR UN PERSONAL-->
 <script>
     $(document).ready(function() {
@@ -166,75 +219,16 @@ session_start();
         });
     });
 </script>
-<!--Script PARA MODIFICAR PERSONAL-->
+<!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE PERSONAL -->
 <script>
-    $(document).ready(function() {
-        //esa clase esta en el boton de modificar de la tabla de entradas
-        $('.modpersonal').on('click', function() {
-            //este id es el id del modal
-            $('#modificarpersonal').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-            //estos son los id de los campos que estan dentro del modal
-            $('#idpersonal').val(data[0]);
-            $('#tel').val(data[1]);
-            $('#nombre').val(data[2]);
-            $('#apellido').val(data[3]);
-            $('#direccion').val(data[4]);
-            $('#email').val(data[5]);
-            $('#estado').val(data[6]);
-            $('#fechaNac').val(data[7]);
-
-        });
-    });
-</script>
-
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<!-- PARTE DE USUARIOS -->
-<!-- SCRIPT PARA ELIMINAR UNA ENTRADA-->
-<script>
-    $(document).ready(function() {
-        // lo hacemos con una class
-        $('.eliminate').on('click', function() {
-            $('#borrarusuario').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#userdel').val(data[0]);
-
-        });
-    });
-</script>
-<!--Script PARA MODIFICAR USUARIO-->
-<script>
-    $(document).ready(function() {
-        //esa clase esta en el boton de modificar de la tabla de entradas
-        $('.modusuario').on('click', function() {
-            //este id es el id del modal
-            $('#modificarusuario').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-            //estos son los id de los campos que estan dentro del modal
-            $('#usrname').val(data[0]);
-            $('#contra').val(data[1]);
-            $('#idperson').val(data[2]);
-            $('#state').val(data[3]);
-            $('#level').val(data[4]);
-            $('#idsucu').val(data[5]);
-
-
-        });
+    $('#btnsipersonal').on('click', function() {
+        $.post(
+            "/personalAgregar/eliminar", {
+                IdPer: $("#delpersonalcod").val()
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>

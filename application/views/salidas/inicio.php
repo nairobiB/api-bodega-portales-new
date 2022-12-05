@@ -143,11 +143,14 @@
 <!-- ############################################################################################################################################################################################ -->
 
 <!-- TABLA DE SALIDAS -->
+<br>
+<center><img src="public/assets/images/pedido.png" alt="" srcset="" width="200px">
+    <h2>NUESTRAS SALIDAS</h2>
+    <br>
+</center>
 <div class="container">
 
-    <h3><?php echo $titulo; ?></h3>
-
-    <table class="table">
+    <table class="table table-striped table-responsive-lg">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -170,10 +173,10 @@
                     <td>
                         <div class="btn-group" role="group">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary modsalida" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm modsalida" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger btneliminarsalida" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm btneliminarsalida" name="btnborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -190,6 +193,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id Producto</th>
                 <th scope="col">Nombre Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio de Salida</th>
@@ -203,6 +207,8 @@
                 <tr>
                     <td scope="row"><?php echo $f->Codsalida; ?></a>
                     </td>
+                    <td><?php echo $f->IdProd; ?>
+                    </td>
                     <td><?php echo $f->NomProd; ?>
                     </td>
                     <td><?php echo $f->Cantidad; ?>
@@ -211,10 +217,10 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary detsalida" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-outline-warning btn-sm detsalida" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Modificar
                             </button>
-                            <button type="submit" class="btn btn-danger deteliminarsalida" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="submit" class="btn btn-outline-danger btn-sm deteliminarsalida" name="detborrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Eliminar
                             </button>
                         </div>
@@ -228,6 +234,9 @@
 </div>
 </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- SCRIPT PARA ELIMINAR -->
 <script>
     $(document).ready(function() {
@@ -244,6 +253,18 @@
             $('#delcodsalida').val(data[0]);
 
         });
+    });
+</script>
+<script>
+    $("#btnsidel").on("click", function() {
+        $.post(
+            "/salidas/eliminarSalida", {
+                Codsalida: $("#delcodsalida").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
     });
 </script>
 <!--Script PARA MODIFICAR-->
@@ -265,9 +286,59 @@
         });
     });
 </script>
+<script>
+    $("#modsalida").on("click", function() {
+        $.post(
+            "/salidas/modificarSalida", {
+                Codsalida: $("#codsalida").val(),
+                FechaVenta: $("#fechaventa").val(),
+                NomUsr: $("#encargadosalida").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<!-- SCRIPT PARA ELIMINAR UN DETALLE DE ENTRADA-->
+<!--Script PARA MODIFICAR DETALLE DE SALIDA-->
+<script>
+    $(document).ready(function() {
+        $('.detsalida').on('click', function() {
+            $('#modetalle').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#detallecod').val(data[0]);
+            $('#codprod').val(data[1]);
+            $('#cantidadsalida').val(data[3]);
+            $('#preciosalida').val(data[4]);
+        });
+    });
+</script>
+
+<!-- MODIFICAR UN DETALLE DE SALIDA -->
+<script>
+    $('#detallemod').on('click', function() {
+        $.post(
+            "/salidadetalle/modificardetalleS", {
+                Codsalida: $("#detallecod").val(),
+                IdProd: $("#codprod").val(),
+                Cantidad: $("#cantidadsalida").val(),
+                Precsalida: $("#preciosalida").val(),
+            },
+            function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+<!-- SCRIPT PARA ELIMINAR UN DETALLE DE SALIDA-->
 <script>
     $(document).ready(function() {
         // lo hacemos con una class
@@ -287,49 +358,11 @@
         });
     });
 </script>
-
-<!--Script PARA MODIFICAR DETALLE DE SALIDA-->
-<script>
-    $(document).ready(function() {
-        $('.detsalida').on('click', function() {
-            $('#modetalle').modal('show');
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#detallecod').val(data[0]);
-            $('#codprod').val(data[1]);
-            $('#cantidadsalida').val(data[2]);
-            $('#preciosalida').val(data[3]);
-        });
-    });
-</script>
-
-<!-- MODIFICAR UN DETALLE DE SALIDA -->
-<script>
-    $('#detallemod').on('click', function() {
-        $.post(
-            "/salidadetalle/modificardetalle", {
-                Codsalida: $("#detallecod").val(),
-                IdProd: $("#codprod").val(),
-                Cantidad: $("#cantidadsalida").val(),
-                Precsalida: $("#preciosalida").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
-</script>
-
 <!-- //ESTO ELIMINA LOS CAMPOS DE LA TABLA DE DETALLE DE salidas -->
 <script>
     $('#btnaccionardetalle').on('click', function() {
         $.post(
-            "/salidadetalle/eliminardetalle", {
+            "/salidadetalle/eliminardetalleS", {
                 Codsalida: $("#elimcodigo").val(),
                 IdProd: $("#elimcodigoproducto").val(),
             },
