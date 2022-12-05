@@ -134,7 +134,6 @@ session_start();
             <button class="btn btn-success" id="btn_guardarProd" onClick='return validarProducto()' type="submit">Agregar registro</button>
         </div>
         </center>
-        
     </form>
 </div>
 <br>
@@ -160,14 +159,11 @@ session_start();
     })();
 </script>
 
-</div>
-</div>
-</section>
 <!-- GUARDAR DATOS EN LA TABLA DE PRODUCTOS -->
 <script>
     $("#btn_guardarProd").click(function () {
   $.post(
-    "/productos/guardarproductos",
+    "/productos/guardar",
     {
       IdProd: $("#inputIdProd").val(),
       NomProd: $("#inputNomProd").val(),

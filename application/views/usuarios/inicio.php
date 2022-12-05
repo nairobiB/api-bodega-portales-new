@@ -124,12 +124,23 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
+                <label> Empleado </label>
+                <select class="form-select form-control" id="inputpersonal" aria-label="Default select example">
+                <option selected>Elija empleado</option>
+                <?php
+                    foreach ($listarPersonal as $f) {
+                ?>
+                    <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
+                <?php } ?>
+                    </select>
+            </div>
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputidpersonal">Identidad</label>
                 <input type="text" class="form-control" id="inputpersonal" placeholder="Ingrese el ID Personal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-2 mb-3">
                 <label for="inputnivel">Nivel</label>
                 <input type="text" class="form-control" id="inputnivel" placeholder="Ingrese el Nivel" required>
@@ -255,7 +266,7 @@
 <script>
     $('#btnDelete').on('click', function() {
         $.post(
-            "/usuarios/eliminarusuario",
+            "/usuarios/eliminar",
             {
             NomUsr: $("#userdelete").val(),
             },

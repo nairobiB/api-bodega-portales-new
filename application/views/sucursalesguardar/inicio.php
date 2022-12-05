@@ -9,13 +9,13 @@ session_start();
     <br>
     <form class="needs-validation" novalidate method="POST">
         <div class="form-row d-flex justify-content-center">
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
                 <label for="inputIdSucursal">ID Sucursal</label>
                 <input type="text" class="form-control" id="inputIdSucursal" placeholder="Ingrese el ID de la Sucursal" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4 mb-3">
                 <label for="inputDescSucursal">Descripcion de la Sucursal</label>
                 <input type="text" class="form-control" id="inputDescSucursal" placeholder="Ingrese descripcion de la sucursal" required>
@@ -83,7 +83,7 @@ session_start();
     $.post(
       "/sucursales/guardar",
       {
-        IdSucursal: $("#inputIdSucursal").val(),
+        // IdSucursal: $("#inputIdSucursal").val(),
         DescSucursal: $("#inputDescSucursal").val(),
         telsucursal: $("#inputtelsucursal").val(),
         email: $("#inputemail").val(),

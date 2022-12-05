@@ -36,14 +36,14 @@ class usuarios extends CI_Controller
                 $IdPer = $this->db->escape($_POST["IdPer"]);
                 $nivel = $this->db->escape($_POST["nivel"]);
                 $IdSucursal = $this->db->escape($_POST["IdSucursal"]);
-                $this->usuarios_model->guardar($NomUsr, $Contra, $IdPer, $nivel, $IdSucursal);
+                $this->usuarios_model->guardarUsuario($NomUsr, $Contra, $IdPer, $nivel, $IdSucursal);
                 echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
             }
         } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
+            echo json_encode(array("success' => 0, 'msj' => 'Error al guardar registro {$th}" ));
         }
     }
-    public function modificarusuario()
+    public function modificar()
     {
         try {
             print_r($_POST);
@@ -58,7 +58,7 @@ class usuarios extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
         }
     }
-    public function eliminarusuario()
+    public function eliminar()
     {
         try {
             print_r($_POST);

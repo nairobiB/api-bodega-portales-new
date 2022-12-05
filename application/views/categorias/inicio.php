@@ -75,7 +75,7 @@
                 </div>
             </div>
             <center>
-            <button class="btn btn-success" id="btnGuardarCategoria" onClick='return validarCat()' type="button">Agregar Categoria</button>
+            <button class="btn btn-success" id="btnGuardarCategoria" onClick='return validarCat()' type="submit">Agregar Categoria</button>
             <p id="errorCat"></p>
             </center>
         </form>

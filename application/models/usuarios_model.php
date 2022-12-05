@@ -14,7 +14,7 @@ class usuarios_model extends CI_Model
             $results=$this->db->query($sql)->result();
             return $results;
     }
-    public function guardar(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
+    public function guardarUsuario(string $NomUsr, string $Contra, string $IdPer, string $nivel, string $IdSucursal)
     {
         $this->db->query("INSERT INTO usuarios (NomUsr, Contra, IdPer, nivel, IdSucursal) values({$NomUsr},{$Contra},{$IdPer},{$nivel},{$IdSucursal})");
     }

@@ -28,12 +28,12 @@ class sucursales extends CI_Controller
     {
         try {
             print_r($_POST);
-            $IdSucursal =  $this->db->escape($_POST["IdSucursal"]);
+            // $IdSucursal =  $this->db->escape($_POST["IdSucursal"]);
             $DescSucursal = $this->db->escape($_POST["DescSucursal"]);
             $telsucursal = $this->db->escape($_POST["telsucursal"]);
             $email = $this->db->escape($_POST["email"]);
             $direccionsucursal = $this->db->escape($_POST["direccionsucursal"]);
-            $this->sucursal_model->guardarSucursales($IdSucursal,$DescSucursal,$telsucursal,$email,$direccionsucursal);
+            $this->sucursal_model->guardarSucursales($DescSucursal,$telsucursal,$email,$direccionsucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
