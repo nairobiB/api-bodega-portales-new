@@ -24,43 +24,43 @@ class sucursales extends CI_Controller
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
     }
-    public function guardarsucursales()
+    public function guardar()
     {
         try {
             print_r($_POST);
             $IdSucursal =  $this->db->escape($_POST["IdSucursal"]);
             $DescSucursal = $this->db->escape($_POST["DescSucursal"]);
-            $TelSucursal = $this->db->escape($_POST["TelSucursal"]);
+            $telsucursal = $this->db->escape($_POST["telsucursal"]);
             $email = $this->db->escape($_POST["email"]);
             $direccionsucursal = $this->db->escape($_POST["direccionsucursal"]);
-            $this->entradas_model->guardarSucursales($IdSucursal,$DescSucursal,$TelSucursal,$email,$direccionsucursal);
+            $this->sucursal_model->guardarSucursales($IdSucursal,$DescSucursal,$telsucursal,$email,$direccionsucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
         }
     }
-    public function modificarsucursales()
+    public function modificar()
     {
         try {
             print_r($_POST);
             print_r($_POST);
             $IdSucursal =  $this->db->escape($_POST["IdSucursal"]);
             $DescSucursal = $this->db->escape($_POST["DescSucursal"]);
-            $TelSucursal = $this->db->escape($_POST["TelSucursal"]);
+            $telsucursal = $this->db->escape($_POST["telsucursal"]);
             $email = $this->db->escape($_POST["email"]);
             $direccionsucursal = $this->db->escape($_POST["direccionsucursal"]);
-            $this->entradas_model->modificarSucursales($IdSucursal,$DescSucursal,$TelSucursal,$email,$direccionsucursal);
+            $this->sucursal_model->modificarSucursales($IdSucursal,$DescSucursal,$telsucursal,$email,$direccionsucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
         }
     }
-    public function eliminarsucursales()
+    public function eliminar()
     {
         try {
             print_r($_POST);
             $IdSucursal =  $this->db->escape($_POST["IdSucursal"]);
-            $this->entradas_model->eliminarSucursales($IdSucursal);
+            $this->sucursal_model->eliminarSucursales($IdSucursal);
             echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
         } catch (\Throwable $th) {
             echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
