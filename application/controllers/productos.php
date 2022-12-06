@@ -29,6 +29,27 @@ class productos extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
+    public function imprimirproducto()
+    {
+        $data['titulo']='productos';
+        $data['lista']= $this->productos_model->listar();
+        $this->load->view('productos/imprimirproducto', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='productos';
+        $data['lista']= $this->productos_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
     public function guardar() 
     {
         try {

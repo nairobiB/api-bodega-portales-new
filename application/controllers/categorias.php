@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
 class categorias extends CI_Controller
 {
     function __construct()
@@ -22,6 +26,30 @@ class categorias extends CI_Controller
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
     }
+
+    public function Imprimircatergorias()
+    {
+        $data['titulo']='categorias';
+        $data['lista']= $this->categorias_model->listarcategorias();
+        $this->load->view('categorias/Imprimircatergorias', $data);
+    }
+    public function Pdf()
+    {
+        $data['titulo']='categorias';
+        $data['lista']= $this->categorias_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Categorias</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+
+
     public function guardar()
     {
         try{

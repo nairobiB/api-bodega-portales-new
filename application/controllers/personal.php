@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
+
+
 class personal extends CI_Controller
 {
     function __construct()
@@ -23,6 +29,29 @@ class personal extends CI_Controller
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
     }
+
+    public function imprimir()
+    {
+        $data['titulo']='personal';
+        $data['lista']= $this->personal_model->listar();
+        $this->load->view('personal/imprimir', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='personal';
+        $data['lista']= $this->personal_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+
     // function modificarP()
     // {
     //     try {

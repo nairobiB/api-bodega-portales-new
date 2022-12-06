@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
+
 class proveedoresguardar extends CI_Controller
 {
     function __construct()
@@ -24,6 +29,28 @@ class proveedoresguardar extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
+    public function imprimirproveedores()
+    {
+        $data['titulo']='proveedoresguardar';
+        $data['lista']= $this->proveedores_model->listar();
+        $this->load->view('proveedoresguardar/imprimirproveedores', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='proveedoresguardar';
+        $data['lista']= $this->proveedores_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+
 
     public function guardar()
     {

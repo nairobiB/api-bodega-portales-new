@@ -146,9 +146,15 @@ session_start();
     </table>
 
 </div>
-</div>
-</div>
-</section>
+                <div class="card-footer clearfix">
+                  <a class="btn btn-primary Imprimir" href="/personal/imprimir">Imprimir</a>
+                <!--<a class="btn btn-primary Pdf" href="/personal/pdf">PDF</a>-->
+                </div>
+
+                </div>
+                </div>
+                </section>
+                </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

@@ -258,6 +258,17 @@ session_start();
 </div>
 </section>
 
+
+
+<div class="card-footer clearfix">
+ <a class="btn btn-primary imprimirentradas" href="/entradas/imprimirentradas">Imprimir</a>
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
+
+</div>
+</div>
+</section>
+
 <!-- #################################################################################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>

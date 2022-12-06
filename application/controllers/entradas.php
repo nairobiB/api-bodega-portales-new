@@ -27,6 +27,27 @@ class entradas extends CI_Controller
         $this->load->view->datosdetalle = $this->load->model->listardetalle();
         $this->load->view->datoscate = $this->modelo->listarcategorias();*/
     }
+    public function imprimirentradas()
+    {
+        $data['titulo']='entradas';
+        $data['lista']= $this->entradas_model->listardetalle();
+        $this->load->view('entradas/imprimirentradas', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='entradas';
+        $data['lista']= $this->entradas_model->listardetalle();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
     public function modificarEntrada()
     {
         try{

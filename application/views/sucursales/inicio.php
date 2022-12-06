@@ -123,6 +123,18 @@
 </table>
 </div>
 
+</div>
+
+<div class="card-footer clearfix">
+ <a class="btn btn-primary imprimirsucursal" href="/sucursales/imprimirsucursal">Imprimir</a>
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 

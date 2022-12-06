@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
+
+
 class salidas extends CI_Controller
 {
     function __construct()
@@ -23,6 +29,29 @@ class salidas extends CI_Controller
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
     }
+
+    public function imprimirsalidas()
+    {
+        $data['titulo']='salida';
+        $data['lista']= $this->salidas_model->listardetalleS();
+        $this->load->view('salida/imprimirsalidas', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='salida';
+        $data['lista']= $this->salidas_model->listardetalleS();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+
 
     public function modificarSalida()
     {
