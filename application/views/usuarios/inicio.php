@@ -303,7 +303,7 @@
 <script>
     $("#moduser").click(function () {
   $.post(
-    "/usuarios/modificarusuario",
+    "/usuarios/modificar",
     {
       NomUsr: $("#usrname").val(),
       Contra: $("#contra").val(),
