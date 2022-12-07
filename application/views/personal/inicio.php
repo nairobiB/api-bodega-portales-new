@@ -146,9 +146,21 @@ session_start();
     </table>
 
 </div>
-</div>
-</div>
-</section>
+    <div class="card-footer clearfix">
+        <center>
+            <br><br>
+            <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+            <div class="container">
+            <br>
+            <a class="btn btn-outline-info btn-lg Imprimir" href="/personal/imprimir">Generar Reporte</a>
+            </div>
+        </center>
+    </div>
+
+                </div>
+                </div>
+                </section>
+                </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -193,10 +205,10 @@ session_start();
                 Email: $("#email").val(),
                 Estado: $("#estado").val(),
                 fecha_nacimineto: $("#fechaNac").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -225,10 +237,10 @@ session_start();
         $.post(
             "/personalAgregar/eliminar", {
                 IdPer: $("#delpersonalcod").val()
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>

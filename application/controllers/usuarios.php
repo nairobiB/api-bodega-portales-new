@@ -14,7 +14,6 @@ class usuarios extends CI_Controller
     }
     public function index()
     {
-        //$this->load->view->titulo= 'Gestion de entradas';
         $data['titulo'] = 'Gestion de Usuarios';
         $data['listaUsuarios'] = $this->usuarios_model->listarUsuarios();
         $data['listarPersonal'] = $this->personal_model->listarPersonal();
@@ -30,7 +29,7 @@ class usuarios extends CI_Controller
     {
         try {
             if ($this->input->post()) {
-                print_r($_POST);
+                // print_r($_POST);
                 $NomUsr = $this->db->escape($_POST["NomUsr"]);
                 $Contra = $this->db->escape($_POST["Contra"]);
                 $IdPer = $this->db->escape($_POST["IdPer"]);
@@ -46,7 +45,7 @@ class usuarios extends CI_Controller
     public function modificar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $NomUsr = $this->db->escape($_POST["NomUsr"]);
             $Contra = $this->db->escape($_POST["Contra"]);
             $IdPer = $this->db->escape($_POST["IdPer"]);
@@ -61,7 +60,7 @@ class usuarios extends CI_Controller
     public function eliminar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $NomUsr = $this->db->escape($_POST["NomUsr"]);
             $this->usuarios_model->eliminarUsuario($NomUsr);
             echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));

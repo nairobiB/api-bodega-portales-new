@@ -1,10 +1,11 @@
 <?php
 session_start();
 ?>
+
 <div class="container">
     <br><br>
     <form class="needs-validation" novalidate method="POST" action="">
-    <center><img src="public/assets/images/bandeja-de-entrada.png" alt="" srcset="" width="200px">
+        <center><img src="public/assets/images/bandeja-de-entrada.png" alt="" srcset="" width="200px">
             <h2>INGRESA LAS NUEVAS ENTRADAS</h2>
             <br>
         </center>
@@ -116,12 +117,10 @@ session_start();
         </div>
 
         <center>
-        <button class="btn btn-success" id="btnGuardarDetalle" onClick="return validarEntrada()" type="button">Agregar registro</button>
-        <p id="errorEntrada"></p>
+            <button class="btn btn-success" id="btnGuardarDetalle" type="submit">Agregar registro</button>
         </center>
     </form>
     <br>
-
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -146,32 +145,70 @@ session_start();
     })();
 </script>
 
+<!-- VALIDACIONES -->
 <script>
-    $("#btnGuardarDetalle").click(function() {
-        $.post(
-            "/entradadetalle/guardar", {
-                Fechaentrada: $("#inputfecha").val(),
-                IdProv: $("#inputproveedor").val(),
-                NomUsr: $("#inputusuario").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
 </script>
+
 <script>
-    $("#btnGuardarDetalle").click(function() {
-        $.post(
-            "/entradadetalle/guardardetalle", {
-                IdCompra: $("#inputcompra").val(),
-                IdProd: $("#inputproducto").val(),
-                Cantidad: $("#inputcantidad").val(),
-                Precio: $("#inputprecio").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLAS DE ENTRADAS 
+
+                        $.post(
+                            "/entradadetalle/guardar", {
+                                Fechaentrada: $("#inputfecha").val(),
+                                IdProv: $("#inputproveedor").val(),
+                                NomUsr: $("#inputusuario").val(),
+                            }//,
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+
+                        $.post(
+                            "/entradadetalle/guardardetalle", {
+                                IdCompra: $("#inputcompra").val(),
+                                IdProd: $("#inputproducto").val(),
+                                Cantidad: $("#inputcantidad").val(),
+                                Precio: $("#inputprecio").val(),
+                            }//,
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

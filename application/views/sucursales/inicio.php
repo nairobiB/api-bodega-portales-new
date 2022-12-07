@@ -123,6 +123,26 @@
 </table>
 </div>
 
+</div>
+
+<div class="card-footer clearfix">
+    <center>
+    <br><br>
+        <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+        <div class="container">
+            <br>
+        <a class="btn btn-outline-info btn-lg imprimirsucursal" href="/sucursales/imprimirsucursal">Generar Reporte</a>
+        </div>
+    </center>
+ 
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
@@ -158,10 +178,10 @@
                 telsucursal: $("#telsucursal").val(),
                 email: $("#email").val(),
                 direccionsucursal: $("#direccionsucursal").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -190,10 +210,10 @@
         $.post(
             "/sucursales/eliminar", {
                 IdSucursal: $("#delIdSucursal").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>

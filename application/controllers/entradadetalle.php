@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
+
+
 class entradadetalle extends CI_Controller
 {
     function __construct()
@@ -31,7 +37,7 @@ class entradadetalle extends CI_Controller
     {
         try{
             if($this->input->post()){
-                print_r($_POST);
+                // print_r($_POST);
                 $Fechaentrada = $this->db->escape($_POST["Fechaentrada"]);
                 $IdProv = $this->db->escape($_POST["IdProv"]);
                 $NomUsr = $this->db->escape($_POST["NomUsr"]);
@@ -45,7 +51,7 @@ class entradadetalle extends CI_Controller
     public function guardardetalle()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdCompra =  $this->db->escape($_POST["IdCompra"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $Cantidad = $this->db->escape($_POST["Cantidad"]);
@@ -59,7 +65,7 @@ class entradadetalle extends CI_Controller
     public function modificardetalle()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdCompra =  $this->db->escape($_POST["IdCompra"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $Cantidad = $this->db->escape($_POST["Cantidad"]);
@@ -73,7 +79,7 @@ class entradadetalle extends CI_Controller
     public function eliminardetalle()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdCompra =  $this->db->escape($_POST["IdCompra"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $this->entradas_model->eliminarDetalle($IdCompra,$IdProd);
@@ -82,33 +88,4 @@ class entradadetalle extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
         }
     }
-    /*
-    function modificardetalle()
-    {
-        try {
-            print_r($_POST);
-            $IdCompra = $_POST['IdCompra'];
-            $IdProd = $_POST['IdProd'];
-            $Cantidad = $_POST['Cantidad'];
-            $Precio = $_POST['Precio'];
-            $this->setModelo('entradas');
-            $this->modelo->modificardetalle(["IdCompra" => $IdCompra, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precio" => $Precio]);
-            echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
-        } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
-        }
-    }
-    function eliminardetalle()
-    {
-        try {
-            print_r($_POST);
-            $IdCompra = $_POST['IdCompra'];
-            $IdProd = $_POST['IdProd'];
-            $this->setModelo('entradas');
-            $this->modelo->eliminarDetalle(["IdCompra" => $IdCompra, "IdProd" => $IdProd]);
-            echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
-        } catch (\Throwable $th) {
-            echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
-        }
-    }*/
 }

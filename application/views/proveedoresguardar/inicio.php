@@ -129,8 +129,8 @@ session_start();
             </div>
         </div>
         <center>
-        <button class="btn btn-success" id="btnGuardarProve" type="button">Agregar registro</button>
-        <p id="errorProveedor"></p>
+            <button class="btn btn-success" id="btnGuardarProve" type="submit">Agregar registro</button>
+            <p id="errorProveedor"></p>
         </center>
     </form>
     <br>
@@ -177,6 +177,25 @@ session_start();
         </tbody>
 
     </table>
+    </div> 
+
+<div class="card-footer clearfix">
+    <center>
+    <br><br>
+        <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+        <div class="container">
+            <br>
+        <a class="btn btn-outline-info btn-lg imprimirproveedores" href="/proveedoresguardar/imprimirproveedores">Generar Reporte</a>
+        </div>
+    </center>
+ 
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
+
+</div>
+</div>
+</section>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -231,10 +250,10 @@ session_start();
         $.post(
             "/proveedoresguardar/eliminar", {
                 IdProv: $("#delIdProv").val()
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -272,26 +291,67 @@ session_start();
                 Telproveedor: $("#Telproveedor").val(),
                 Dirproveedor: $("#Dirproveedor").val(),
                 email: $("#email").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
 
+
+<!-- VALIDACIONES -->
 <script>
-    $("#btnGuardarProve").click(function() {
-        $.post(
-            "/proveedoresguardar/guardar", {
-                Nomproveedor: $("#inputNomproveedor").val(),
-                Telproveedor: $("#inputTelproveedor").val(),
-                Dirproveedor: $("#inputDirproveedor").val(),
-                email: $("#inputemail").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        $.post(
+                            "/proveedoresguardar/guardar", {
+                                Nomproveedor: $("#inputNomproveedor").val(),
+                                Telproveedor: $("#inputTelproveedor").val(),
+                                Dirproveedor: $("#inputDirproveedor").val(),
+                                email: $("#inputemail").val(),
+                            }
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

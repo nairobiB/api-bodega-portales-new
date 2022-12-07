@@ -258,6 +258,24 @@ session_start();
 </div>
 </section>
 
+
+
+<div class="card-footer clearfix">
+    <center>
+    <br><br>
+        <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+        <div class="container">
+            <br>
+            <a class="btn btn-outline-info btn-lg imprimirentradas" href="/entradas/imprimirentradas">Generar Reporte</a>
+        </div>
+    </center>
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
+
+</div>
+</div>
+</section>
+
 <!-- #################################################################################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -291,10 +309,10 @@ session_start();
                 Fechaentrada: $("#fecha").val(),
                 IdProv: $("#proveedor").val(),
                 NomUsr: $("#encargado").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -321,10 +339,10 @@ session_start();
         $.post(
             "/entradas/eliminarEntrada", {
                 IdCompra: $("#delcodigo").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -361,10 +379,10 @@ session_start();
                 IdProd: $("#idprod").val(),
                 Cantidad: $("#cantidad").val(),
                 Precio: $("#precio").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -397,10 +415,10 @@ session_start();
             "/entradadetalle/eliminardetalle", {
                 IdCompra: $("#delDcodigo").val(),
                 IdProd: $("#delDcodigoP").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>

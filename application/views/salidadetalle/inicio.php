@@ -94,13 +94,13 @@ session_start();
         </div>
 
         <center>
-        <button class="btn btn-success" id="btnGuardarSalida" onClick="return validarSalida()" type="button">Agregar registro</button>
-        <p id="errorSalida"></p>
+            <button class="btn btn-success" id="btnGuardarSalida" type="submit">Agregar registro</button>
+            <p id="errorSalida"></p>
         </center>
     </form>
 </div>
 
-<br>
+<!-- VALIDACIONES -->
 <script>
     (function() {
         'use strict';
@@ -120,8 +120,50 @@ session_start();
         }, false);
     })();
 </script>
-</div>
-</div>
-</section>
 
-</article>
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLAS DE SALIDAS
+
+                        $.post(
+                            "/salidadetalle/guardar", {
+                                FechaVenta: $("#inputfecha").val(),
+                                NomUsr: $("#inputusuario").val(),
+                            }//,
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+
+                        $.post(
+                            "/salidadetalle/guardardetalle", {
+                                Codsalida: $("#inputventa").val(),
+                                IdProd: $("#inputproducto").val(),
+                                Cantidad: $("#inputcantidad").val(),
+                                Precsalida: $("#inputprecio").val(),
+                            }//,
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

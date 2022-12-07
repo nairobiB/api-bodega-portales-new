@@ -29,10 +29,31 @@ class productos extends CI_Controller
         // $this->vista->datosproveedor = $this->modelo->listarproveedores();
         // $this->vista->render($this->vista->url);
     }
-    public function guardar() 
+    public function imprimirproducto()
+    {
+        $data['titulo']='productos';
+        $data['lista']= $this->productos_model->listar();
+        $this->load->view('productos/imprimirproducto', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='productos';
+        $data['lista']= $this->productos_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+    public function guardar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdProd =  $this->db->escape($_POST["IdProd"]);
             $NomProd = $this->db->escape($_POST["NomProd"]);
             $PrecProd = $this->db->escape($_POST["PrecProd"]);
@@ -53,7 +74,7 @@ class productos extends CI_Controller
     public function modificar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdProd =  $this->db->escape($_POST["IdProd"]);
             $NomProd = $this->db->escape($_POST["NomProd"]);
             $PrecProd = $this->db->escape($_POST["PrecProd"]);
@@ -74,7 +95,7 @@ class productos extends CI_Controller
     public function eliminar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $this->productos_model->eliminarProductos($IdProd);
             echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));

@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Option;
+use Dompdf\Exception as DomException;
+use Dompdf\Options;
+
 class proveedoresguardar extends CI_Controller
 {
     function __construct()
@@ -20,15 +25,34 @@ class proveedoresguardar extends CI_Controller
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
-        // $this->setModelo('productos');
-        // $this->vista->datosproveedor = $this->modelo->listarproveedores();
-        // $this->vista->render($this->vista->url);
     }
+    public function imprimirproveedores()
+    {
+        $data['titulo']='proveedoresguardar';
+        $data['lista']= $this->proveedores_model->listar();
+        $this->load->view('proveedoresguardar/imprimirproveedores', $data);
+    }
+    public function pdf()
+    {
+        $data['titulo']='proveedoresguardar';
+        $data['lista']= $this->proveedores_model->listar();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Ejemplo de pdf</h1>');
+
+        $dompdf->setPaper('A4', 'landscape');
+
+
+        $dompdf->render();
+
+
+        $dompdf->stream();
+    }
+
 
     public function guardar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $Nomproveedor = $this->db->escape($_POST["Nomproveedor"]);
             $Telproveedor = $this->db->escape($_POST["Telproveedor"]);
             $Dirproveedor = $this->db->escape($_POST["Dirproveedor"]);
@@ -42,7 +66,7 @@ class proveedoresguardar extends CI_Controller
     public function modificar()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $IdProv =  $this->db->escape($_POST["IdProv"]);
             $Nomproveedor = $this->db->escape($_POST["Nomproveedor"]);
             $Telproveedor = $this->db->escape($_POST["Telproveedor"]);
@@ -59,7 +83,7 @@ class proveedoresguardar extends CI_Controller
     {
         try{
             if($this->input->post()){
-                print_r($_POST);
+                // print_r($_POST);
                 $IdProv = $this->db->escape($_POST["IdProv"]);
                 $this->proveedores_model->eliminarProveedor($IdProv);
                 echo json_encode(array('success' => 1, 'msj' => 'Registro Eliminado'));
@@ -68,48 +92,4 @@ class proveedoresguardar extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
         }
     }
-
-    // function guardar()
-    // {
-    //     try {
-    //         print_r($_POST);
-    //         $IdProv = $_POST['IdProv'];
-    //         $Nomproveedor = $_POST['Nomproveedor'];
-    //         $Telproveedor = $_POST['Telproveedor'];
-    //         $Dirproveedor = $_POST['Dirproveedor'];
-    //         $Estado = $_POST['Estado'];
-    //         $email = $_POST['email'];
-    //         $this->setModelo('proveedores');
-    //         $this->modelo->guardar(["IdProv" => $IdProv, "Nomproveedor" => $Nomproveedor, "Telproveedor" => $Telproveedor, "Dirproveedor" => $Dirproveedor, "Estado" => $Estado, "email" => $email]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
-    //     }
-    // }
-    // function modificar() 
-    // {   try{
-    //         print_r($_POST);
-    //         $IdProv= $_POST['IdProv'];
-    //         $Nomproveedor = $_POST['Nomproveedor'];
-    //         $Telproveedor = $_POST['Telproveedor'];
-    //         $Dirproveedor = $_POST['Dirproveedor'];
-    //         $email = $_POST['email'];
-    //         $this->setModelo('proveedores');
-    //         $this->modelo->modificarproveedor(["IdProv" => $IdProv,"Nomproveedor" => $Nomproveedor, "Telproveedor" => $Telproveedor, "Dirproveedor" => $Dirproveedor, "email" => $email]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
-    //     }
-    // }
-    // function eliminar()
-    // {   try{
-    //     print_r($_POST);
-    //         $IdProv = $_POST['IdProv'];
-    //         $this->setModelo('proveedores');
-    //         $this->modelo->eliminarProv(["IdProv" => $IdProv]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
-    //     }
-    // }
 }

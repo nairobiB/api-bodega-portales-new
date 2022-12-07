@@ -231,9 +231,22 @@
 
     </table>
 </div>
+
+<div class="card-footer clearfix">
+    <center>
+        <br><br>
+        <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+        <div class="container">
+        <a class="btn btn-outline-info btn-lg imprimirsalidas" href="/salidas/imprimirsalidas">Generar Reporte</a>
+        </div>
+    </center>
+ 
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
 </div>
 </div>
 </section>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -260,10 +273,10 @@
         $.post(
             "/salidas/eliminarSalida", {
                 Codsalida: $("#delcodsalida").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -293,10 +306,10 @@
                 Codsalida: $("#codsalida").val(),
                 FechaVenta: $("#fechaventa").val(),
                 NomUsr: $("#encargadosalida").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -331,10 +344,10 @@
                 IdProd: $("#codprod").val(),
                 Cantidad: $("#cantidadsalida").val(),
                 Precsalida: $("#preciosalida").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -365,10 +378,10 @@
             "/salidadetalle/eliminardetalleS", {
                 Codsalida: $("#elimcodigo").val(),
                 IdProd: $("#elimcodigoproducto").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>

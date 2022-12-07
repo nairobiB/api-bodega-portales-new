@@ -184,9 +184,21 @@
     </table>
 
 </div>
+<div class="card-footer clearfix">
+    <center>
+    <br><br>
+        <img src="public/assets/images/imprimir.png" alt="" srcset="" width="80px">
+        <div class="container">
+            <br>
+            <a class="btn btn-outline-info btn-lg imprimirproducto" href="/productos/imprimirproducto">Generar Reporte</a>
+        </div>
+    </center>
+ <!--<a class="btn btn-primary Pdf" href="/categorias/pdf">PDF</a> -->
+</div>
 </div>
 </div>
 </section>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -217,10 +229,10 @@
         $.post(
             "/productos/eliminar", {
                 IdProd: $("#delIdProd").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
             }
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -272,10 +284,10 @@
                 FechaCad: $("#FechaCad").val(),
                 numero_lote: $("#numero_lote").val(),
                 IdSucursal: $("#IdSucursal").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>

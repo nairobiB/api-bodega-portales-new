@@ -21,12 +21,12 @@
                     <div class="form-group">
                         <label> Empleado </label>
                         <select class="form-select form-control" id="idperson" aria-label="Default select example">
-                        <option selected>Elija empleado</option>
-                        <?php
-                        foreach ($listarPersonal as $f) {
-                        ?>
-                            <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
-                        <?php } ?>
+                            <option selected>Elija empleado</option>
+                            <?php
+                            foreach ($listarPersonal as $f) {
+                            ?>
+                                <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <!-- <div class="form-group">
@@ -40,12 +40,12 @@
                     <div class="form-group">
                         <label> Sucursales </label>
                         <select class="form-select form-control" id="idsucu" aria-label="Default select example">
-                        <option selected>Elija sucursal</option>
-                        <?php
-                        foreach ($listarSucursales as $f2) {
-                        ?>
-                            <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
-                        <?php } ?>
+                            <option selected>Elija sucursal</option>
+                            <?php
+                            foreach ($listarSucursales as $f2) {
+                            ?>
+                                <option value="<?php echo $f2->IdSucursal; ?>"><?php echo $f2->DescSucursal; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <!-- <div class="form-group">
@@ -97,11 +97,11 @@
 
 <!-- ################################################################### -->
 <div class="container-sm">
-<br>
-<center><img src="public/assets/images/USUARIO.png" alt="" srcset="" width="200px">
-    <h2>USUARIOS</h2>
-</center>
-<form class="needs-validation" novalidate method="POST">
+    <br>
+    <center><img src="public/assets/images/USUARIO.png" alt="" srcset="" width="200px">
+        <h2>USUARIOS</h2>
+    </center>
+    <form class="needs-validation" novalidate method="POST">
         <div class="form-row d-flex justify-content-center">
             <div class="col-md-3 mb-3">
                 <label for="inputusuario">Usuario</label>
@@ -126,13 +126,13 @@
             <div class="col-md-4 mb-3">
                 <label> Empleado </label>
                 <select class="form-select form-control" id="inputpersonal" aria-label="Default select example">
-                <option selected>Elija empleado</option>
-                <?php
+                    <option selected>Elija empleado</option>
+                    <?php
                     foreach ($listarPersonal as $f) {
-                ?>
-                    <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
-                <?php } ?>
-                    </select>
+                    ?>
+                        <option value="<?php echo $f->IdPer; ?>"><?php echo $f->NomPer; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <!-- <div class="col-md-4 mb-3">
                 <label for="inputidpersonal">Identidad</label>
@@ -169,8 +169,8 @@
             </div> -->
         </div>
         <center>
-        <button class="btn btn-success" id="btnGuardarUsuario" onClick='return validarUsuario()' type="button">Agregar Usuario</button>
-        <p id="errorUser"></p>
+            <button class="btn btn-success" id="btnGuardarUsuario" type="submit">Agregar Usuario</button>
+            <p id="errorUser"></p>
         </center>
 
     </form>
@@ -229,22 +229,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!-- PARTE DE USUARIOS -->
-<script>
-    $("#btnGuardarUsuario").click(function() {
-        $.post(
-            "/usuarios/guardar", {
-                NomUsr: $("#inputusuario").val(),
-                Contra: $("#inputcontrasena").val(),
-                IdPer: $("#inputpersonal").val(),
-                nivel: $("#inputnivel").val(),
-                IdSucursal: $("#inputidsucursal").val(),
-            },
-            function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
-    });
-</script>
 <!-- SCRIPT PARA ELIMINAR UN USUARIO-->
 <script>
     $(document).ready(function() {
@@ -266,13 +250,12 @@
 <script>
     $('#btnDelete').on('click', function() {
         $.post(
-            "/usuarios/eliminar",
-            {
-            NomUsr: $("#userdelete").val(),
-            },
-            function (data, status) {
-            alert("Data: " + data + "\nStatus: " + status);
-            }
+            "/usuarios/eliminar", {
+                NomUsr: $("#userdelete").val(),
+            }//,
+            // function(data, status) {
+            //     alert("Data: " + data + "\nStatus: " + status);
+            // }
         );
     });
 </script>
@@ -310,10 +293,68 @@
       IdPer: $("#idperson").val(),
       nivel: $("#level").val(),
       IdSucursal: $("#idsucu").val(),
-    },
-    function (data, status) {
-      alert("Data: " + data + "\nStatus: " + status);
-    }
+    }//,
+    // function (data, status) {
+    //   alert("Data: " + data + "\nStatus: " + status);
+    // }
   );
 });
+</script>
+
+<!-- VALIDACIONES -->
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        //GUARDAR DATOS EN LA TABLA DE CATEGORIAS
+                        $.post(
+                            "/usuarios/guardar", {
+                                NomUsr: $("#inputusuario").val(),
+                                Contra: $("#inputcontrasena").val(),
+                                IdPer: $("#inputpersonal").val(),
+                                nivel: $("#inputnivel").val(),
+                                IdSucursal: $("#inputidsucursal").val(),
+                            }//,
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
+                        );
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>

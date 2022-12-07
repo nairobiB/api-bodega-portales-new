@@ -26,18 +26,13 @@ class salidadetalle extends CI_Controller
         $this->load->view('plantilla/pie');
         $this->load->view('plantilla/js');
         $this->load->view('plantilla/fin');
-        // $this->setModelo('salidas');
-        // $this->vista->datos = $this->modelo->listar();
-        // /* $this->vista->datosdetalle = $this->modelo->listardetalle();
-        // $this->vista->datoscate = $this->modelo->listarcategorias();*/
-        // $this->vista->render($this->vista->url); //llama a la vista
     }
 
     public function guardar()
     {
         try {
             if ($this->input->post()) {
-                print_r($_POST);
+                // print_r($_POST);
                 $FechaVenta = $this->db->escape($_POST["FechaVenta"]);
                 $NomUsr = $this->db->escape($_POST["NomUsr"]);
                 $this->salidas_model->guardarSalida($FechaVenta, $NomUsr);
@@ -50,7 +45,7 @@ class salidadetalle extends CI_Controller
     public function guardardetalle()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $Codsalida =  $this->db->escape($_POST["Codsalida"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $Cantidad = $this->db->escape($_POST["Cantidad"]);
@@ -65,7 +60,7 @@ class salidadetalle extends CI_Controller
     public function modificardetalleS()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $Codsalida =  $this->db->escape($_POST["Codsalida"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $Cantidad = $this->db->escape($_POST["Cantidad"]);
@@ -79,7 +74,7 @@ class salidadetalle extends CI_Controller
     public function eliminardetalleS()
     {
         try {
-            print_r($_POST);
+            // print_r($_POST);
             $Codsalida =  $this->db->escape($_POST["Codsalida"]);
             $IdProd = $this->db->escape($_POST["IdProd"]);
             $this->salidas_model->eliminarDetalleS($Codsalida, $IdProd);
@@ -88,62 +83,4 @@ class salidadetalle extends CI_Controller
             echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
         }
     }
-
-
-    // function guardar()
-    // {
-    //     try {
-    //         print_r($_POST);
-    //         $FechaVenta = $_POST['FechaVenta'];
-    //         $NomUsr = $_POST['NomUsr'];
-    //         $this->setModelo('salidas');
-    //         $this->modelo->guardar(["FechaVenta" => $FechaVenta,  "NomUsr" => $NomUsr]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al guardar registro'));
-    //     }
-    // }
-    // function guardardetalle()
-    // {
-    //     try {
-    //         print_r($_POST);
-    //         $Codsalida = $_POST['Codsalida'];
-    //         $IdProd = $_POST['IdProd'];
-    //         $Cantidad = $_POST['Cantidad'];
-    //         $Precsalida = $_POST['Precsalida'];
-    //         $this->setModelo('salidas');
-    //         $this->modelo->guardardetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precsalida" => $Precsalida]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro guardado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => ('Error al guardar registro' + $th)));
-    //     }
-    // }
-    // function modificardetalle()
-    // {
-    //     try {
-    //         print_r($_POST);
-    //         $Codsalida = $_POST['Codsalida'];
-    //         $IdProd = $_POST['IdProd'];
-    //         $Cantidad = $_POST['Cantidad'];
-    //         $Precsalida = $_POST['Precsalida'];
-    //         $this->setModelo('salidas');
-    //         $this->modelo->modificardetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd, "Cantidad" => $Cantidad, "Precsalida" => $Precsalida]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro actualizado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al actualizar registro'));
-    //     }
-    // }
-    // function eliminardetalle()
-    // {
-    //     try {
-    //         print_r($_POST);
-    //         $Codsalida = $_POST['Codsalida'];
-    //         $IdProd = $_POST['IdProd'];
-    //         $this->setModelo('salidas');
-    //         $this->modelo->eliminarDetalle(["Codsalida" => $Codsalida, "IdProd" => $IdProd]);
-    //         echo json_encode(array('success' => 1, 'msj' => 'Registro eliminado'));
-    //     } catch (\Throwable $th) {
-    //         echo json_encode(array('success' => 0, 'msj' => 'Error al eliminar registro'));
-    //     }
-    // }
 }
