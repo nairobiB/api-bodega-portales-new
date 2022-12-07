@@ -25,15 +25,15 @@ session_start();
                 </div>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="inputPrecProd">Precio Porducto</label>
-                <input type="number" class="form-control" id="inputPrecProd" placeholder="Ingrese el Precio del Porducto" required>
+                <label for="inputPrecProd">Precio Producto</label>
+                <input type="money" class="form-control" id="inputPrecProd" placeholder="Ingrese el Precio del Porducto" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="inputPrecCompra">Precio Compra</label>
-                <input type="number" class="form-control" id="inputPrecCompra" placeholder="Ingrese el Precio de compra del Producto" required>
+                <input type="money" class="form-control" id="inputPrecCompra" placeholder="Ingrese el Precio de compra del Producto" required>
                 <div class="valid-feedback">
                     Correcto
                 </div>

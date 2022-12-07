@@ -246,9 +246,9 @@
                                 //IdCat: $("#inputcategoria").val(),
                                 NombreCat: $("#inputnombre").val(),
                             },
-                            function(data, status) {
-                                alert("Data: " + data + "\nStatus: " + status);
-                            }
+                            // function(data, status) {
+                            //     alert("Data: " + data + "\nStatus: " + status);
+                            // }
 
                         );
 
